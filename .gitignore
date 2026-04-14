@@ -1,0 +1,33 @@
+# Ignorar o diretório de build
+/target/
+/out/
+
+# Ignorar dependências locais do Maven
+/.m2/
+
+# Ignorar arquivos de configuração do IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos do sistema operacional
+*.swp
+*.swo
+
+# Ignorar a pasta de configurações de banco de dados H2
+*.h2.db
+*.h2.lock
+
+# Ignorar o diretório de teste de cobertura de código
+/coverage/
+
+# Ignorar arquivos gerados pelo Spring Boot DevTools
+spring-boot-devtools/
