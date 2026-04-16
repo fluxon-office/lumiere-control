@@ -7,11 +7,15 @@ import com.lumiereclinic.dto.LoginResponse;
 import com.lumiereclinic.exception.ResourceBadRequestException;
 import com.lumiereclinic.model.Usuario;
 import com.lumiereclinic.repository.UsuarioRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 
 @Service
 public class UsuarioService {
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -23,6 +27,8 @@ public class UsuarioService {
         if (usuarioExistente.isPresent()) {
             throw new ResourceBadRequestException("Email já cadastrado");
         }
+
+        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
 
         return usuarioRepository.save(usuario);
     }
@@ -36,7 +42,7 @@ public class UsuarioService {
 
         Usuario usuario = usuarioOptional.get();
 
-        if (!usuario.getSenha().equals(loginRequest.getSenha())) {
+        if (!passwordEncoder.matches(loginRequest.getSenha(), usuario.getSenha())) {
             throw new ResourceBadRequestException("Email ou senha inválidos");
         }
 
