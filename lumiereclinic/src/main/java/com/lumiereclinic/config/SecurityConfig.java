@@ -23,6 +23,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/servicos").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/servicos").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/servicos/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/servicos/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
