@@ -8,6 +8,7 @@ import com.lumiereclinic.dto.AgendamentoRequest;
 import com.lumiereclinic.model.Agendamento;
 import com.lumiereclinic.service.AgendamentoService;
 import java.util.List;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/agendamentos")
@@ -34,5 +35,10 @@ public class AgendamentoController {
     @PutMapping("/{id}/cancelar")
     public Agendamento cancelar(@PathVariable Long id) {
         return agendamentoService.cancelarAgendamento(id);
+    }
+    @GetMapping("/data")
+    public List<Agendamento> listarPorData(@RequestParam String data) {
+        LocalDate dataConvertida = LocalDate.parse(data);
+        return agendamentoService.listarPorData(dataConvertida);
     }
 }

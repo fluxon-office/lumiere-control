@@ -7,9 +7,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
+
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
 
     List<Agendamento> findAllByOrderByDataHoraAsc();
+    List<Agendamento> findByDataHoraBetween(LocalDateTime inicio, LocalDateTime fim);
 
     boolean existsByDataHora(LocalDateTime dataHora);
 

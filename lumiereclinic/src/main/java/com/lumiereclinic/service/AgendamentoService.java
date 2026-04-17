@@ -9,7 +9,7 @@ import com.lumiereclinic.dto.AgendamentoRequest;
 import com.lumiereclinic.exception.ResourceBadRequestException;
 import com.lumiereclinic.model.*;
 import com.lumiereclinic.repository.*;
-
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -76,5 +76,12 @@ public class AgendamentoService {
         agendamento.setStatus(StatusAgendamento.CANCELADO);
 
         return agendamentoRepository.save(agendamento);
+    }
+    public List<Agendamento> listarPorData(LocalDate data) {
+
+        LocalDateTime inicio = data.atStartOfDay();
+        LocalDateTime fim = data.atTime(23, 59, 59);
+
+        return agendamentoRepository.findByDataHoraBetween(inicio, fim);
     }
 }

@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/agendamentos/publico").permitAll()
                         .requestMatchers(HttpMethod.GET, "/agendamentos").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/agendamentos/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/agendamentos/data").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
