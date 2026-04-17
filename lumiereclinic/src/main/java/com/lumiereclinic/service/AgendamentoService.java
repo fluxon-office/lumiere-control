@@ -2,6 +2,7 @@ package com.lumiereclinic.service;
 
 
 
+import com.lumiereclinic.enums.StatusAgendamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lumiereclinic.dto.AgendamentoRequest;
@@ -57,5 +58,23 @@ public class AgendamentoService {
     }
     public List<Agendamento> listarAgendamentos() {
         return agendamentoRepository.findAllByOrderByDataHoraAsc();
+    }
+
+    public Agendamento confirmarAgendamento(Long id) {
+        Agendamento agendamento = agendamentoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Agendamento não encontrado"));
+
+        agendamento.setStatus(StatusAgendamento.CONFIRMADO);
+
+        return agendamentoRepository.save(agendamento);
+    }
+
+    public Agendamento cancelarAgendamento(Long id) {
+        Agendamento agendamento = agendamentoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Agendamento não encontrado"));
+
+        agendamento.setStatus(StatusAgendamento.CANCELADO);
+
+        return agendamentoRepository.save(agendamento);
     }
 }

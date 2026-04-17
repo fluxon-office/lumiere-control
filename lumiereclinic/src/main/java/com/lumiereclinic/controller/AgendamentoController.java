@@ -25,4 +25,14 @@ public class AgendamentoController {
     public List<Agendamento> listarAgendamentos() {
         return agendamentoService.listarAgendamentos();
     }
+
+    @PutMapping("/{id}/confirmar")
+    public Agendamento confirmar(@PathVariable Long id) {
+        return agendamentoService.confirmarAgendamento(id);
+    }
+
+    @PutMapping("/{id}/cancelar")
+    public Agendamento cancelar(@PathVariable Long id) {
+        return agendamentoService.cancelarAgendamento(id);
+    }
 }
