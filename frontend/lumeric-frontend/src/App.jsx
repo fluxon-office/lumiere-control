@@ -212,22 +212,27 @@ function App() {
   return (
     <div ref={rootRef} className="min-h-screen bg-[var(--color-sand)] text-slate-900">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-x-0 top-0 h-[44rem] bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.14),_transparent_34%),linear-gradient(180deg,_rgba(11,28,44,1)_0%,_rgba(19,47,76,0.94)_56%,_rgba(11,28,44,0.16)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-[calc(100vh+8rem)] overflow-hidden">
+          <img src={heroImage} alt="" aria-hidden="true" className="h-full w-full object-cover object-[72%_60%] opacity-38" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,28,44,0.9)_0%,rgba(18,61,90,0.74)_24%,rgba(11,28,44,0.72)_52%,rgba(11,28,44,0.18)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,96,126,0.3)_0%,rgba(11,28,44,0.16)_42%,rgba(11,28,44,0)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_32%)]" />
+        </div>
         <div className="absolute right-[-12rem] top-28 h-80 w-80 rounded-full bg-[rgba(212,175,55,0.14)] blur-3xl" />
         <div className="absolute left-[-10rem] top-[26rem] h-72 w-72 rounded-full bg-[rgba(19,47,76,0.12)] blur-3xl" />
       </div>
 
-      <header className="fixed inset-x-0 top-0 z-50 px-4 py-4 sm:px-6 lg:px-10">
-        <div className="mx-auto flex max-w-7xl items-center justify-between rounded-[1.05rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(90deg,rgba(11,28,44,0.96)_0%,rgba(22,45,69,0.95)_55%,rgba(11,28,44,0.96)_100%)] px-4 py-3 shadow-[0_18px_50px_rgba(3,10,18,0.2)] backdrop-blur-xl sm:px-6">
+      <header className="fixed inset-x-0 top-0 z-50 px-4 py-3 sm:px-6 lg:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between rounded-[1.05rem] border border-[rgba(255,255,255,0.09)] bg-[linear-gradient(90deg,rgba(8,18,29,0.22)_0%,rgba(8,18,29,0.1)_52%,rgba(8,18,29,0.22)_100%)] px-4 py-3 shadow-[0_10px_28px_rgba(3,10,18,0.08)] backdrop-blur-md sm:px-6">
           <a href="#home" className="flex items-center gap-3">
             <img
               src={logoImage}
               alt="Logo Lumiere Clinic"
-              className="h-11 w-11 rounded-[0.7rem] border border-[rgba(212,175,55,0.3)] object-cover"
+              className="h-11 w-11 rounded-[0.7rem] border border-[rgba(255,255,255,0.14)] object-cover"
             />
             <div>
               <p className="text-lg font-semibold text-white">Lumiere Clinic</p>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-[rgba(255,255,255,0.42)]">Estetica avancada</p>
+              <p className="text-[10px] uppercase tracking-[0.28em] text-[rgba(255,255,255,0.5)]">Estetica avancada</p>
             </div>
           </a>
 
@@ -236,7 +241,7 @@ function App() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-[rgba(255,255,255,0.84)] transition duration-300 hover:text-white"
+                className="text-sm font-medium text-[rgba(255,255,255,0.76)] transition duration-300 hover:text-white"
               >
                 {item.label}
               </a>
@@ -259,7 +264,7 @@ function App() {
         </div>
 
         <div
-          className={`mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.25rem] border border-white/12 bg-[rgba(8,18,29,0.9)] shadow-[0_18px_40px_rgba(3,10,18,0.3)] backdrop-blur-xl transition-all duration-300 lg:hidden ${
+            className={`mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.25rem] border border-white/12 bg-[rgba(8,18,29,0.6)] shadow-[0_18px_40px_rgba(3,10,18,0.16)] backdrop-blur-xl transition-all duration-300 lg:hidden ${
             menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
@@ -282,42 +287,64 @@ function App() {
       </header>
 
       <main className="overflow-hidden">
-        <section id="home" className="relative px-4 pb-24 pt-32 sm:px-6 lg:px-10 lg:pt-36">
-          <div className="mx-auto overflow-hidden rounded-[2rem] border border-[rgba(255,255,255,0.08)] bg-[var(--color-ink)] shadow-[0_30px_80px_rgba(8,18,29,0.2)]">
-            <div className="relative grid min-h-[38rem] lg:grid-cols-[minmax(0,0.9fr)_minmax(34rem,1.1fr)]">
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,28,44,0.96)_0%,rgba(11,28,44,0.88)_32%,rgba(11,28,44,0.48)_52%,rgba(11,28,44,0.08)_70%,rgba(11,28,44,0)_100%)]" />
-              <div className="absolute inset-y-0 left-0 w-full bg-[radial-gradient(circle_at_18%_24%,rgba(212,175,55,0.18),transparent_28%)]" />
-            <div className="relative z-10 flex items-center px-6 py-14 sm:px-10 lg:px-14">
-            <div className="max-w-2xl">
+        <section id="home" className="relative -mt-24 px-0 pb-20 pt-0 sm:-mt-28 sm:pb-24 lg:-mt-32">
+          <div className="mx-auto max-w-none">
+            <div className="relative min-h-[46rem] overflow-hidden bg-[var(--color-ink)] sm:min-h-[50rem] lg:min-h-[calc(100vh+6rem)]">
+              <div ref={heroCardRef} className="absolute inset-0">
+                <img
+                  src={heroImage}
+                  alt="Lumiere Clinic hero"
+                  className="h-full w-full object-cover object-[72%_0%]"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,96,126,0.72)_0%,rgba(18,61,90,0.78)_16%,rgba(11,28,44,0.88)_38%,rgba(11,28,44,0.58)_60%,rgba(11,28,44,0.14)_80%,rgba(11,28,44,0)_100%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(212,175,55,0.14),transparent_24%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,rgba(11,28,44,0)_0%,rgba(11,28,44,0.55)_68%,rgba(11,28,44,0.82)_100%)]" />
+              </div>
+              <div className="relative z-10 flex min-h-[46rem] items-center pt-28 sm:min-h-[50rem] sm:pt-32 lg:min-h-[calc(100vh+6rem)] lg:pt-36">
+                <div className="max-w-[37rem] px-4 sm:px-6 lg:ml-[clamp(2rem,6vw,5.5rem)] lg:px-0">
               <p
                 data-hero-text
-                className="mb-6 inline-flex rounded-full border border-[rgba(212,175,55,0.28)] bg-[rgba(255,255,255,0.06)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-[rgba(255,255,255,0.7)] backdrop-blur"
+                className="mb-7 inline-flex items-center gap-3 border-b border-[rgba(255,255,255,0.22)] pb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[rgba(255,255,255,0.74)]"
               >
-                Clinica estetica de alto padrao em Sao Paulo
+                <span className="h-px w-10 bg-[rgba(212,175,55,0.76)]" />
+                Lumiere Clinic
               </p>
-              <h1 data-hero-text className="max-w-[11ch] font-['Playfair_Display'] text-5xl leading-[0.94] text-white sm:text-6xl lg:text-[5.15rem]">
-                Estetica facial, corporal e cuidados com a pele em uma experiencia mais clara.
+              <h1
+                data-hero-text
+                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white sm:text-[4.2rem] lg:text-[5.4rem]"
+              >
+                Estetica facial,
+                <br />
+                corporal e
+                <br />
+                pele com
+                <br />
+                presenca premium.
               </h1>
-              <p data-hero-text className="mt-7 max-w-xl text-base leading-8 text-[rgba(255,255,255,0.72)] sm:text-lg">
-                Cuidado estetico com atendimento elegante, ambiente sofisticado e uma jornada visual pensada para transmitir confianca imediatamente.
+              <p
+                data-hero-text
+                className="mt-7 max-w-lg text-[15px] leading-7 text-[rgba(255,255,255,0.74)] sm:text-[17px] sm:leading-8"
+              >
+                Uma experiencia pensada para transmitir confianca, refinamento e clareza desde o primeiro contato.
               </p>
-              <div data-hero-text className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <div data-hero-text className="mt-9 flex flex-col gap-4 sm:flex-row">
                 <a href="#agendamento" className="btn-primary text-center">Agendar horario</a>
-                <a href="#servicos" className="btn-secondary text-center">Conhecer tratamentos</a>
+                <a
+                  href="#servicos"
+                  className="inline-flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.05)] px-6 py-3 text-sm font-medium text-white transition duration-300 hover:border-[rgba(255,255,255,0.32)] hover:bg-[rgba(255,255,255,0.09)]"
+                >
+                  Conhecer tratamentos
+                </a>
               </div>
-              <div data-hero-text className="mt-14 flex flex-wrap items-center gap-6 text-sm text-[rgba(255,255,255,0.7)]">
-                <div className="flex items-center gap-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[var(--color-gold)]" />
-                  <span>Experiencia premium</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[rgba(255,255,255,0.48)]" />
-                  <span>Atendimento humanizado</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-[rgba(212,175,55,0.72)]" />
-                  <span>Estetica avancada</span>
-                </div>
+              <div
+                data-hero-text
+                className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em] text-[rgba(255,255,255,0.62)] sm:text-[13px]"
+              >
+                <span>Atendimento humanizado</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-[rgba(212,175,55,0.8)]" />
+                <span>Estetica avancada</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-[rgba(255,255,255,0.42)]" />
+                <span>Jornada organizada</span>
               </div>
               {/*
                 <div className="flex items-center gap-3">
@@ -347,17 +374,6 @@ function App() {
             </div>
             </div>
 
-            <div ref={heroCardRef} className="relative min-h-[30rem] overflow-hidden rounded-[1.7rem] border border-white/10 shadow-[0_24px_70px_rgba(7,16,25,0.24)]">
-              <img
-                src={heroImage}
-                alt="Lumiere Clinic hero"
-                className="h-full w-full object-cover object-[72%_center]"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,28,44,0.12)_0%,rgba(11,28,44,0.02)_24%,rgba(11,28,44,0)_100%)]" />
-              <div className="absolute bottom-6 right-6 rounded-[1rem] border border-white/12 bg-[rgba(255,255,255,0.08)] px-4 py-3 text-sm text-white/82 backdrop-blur-md">
-                Lumiere Clinic
-              </div>
-            </div>
             </div>
             </div>
         </section>
@@ -671,18 +687,23 @@ function App() {
         </section>
       </main>
 
-      <footer className="bg-[linear-gradient(180deg,#0A1927_0%,#08131E_100%)] px-4 py-14 text-white sm:px-6 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1.25fr)_repeat(3,minmax(0,0.58fr))]">
+      <footer className="relative overflow-hidden bg-[var(--color-ink)] px-4 py-16 text-white sm:px-6 lg:px-10">
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="" aria-hidden="true" className="h-full w-full object-cover object-[center_18%] opacity-20" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,33,50,0.86)_0%,rgba(9,23,34,0.94)_45%,rgba(8,19,30,0.98)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,96,126,0.28)_0%,rgba(11,28,44,0.08)_28%,rgba(11,28,44,0.1)_100%)]" />
+        </div>
+        <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1.25fr)_repeat(3,minmax(0,0.58fr))]">
           <div>
-            <div className="flex items-center gap-3">
-              <img src={logoImage} alt="Logo Lumiere Clinic" className="h-12 w-12 rounded-[0.7rem] border border-[rgba(212,175,55,0.22)] object-cover" />
+            <div className="flex items-center gap-4">
+              <img src={logoImage} alt="Logo Lumiere Clinic" className="h-12 w-12 border border-[rgba(255,255,255,0.12)] object-cover" />
               <div>
-                <p className="font-['Playfair_Display'] text-2xl">Lumiere Clinic</p>
-                <p className="text-xs uppercase tracking-[0.28em] text-[rgba(255,255,255,0.42)]">Estetica premium</p>
+                <p className="font-['Inter'] text-[1.45rem] font-semibold tracking-[-0.03em] text-white">Lumiere Clinic</p>
+                <p className="text-[11px] uppercase tracking-[0.3em] text-[rgba(255,255,255,0.42)]">Estetica premium</p>
               </div>
             </div>
-            <p className="mt-5 max-w-md text-sm leading-7 text-[rgba(255,255,255,0.62)]">
-              Front-end premium para clinica estetica de alto padrao, com foco em desejo, confianca e conversao.
+            <p className="mt-6 max-w-md text-sm leading-7 text-[rgba(255,255,255,0.6)]">
+              Cuidado estetico com presenca visual refinada, atendimento organizado e uma jornada feita para converter com naturalidade.
             </p>
           </div>
           <FooterColumn
