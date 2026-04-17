@@ -10,6 +10,8 @@ import com.lumiereclinic.model.*;
 import com.lumiereclinic.repository.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Service
 public class AgendamentoService {
@@ -52,5 +54,8 @@ public class AgendamentoService {
         agendamento.setObservacao(request.getObservacao());
 
         return agendamentoRepository.save(agendamento);
+    }
+    public List<Agendamento> listarAgendamentos() {
+        return agendamentoRepository.findAllByOrderByDataHoraAsc();
     }
 }
