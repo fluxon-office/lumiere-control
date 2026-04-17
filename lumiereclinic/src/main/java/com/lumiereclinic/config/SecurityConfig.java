@@ -27,6 +27,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/servicos").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/servicos/**").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/servicos/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/agendamentos/publico").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults());
