@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -12,6 +12,7 @@
 }
 
 :root {
+  --hero-navbar-offset: 6rem;
   font-family: 'Inter', sans-serif;
   color: var(--color-ink);
   background: var(--color-sand);
@@ -22,11 +23,13 @@
 }
 
 html {
+  height: 100%;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  height: 100%;
   min-height: 100vh;
   background:
     radial-gradient(circle at top, rgba(212, 175, 55, 0.08), transparent 22%),
@@ -45,7 +48,14 @@ textarea {
 }
 
 #root {
+  height: 100%;
   min-height: 100vh;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --hero-navbar-offset: 6.5rem;
+  }
 }
 
 @layer components {
@@ -58,7 +68,7 @@ textarea {
   }
 
   .section-title {
-    @apply font-['Playfair_Display'] text-4xl leading-[1.02] sm:text-5xl;
+    @apply font-['Inter'] text-4xl font-semibold leading-[1.02] sm:text-5xl;
   }
 
   .glass-panel {
