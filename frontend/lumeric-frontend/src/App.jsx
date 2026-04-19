@@ -3,6 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import heroImage from '../foto/Hero.png';
 import logoImage from '../foto/logolumiere.jpeg';
+import bookingWomanImage from '../foto/mulherAgendar.png';
+import womanLumiereImage from '../foto/mulherLumiere.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,76 +73,53 @@ const services = [
 
 const differentials = [
   {
-    title: 'Atendimento humanizado',
-    description: 'Jornada acolhedora, escuta atenta e orientacao clara desde o primeiro contato.',
-    icon: HeartIcon,
+    category: 'ATENDIMENTO',
+    title: 'Cuidado acolhedor que faz cada paciente se sentir segura',
+    date: 'escuta atenta em cada etapa',
   },
   {
-    title: 'Rotina organizada',
-    description: 'Fluxo de agendamento pensado para reduzir atrito e manter a experiencia consistente.',
-    icon: GridIcon,
+    category: 'PROCEDIMENTOS',
+    title: 'Tecnologia de ponta para resultados personalizados e seguros',
+    date: 'protocolos faciais e corporais',
   },
   {
-    title: 'Experiencia premium',
-    description: 'Ambiente visual sofisticado, linguagem elegante e sensacao de exclusividade em cada etapa.',
-    icon: DiamondIcon,
+    category: 'EXPERIENCIA',
+    title: 'Cuidado humanizado que transforma a rotina e a percepcao pessoal',
+    date: 'acompanhamento individual',
   },
   {
-    title: 'Processo simples',
-    description: 'A paciente entende rapido o proximo passo, escolhe o servico e solicita o horario com seguranca.',
-    icon: CheckPathIcon,
+    category: 'RESULTADOS',
+    title: 'Mais bem-estar, presenca e autoestima em cada etapa do tratamento',
+    date: 'evolucao visivel e consistente',
+  },
+];
+
+const aboutTestimonials = [
+  {
+    quote:
+      'A Dra. Claudia e a medica mais sensata, honesta e competente, alem de ser extremamente sincera. Excelente atendimento por ela e sua equipe, resultados incriveis! Recomendo demais, nota mil!',
+    author: 'Giulia Dias',
+  },
+  {
+    quote:
+      'Equipe nota 10! Acolhimento e receptividade nota 10! Dra Claudia e uma medica que me deixou muito a vontade, entendeu todas as minhas aflicoes, expectativas e queixas e explicou com detalhes todos os procedimentos possiveis. Adorei! Super recomendo a experiencia!',
+    author: 'Ana Moreno',
+  },
+  {
+    quote:
+      'Cheguei no consultorio com a auto estima muito baixa, meu rosto estava tomado de espinhas, ja tinha ido em diversos profissionais. A Dra. Claudia foi sucinta, me receitou em 1 mes meu rosto estava PERFEITO. Sou muito grata pelo atendimento, pelo resultado.',
+    author: 'Evelyn Silva',
   },
 ];
 
 const faqItems = [
   ['Como funciona o primeiro atendimento na Lumiere Clinic?', 'A jornada comeca com avaliacao esteticamente orientada, entendimento da necessidade e indicacao de protocolo mais adequado para o objetivo da paciente.'],
   ['Preciso agendar avaliacao antes de realizar um procedimento?', 'Para a maior parte dos protocolos, a avaliacao e recomendada para definir indicacao, sequencia, intervalo e expectativa de resultado.'],
-  ['A clinica atende tratamentos faciais e corporais no mesmo lugar?', 'Sim. A proposta da Lumiere e reunir protocolos faciais, corporais e de cuidado continuo da pele em uma experiencia organizada e premium.'],
-  ['Quais servicos aparecem com mais procura no site?', 'Limpeza de pele, botox, bioestimulador, preenchimento labial, drenagem linfatica e tratamentos para gordura localizada costumam concentrar grande interesse.'],
-  ['Posso solicitar mais de um procedimento no mesmo agendamento?', 'Sim. O pedido pode registrar mais de um interesse para que a equipe oriente a melhor composicao de atendimento.'],
   ['A confirmacao do horario acontece automaticamente?', 'Nao. O formulario registra a solicitacao e a equipe confirma disponibilidade, orientacoes e detalhes finais pelo contato informado.'],
-  ['A Lumiere Clinic trabalha com proposta personalizada?', 'Sim. A experiencia foi pensada para evitar indicacoes genericas e favorecer leitura individual de objetivo, pele e rotina.'],
-  ['O agendamento pelo site e seguro?', 'Sim. O front-end foi desenhado para conduzir a solicitacao com clareza, contraste alto e campos organizados.'],
-  ['Qual o diferencial da abordagem premium da clinica?', 'A combinacao entre estetica refinada, organizacao do fluxo, cuidado no atendimento e apresentacao visual coerente com uma marca de alto padrao.'],
-  ['O site funciona bem no celular?', 'Sim. Toda a estrutura foi pensada em abordagem mobile-first, com menu adaptado, botoes amplos e leitura respirada.'],
-  ['A limpeza de pele pode ser feita regularmente?', 'Sim. A recorrencia depende do perfil cutaneo e do plano definido na avaliacao, sempre com foco em constancia e manutencao.'],
-  ['Peeling ajuda a melhorar textura e brilho?', 'Sim. Quando bem indicado, o peeling pode contribuir para renovacao, uniformidade visual e refinamento da superficie da pele.'],
-  ['Microagulhamento exige pausa na rotina?', 'A orientacao depende da intensidade do protocolo, mas a equipe informa o tempo de recuperacao esperado e os cuidados posteriores.'],
-  ['Massagem relaxante tem foco apenas em bem-estar?', 'Ela e voltada ao conforto corporal e ao alivio de tensao, mas tambem contribui para a experiencia global de autocuidado.'],
-  ['Drenagem linfatica ajuda na sensacao de leveza?', 'Sim. A drenagem costuma ser associada a alivio de retencao, desinchar e melhora de conforto corporal.'],
-  ['Preenchimento labial na Lumiere busca resultado natural?', 'Sim. A proposta visual prioriza equilibrio, definicao e harmonia, evitando excessos e mantendo leitura sofisticada.'],
-  ['Bioestimulador e um protocolo progressivo?', 'Sim. Em geral, o efeito e percebido de forma gradual, com foco em firmeza e qualidade global da pele.'],
-  ['Botox deixa a expressao artificial?', 'Quando o planejamento e cuidadoso, a intencao e suavizar linhas e manter naturalidade, sem aspecto rigido.'],
-  ['Secagem de vazinhos exige avaliacao previa?', 'Sim. A avaliacao ajuda a entender indicacao, area de interesse e cuidados necessarios antes do procedimento.'],
-  ['Micro labial substitui cuidados com hidratacao?', 'Nao. Ela complementa o visual dos labios, mas a rotina de cuidado e manutencao continua importante.'],
-  ['Tratamentos para gordura localizada podem ser combinados?', 'Sim. A estrategia pode envolver composicao de protocolos, sempre alinhada ao objetivo e a avaliacao tecnica.'],
-  ['Enzimas para gordura localizada sao indicadas para qualquer caso?', 'Nao. A indicacao precisa ser analisada com criterio para definir area, objetivo e expectativa realista.'],
-  ['Posso escolher periodo da manha, tarde ou noite no agendamento?', 'Sim. O formulario permite indicar preferencia de periodo para facilitar a organizacao da equipe.'],
   ['O WhatsApp e usado para confirmar a consulta?', 'Sim. Ele funciona como canal rapido para retorno, orientacoes e alinhamento do horario solicitado.'],
-  ['Posso deixar observacoes no pedido de agendamento?', 'Sim. O campo de observacoes serve para registrar objetivos, preferencias ou duvidas antes da confirmacao.'],
-  ['A Lumiere Clinic atende publico que busca naturalidade?', 'Sim. O posicionamento da marca valoriza sofisticacao, equilibrio e resultados visualmente coerentes.'],
-  ['A clinica trabalha com experiencia mais reservada?', 'Sim. Toda a linguagem visual e a organizacao do fluxo reforcam exclusividade, conforto e discricao.'],
-  ['Existe foco em continuidade do cuidado?', 'Sim. O site foi estruturado para favorecer relacao de longo prazo, e nao apenas visitas isoladas.'],
-  ['O que torna a navegacao do site mais premium?', 'Hierarquia clara, contrastes bem controlados, animacoes discretas, espaco generoso e elementos visuais de alta percepcao de valor.'],
-  ['A navbar continua acessivel durante a navegacao?', 'Sim. Ela permanece fixa e facilita acesso rapido a servicos, sobre, contato e agendamento.'],
-  ['Os cards de servico foram pensados para conversao?', 'Sim. Cada card resume o protocolo com descricao curta, leitura limpa e hover elegante para manter interesse.'],
-  ['A secao sobre a clinica ajuda na confianca?', 'Sim. Ela reforca experiencia, cuidado e posicionamento premium, reduzindo distancia entre interesse e decisao de contato.'],
-  ['Por que existe uma secao de diferenciais?', 'Para transformar percepcao de valor em mensagem objetiva e mostrar porque a jornada da Lumiere e mais bem resolvida.'],
-  ['O formulario foi feito para parecer um sistema real?', 'Sim. O bloco de agendamento foi desenhado como um painel premium de alto contraste para transmitir organizacao e confianca.'],
-  ['A localizacao fica clara no site?', 'Sim. A secao exibe endereco, contexto da regiao e um mapa estilizado para facilitar reconhecimento.'],
-  ['O FAQ ajuda antes do clique final?', 'Sim. Ele reduz duvidas frequentes e melhora a predisposicao da visitante a solicitar atendimento.'],
-  ['O footer serve apenas como encerramento visual?', 'Nao. Ele reforca navegacao, contato e presenca institucional sem perder a elegancia da marca.'],
-  ['As animacoes GSAP deixam o site pesado?', 'Nao. As animacoes foram pensadas em camadas leves, entradas suaves e transicoes discretas de alto impacto visual.'],
-  ['O hero foi construido para gerar desejo de agendamento?', 'Sim. Ele combina headline forte, contraste alto, CTA dourado e um card flutuante de sistema para incentivar acao imediata.'],
-  ['A paleta de cores influencia a confianca?', 'Sim. Azul profundo comunica seguranca, enquanto dourado elegante reforca valor e sofisticacao percebida.'],
-  ['A tipografia segue um padrao premium?', 'Sim. A combinacao entre Playfair Display nos titulos e Inter nos textos cria leitura refinada e atual.'],
-  ['Os botoes foram desenhados para toque em mobile?', 'Sim. Eles tem tamanho amplo, contraste forte e estados de hover e focus visualmente consistentes.'],
-  ['A interface usa glassmorphism de forma controlada?', 'Sim. O efeito aparece em pontos estrategicos para sofisticar sem comprometer legibilidade e desempenho.'],
-  ['Esse front-end ja esta pronto para evoluir depois?', 'Sim. A estrutura em React permite conectar backend, analytics ou automacoes futuras sem refazer a camada visual.'],
-  ['Como solicito meu horario agora?', 'Basta escolher o servico, informar data, periodo, nome e WhatsApp, adicionar observacoes se quiser e clicar em solicitar agendamento.'],
+  ['A Lumiere Clinic trabalha com proposta personalizada?', 'Sim. A experiencia foi pensada para evitar indicacoes genericas e favorecer leitura individual de objetivo, pele e rotina.'],
+  ['Botox deixa a expressao artificial?', 'Quando o planejamento e cuidadoso, a intencao e suavizar linhas e manter naturalidade, sem aspecto rigido.'],
 ].map(([question, answer]) => ({ question, answer }));
-
-const periods = ['Manha', 'Tarde', 'Noite'];
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -152,15 +131,40 @@ const navItems = [
 function App() {
   const rootRef = useRef(null);
   const heroCardRef = useRef(null);
+  const serviceCarouselTrackRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(0);
-  const [selectedService, setSelectedService] = useState(services[0].title);
-  const [selectedPeriod, setSelectedPeriod] = useState(periods[1]);
-  const [submitted, setSubmitted] = useState(false);
+  const [serviceCarouselStart, setServiceCarouselStart] = useState(0);
+  const locationAddress = 'Av. Atlantica, 2113, Jardim Tres Marias, Sao Paulo - SP';
 
   const mapsLink = useMemo(
-    () => 'https://www.google.com/maps/search/?api=1&query=Av.+Atlantica,+2113+Jardim+Tres+Marias,+Sao+Paulo',
+    () => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationAddress)}`,
+    [locationAddress],
+  );
+
+  const mapsEmbedLink = useMemo(
+    () => `https://www.google.com/maps?q=${encodeURIComponent(locationAddress)}&z=16&output=embed`,
+    [locationAddress],
+  );
+
+  const whatsappLink = useMemo(
+    () => 'https://wa.me/?text=Ola%2C%20quero%20solicitar%20atendimento%20na%20Lumiere%20Clinic.',
     [],
+  );
+
+  const servicePages = useMemo(
+    () => [
+      ['Limpeza de pele', 'Peeling', 'Microagulhamento', 'Botox', 'Bioestimulador'],
+      ['Massagem relaxante', 'Secagem de vazinhos', 'Tratamento para gordura localizada', 'Enzimas para gordura localizada'],
+      ['Drenagem linfatica'],
+      ['Preenchimento labial', 'Micro labial'],
+    ].map((titles) => titles.map((title) => services.find((service) => service.title === title)).filter(Boolean)),
+    [],
+  );
+
+  const highlightedServices = useMemo(
+    () => servicePages[serviceCarouselStart] ?? servicePages[0],
+    [serviceCarouselStart, servicePages],
   );
 
   useEffect(() => {
@@ -203,18 +207,36 @@ function App() {
     return () => ctx.revert();
   }, []);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    setSubmitted(true);
-    window.setTimeout(() => setSubmitted(false), 2400);
-  }
+  useEffect(() => {
+    if (!serviceCarouselTrackRef.current) {
+      return undefined;
+    }
+
+    const cards = serviceCarouselTrackRef.current.querySelectorAll('[data-service-slide]');
+    const animation = gsap.fromTo(
+      cards,
+      { y: 20, opacity: 0, scale: 0.985 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: 'power2.out',
+        clearProps: 'transform,opacity',
+      },
+    );
+
+    return () => animation.kill();
+  }, [serviceCarouselStart]);
 
   return (
     <div ref={rootRef} className="min-h-screen bg-[var(--color-sand)] text-slate-900">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-[calc(var(--hero-navbar-offset)+2rem)] bg-[linear-gradient(90deg,rgba(14,52,79,0.92)_0%,rgba(21,77,111,0.78)_34%,rgba(60,44,33,0.4)_72%,rgba(98,72,51,0.62)_100%)]" />
         <div className="absolute inset-x-0 top-0 h-[calc(100vh+8rem)] overflow-hidden">
-          <img src={heroImage} alt="" aria-hidden="true" className="h-full w-full object-cover object-[72%_60%] opacity-38" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,28,44,0.9)_0%,rgba(18,61,90,0.74)_24%,rgba(11,28,44,0.72)_52%,rgba(11,28,44,0.18)_100%)]" />
+          <img src={heroImage} alt="" aria-hidden="true" className="h-full w-full object-cover object-[68%_18%] opacity-32" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,28,44,0.92)_0%,rgba(18,61,90,0.78)_22%,rgba(11,28,44,0.78)_54%,rgba(11,28,44,0.62)_76%,rgba(11,28,44,0.82)_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,96,126,0.3)_0%,rgba(11,28,44,0.16)_42%,rgba(11,28,44,0)_100%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.12),transparent_32%)]" />
         </div>
@@ -222,64 +244,91 @@ function App() {
         <div className="absolute left-[-10rem] top-[26rem] h-72 w-72 rounded-full bg-[rgba(19,47,76,0.12)] blur-3xl" />
       </div>
 
-      <header className="fixed inset-x-0 top-0 z-50 px-4 py-3 sm:px-6 lg:px-10">
-        <div className="mx-auto flex max-w-7xl items-center justify-between rounded-[1.05rem] border border-[rgba(255,255,255,0.09)] bg-[linear-gradient(90deg,rgba(8,18,29,0.22)_0%,rgba(8,18,29,0.1)_52%,rgba(8,18,29,0.22)_100%)] px-4 py-3 shadow-[0_10px_28px_rgba(3,10,18,0.08)] backdrop-blur-md sm:px-6">
-          <a href="#home" className="flex items-center gap-3">
-            <img
-              src={logoImage}
-              alt="Logo Lumiere Clinic"
-              className="h-11 w-11 rounded-[0.7rem] border border-[rgba(255,255,255,0.14)] object-cover"
-            />
-            <div>
-              <p className="text-lg font-semibold text-white">Lumiere Clinic</p>
-              <p className="text-[10px] uppercase tracking-[0.28em] text-[rgba(255,255,255,0.5)]">Estetica avancada</p>
-            </div>
-          </a>
-
-          <nav className="hidden items-center gap-7 lg:flex">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-[rgba(255,255,255,0.76)] transition duration-300 hover:text-white"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <button
-            type="button"
-            onClick={() => setMenuOpen((current) => !current)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white transition hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] lg:hidden"
-            aria-label="Abrir menu"
-            aria-expanded={menuOpen}
-          >
-            <div className="space-y-1.5">
-              <span className={`block h-0.5 w-5 bg-current transition ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
-              <span className={`block h-0.5 w-5 bg-current transition ${menuOpen ? 'opacity-0' : 'opacity-100'}`} />
-              <span className={`block h-0.5 w-5 bg-current transition ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
-            </div>
-          </button>
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-40">
+        <div className="w-full border-y border-[rgba(255,255,255,0.14)] bg-[linear-gradient(135deg,rgba(7,18,29,0.74)_0%,rgba(12,35,54,0.56)_42%,rgba(46,34,26,0.34)_100%)] px-4 py-[0.32rem] shadow-[0_28px_60px_rgba(4,14,23,0.16)] backdrop-blur-xl sm:px-6 lg:px-10">
+          <div className="min-h-[calc(var(--hero-navbar-offset)+0.64rem)]" />
         </div>
+      </div>
+
+      <header className="fixed inset-x-0 top-0 z-50">
+        <div className="w-full px-4 py-[0.32rem] sm:px-6 lg:px-10">
+          <div className="flex min-h-[var(--hero-navbar-offset)] items-center gap-3 rounded-[1.15rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(90deg,rgba(9,21,33,0.78)_0%,rgba(12,34,52,0.56)_44%,rgba(31,24,18,0.36)_100%)] px-3 py-2.5 sm:px-4 lg:px-5">
+              <a href="#home" className="flex min-w-0 items-center gap-3 pr-2 sm:pr-3">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(212,175,55,0.34),rgba(255,255,255,0.08))] blur-sm" />
+                  <img
+                    src={logoImage}
+                    alt="Logo Lumiere Clinic"
+                    className="relative h-12 w-12 border border-[rgba(255,255,255,0.18)] object-cover shadow-[0_12px_24px_rgba(0,0,0,0.18)]"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate font-['Inter'] text-[1.32rem] font-semibold leading-none text-white">Lumiere Clinic</p>
+                  <p className="mt-1 truncate text-[10px] uppercase tracking-[0.32em] text-[rgba(255,255,255,0.56)]">
+                    Estetica e autocuidado
+                  </p>
+                </div>
+              </a>
+
+              <div className="hidden flex-1 lg:flex lg:justify-center">
+                <nav className="flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] px-2 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="rounded-full px-4 py-2 text-[13px] font-medium tracking-[0.02em] text-[rgba(255,255,255,0.74)] transition duration-300 hover:bg-[rgba(255,255,255,0.08)] hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+
+              <div className="ml-auto flex items-center gap-3">
+                <a
+                  href="#agendamento"
+                  className="hidden rounded-full border border-[rgba(212,175,55,0.34)] bg-[linear-gradient(135deg,rgba(212,175,55,0.24),rgba(166,122,31,0.18))] px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.22em] text-[rgba(255,247,226,0.92)] transition duration-300 hover:border-[rgba(212,175,55,0.48)] hover:bg-[linear-gradient(135deg,rgba(212,175,55,0.32),rgba(166,122,31,0.24))] lg:inline-flex"
+                >
+                  Agendar
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen((current) => !current)}
+                  className="inline-flex h-12 w-12 items-center justify-center border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.06)] text-white transition duration-300 hover:border-[rgba(212,175,55,0.42)] hover:bg-[rgba(255,255,255,0.1)] hover:text-[rgba(255,247,226,0.96)] lg:hidden"
+                  aria-label="Abrir menu"
+                  aria-expanded={menuOpen}
+                >
+                  <div className="space-y-1.5">
+                    <span className={`block h-0.5 w-5 bg-current transition ${menuOpen ? 'translate-y-2 rotate-45' : ''}`} />
+                    <span className={`block h-0.5 w-5 bg-current transition ${menuOpen ? 'opacity-0' : 'opacity-100'}`} />
+                    <span className={`block h-0.5 w-5 bg-current transition ${menuOpen ? '-translate-y-2 -rotate-45' : ''}`} />
+                  </div>
+                </button>
+              </div>
+          </div>
+          </div>
 
         <div
-            className={`mx-auto mt-3 max-w-7xl overflow-hidden rounded-[1.25rem] border border-white/12 bg-[rgba(8,18,29,0.6)] shadow-[0_18px_40px_rgba(3,10,18,0.16)] backdrop-blur-xl transition-all duration-300 lg:hidden ${
-            menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          className={`overflow-hidden border-y border-[rgba(255,255,255,0.12)] bg-[linear-gradient(180deg,rgba(8,20,31,0.82)_0%,rgba(13,34,52,0.68)_54%,rgba(30,23,18,0.42)_100%)] shadow-[0_24px_46px_rgba(3,10,18,0.18)] backdrop-blur-xl transition-all duration-300 lg:hidden ${
+            menuOpen ? 'max-h-[28rem] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <nav className="flex flex-col gap-1 p-4">
+          <nav className="flex flex-col gap-2 p-4">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-2xl px-4 py-3 text-sm font-medium text-[rgba(255,255,255,0.8)] transition hover:bg-[rgba(255,255,255,0.06)] hover:text-[var(--color-gold)]"
+                className="border border-transparent px-4 py-3 text-sm font-medium text-[rgba(255,255,255,0.82)] transition duration-300 hover:border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.05)] hover:text-white"
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            <a href="#agendamento" className="btn-primary mt-3 text-center" onClick={() => setMenuOpen(false)}>
+            <a
+              href="#agendamento"
+              className="mt-2 inline-flex justify-center border border-[rgba(212,175,55,0.34)] bg-[linear-gradient(135deg,rgba(212,175,55,0.24),rgba(166,122,31,0.18))] px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-[rgba(255,247,226,0.94)]"
+              onClick={() => setMenuOpen(false)}
+            >
               Agendar horario
             </a>
           </nav>
@@ -287,20 +336,20 @@ function App() {
       </header>
 
       <main className="overflow-hidden">
-        <section id="home" className="relative -mt-24 px-0 pb-20 pt-0 sm:-mt-28 sm:pb-24 lg:-mt-32">
+        <section id="home" className="relative px-0 pb-0 pt-[calc(var(--hero-navbar-offset)+0.32rem)]">
           <div className="mx-auto max-w-none">
-            <div className="relative min-h-[46rem] overflow-hidden bg-[var(--color-ink)] sm:min-h-[50rem] lg:min-h-[calc(100vh+6rem)]">
+            <div className="relative min-h-[calc(100vh-var(--hero-navbar-offset))] overflow-hidden bg-[var(--color-ink)]">
               <div ref={heroCardRef} className="absolute inset-0">
                 <img
                   src={heroImage}
                   alt="Lumiere Clinic hero"
-                  className="h-full w-full object-cover object-[72%_0%]"
+                  className="block h-full w-full object-cover object-[64%_16%]"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,96,126,0.72)_0%,rgba(18,61,90,0.78)_16%,rgba(11,28,44,0.88)_38%,rgba(11,28,44,0.58)_60%,rgba(11,28,44,0.14)_80%,rgba(11,28,44,0)_100%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,96,126,0.68)_0%,rgba(18,61,90,0.74)_16%,rgba(11,28,44,0.86)_38%,rgba(11,28,44,0.52)_60%,rgba(11,28,44,0.12)_80%,rgba(11,28,44,0)_100%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(212,175,55,0.14),transparent_24%)]" />
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,rgba(11,28,44,0)_0%,rgba(11,28,44,0.55)_68%,rgba(11,28,44,0.82)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(11,28,44,0)_0%,rgba(11,28,44,0.38)_34%,rgba(11,28,44,0.74)_72%,rgba(11,28,44,0.92)_100%)]" />
               </div>
-              <div className="relative z-10 flex min-h-[46rem] items-center pt-28 sm:min-h-[50rem] sm:pt-32 lg:min-h-[calc(100vh+6rem)] lg:pt-36">
+              <div className="relative z-10 flex min-h-[calc(100vh-var(--hero-navbar-offset))] items-center pt-12 sm:pt-14 lg:pt-16">
                 <div className="max-w-[37rem] px-4 sm:px-6 lg:ml-[clamp(2rem,6vw,5.5rem)] lg:px-0">
               <p
                 data-hero-text
@@ -351,7 +400,7 @@ function App() {
                   <div className="flex items-end justify-between gap-4">
                     <div>
                       <p className="text-[11px] uppercase tracking-[0.28em] text-[rgba(255,255,255,0.46)]">Curadoria</p>
-                      <p className="mt-3 font-['Playfair_Display'] text-4xl text-[var(--color-gold)]">12 protocolos</p>
+                      <p className="mt-3 font-['Inter'] text-4xl font-semibold text-[var(--color-gold)]">12 protocolos</p>
                     </div>
                     <span className="h-px flex-1 bg-gradient-to-r from-[rgba(212,175,55,0.45)] to-transparent" />
                   </div>
@@ -365,7 +414,7 @@ function App() {
                     ['Atendimento claro', 'Jornada que reduz duvida antes do clique final.'],
                   ].map(([title, copy]) => (
                     <div key={title} className="rounded-[1.35rem] border border-white/10 bg-[rgba(255,255,255,0.05)] p-4 backdrop-blur-xl">
-                      <p className="font-['Playfair_Display'] text-2xl text-white">{title}</p>
+                      <p className="font-['Inter'] text-2xl font-semibold text-white">{title}</p>
                       <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.68)]">{copy}</p>
                     </div>
                   ))}
@@ -379,220 +428,264 @@ function App() {
         </section>
         <section id="servicos" className="px-4 py-24 sm:px-6 lg:px-10">
           <div className="mx-auto max-w-7xl" data-reveal>
-            <SectionTag>Servicos</SectionTag>
-            <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.7fr)] lg:items-end">
-              <div className="max-w-3xl">
-                <h2 className="section-title text-[var(--color-ink)]">
-                  Protocolos selecionados para uma experiencia estetica sofisticada e com leitura de alto padrao.
-                </h2>
-              </div>
-              <div className="justify-self-start rounded-[1.4rem] border border-[rgba(11,28,44,0.08)] bg-white/70 p-5 shadow-[0_18px_38px_rgba(12,24,38,0.06)]">
-                <p className="text-[11px] uppercase tracking-[0.26em] text-[var(--color-gold-deep)]">Direcao de arte</p>
-                <p className="mt-3 max-w-md text-sm leading-7 text-[var(--color-muted)]">
-                  O grid foi quebrado em ritmo editorial: algumas pecas respiram mais, outras funcionam como blocos compactos de decisao.
-                </p>
-              </div>
+            <div className="text-center">
+              <p className="text-[1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.15rem]">
+                Beleza, inovacao e sofisticacao
+              </p>
+              <h2 className="mx-auto mt-3 max-w-4xl text-[2.35rem] font-medium leading-[1.08] tracking-[-0.04em] text-[var(--color-ink)] sm:text-[3.4rem]">
+                Tecnologias para todas as solucoes
+              </h2>
+              <p className="mx-auto mt-5 max-w-4xl text-base leading-8 text-[var(--color-muted)] sm:text-[1.12rem]">
+                Conheca nossa abordagem em estetica com tecnologia avancada, proporcionando cuidados personalizados para atender as suas necessidades.
+              </p>
             </div>
-            <div className="mt-14 grid gap-4 md:grid-cols-2 xl:auto-rows-[10.5rem] xl:grid-cols-4">
-              {services.map((service, index) => (
-                <ServiceCard key={service.title} service={service} index={index} />
+
+            <div className="mt-14 grid grid-cols-[auto_1fr_auto] items-center gap-8 lg:gap-14">
+              <button
+                type="button"
+                onClick={() => setServiceCarouselStart((current) => (current - 1 + servicePages.length) % servicePages.length)}
+                aria-label="Ver servicos anteriores"
+                className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] lg:mr-6"
+              >
+                <ChevronLeftIcon className="h-5 w-5" />
+              </button>
+
+              <div
+                ref={serviceCarouselTrackRef}
+                className={`grid gap-x-8 gap-y-10 ${
+                  highlightedServices.length >= 4 ? 'justify-center md:justify-stretch' : 'justify-center'
+                }`}
+                style={{
+                  gridTemplateColumns:
+                    highlightedServices.length >= 4
+                      ? `repeat(${highlightedServices.length}, minmax(0, 1fr))`
+                      : `repeat(${highlightedServices.length}, minmax(12.75rem, 14.6rem))`,
+                }}
+              >
+                {highlightedServices.map((service) => (
+                  <article key={`${serviceCarouselStart}-${service.title}`} data-service-slide className="grid content-start justify-items-center text-center">
+                    <div className="aspect-[0.84] w-full border border-[rgba(11,28,44,0.08)] bg-[linear-gradient(180deg,#F6F2EB_0%,#ECE5D9_100%)] shadow-[0_14px_30px_rgba(12,24,38,0.06)]">
+                      <div className="flex h-full items-center justify-center px-6 text-center">
+                        <span className="text-sm uppercase tracking-[0.22em] text-[rgba(11,28,44,0.36)]">
+                          Imagem do servico
+                        </span>
+                      </div>
+                    </div>
+                    <h3 className="mt-6 flex min-h-[5rem] items-start justify-center text-center text-[1.58rem] font-medium leading-[1.14] tracking-[-0.03em] text-[var(--color-ink)]">
+                      {service.title === 'Microagulhamento' ? (
+                        <>
+                          Micro
+                          <br />
+                          agulhamento
+                        </>
+                      ) : (
+                        service.title
+                      )}
+                    </h3>
+                    <p
+                      className="mt-4 flex min-h-[8.75rem] items-start justify-center text-justify text-sm leading-7 text-[var(--color-muted)]"
+                      style={{ textJustify: 'inter-word' }}
+                    >
+                      {service.description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setServiceCarouselStart((current) => (current + 1) % servicePages.length)}
+                aria-label="Ver proximos servicos"
+                className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] lg:ml-6"
+              >
+                <ChevronRightIcon className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-10 flex justify-center gap-3">
+              {Array.from({ length: servicePages.length }, (_, index) => (
+                <span
+                  key={index}
+                  className={`h-2.5 w-2.5 rounded-full ${
+                    index === serviceCarouselStart ? 'bg-[var(--color-gold)]' : 'bg-[rgba(212,175,55,0.24)]'
+                  }`}
+                />
               ))}
+            </div>
+
+            <div className="mt-10 flex justify-center">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-14 items-center rounded-full bg-[var(--color-gold)] px-8 py-3 text-[1.12rem] font-medium text-white transition duration-300 hover:bg-[var(--color-gold-deep)]"
+              >
+                Agende sua consulta!
+              </a>
             </div>
           </div>
         </section>
 
         <section id="sobre" className="px-4 py-20 sm:px-6 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center" data-reveal>
-            <div className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(145deg,#0B1C2C_0%,#132F4C_64%,#0B1C2C_100%)] p-6 shadow-[0_28px_70px_rgba(9,22,36,0.22)]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.18),_transparent_38%)]" />
+          <div className="mx-auto max-w-[84rem]" data-reveal>
+            <div className="relative overflow-hidden bg-[#5D4A3B]">
               <img
-                src={logoImage}
-                alt="Lumiere Clinic"
-                className="relative h-[28rem] w-full rounded-[1.5rem] border border-white/10 object-cover shadow-[0_20px_50px_rgba(0,0,0,0.2)]"
+                src={womanLumiereImage}
+                alt="Mulher em destaque na secao sobre Lumiere"
+                className="h-[17rem] w-full object-cover opacity-56 sm:h-[21rem] lg:h-[23rem]"
               />
-              <div className="relative mt-5 rounded-[1.4rem] border border-white/10 bg-[rgba(255,255,255,0.08)] p-5 backdrop-blur-xl">
-                <p className="text-xs uppercase tracking-[0.28em] text-[rgba(255,255,255,0.55)]">Sobre a clinica</p>
-                <p className="mt-3 font-['Playfair_Display'] text-2xl text-white">
-                  Cuidado estetico com postura premium, escuta humana e decisao visual madura.
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(72,53,42,0.64)_0%,rgba(77,56,43,0.58)_35%,rgba(62,43,34,0.44)_100%)]" />
+              <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+                <h2 className="max-w-4xl font-serif text-[2.4rem] italic leading-none text-white sm:text-[3.1rem] lg:text-[3.6rem]">
+                  Me acompanhe nas redes sociais.
+                </h2>
+                <p className="mt-5 max-w-3xl text-base leading-8 text-[rgba(255,255,255,0.84)] sm:text-[1.1rem]">
+                  Acompanhe-nos nas redes sociais para ficar por dentro das novidades, dicas de cuidados com a pele e tendencias em beleza.
                 </p>
+                <div className="mt-8 flex items-center gap-4">
+                  <a
+                    href="#"
+                    aria-label="Instagram Lumiere Clinic"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(255,255,255,0.94)] text-[var(--color-ink)] transition duration-300 hover:scale-[1.04]"
+                  >
+                    <InstagramIcon className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="#"
+                    aria-label="Facebook Lumiere Clinic"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(255,255,255,0.94)] text-[var(--color-ink)] transition duration-300 hover:scale-[1.04]"
+                  >
+                    <FacebookIcon className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="#"
+                    aria-label="LinkedIn Lumiere Clinic"
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(255,255,255,0.94)] text-[var(--color-ink)] transition duration-300 hover:scale-[1.04]"
+                  >
+                    <LinkedInIcon className="h-5 w-5" />
+                  </a>
+                </div>
               </div>
             </div>
 
-            <div>
-              <SectionTag>Sobre a Lumiere Clinic</SectionTag>
-              <h2 className="section-title mt-4 text-[var(--color-ink)]">
-                Uma clinica que precisa transmitir confianca imediata, refinamento e sensacao real de exclusividade.
-              </h2>
-              <div className="mt-8 space-y-5 text-base leading-8 text-[var(--color-muted)]">
-                <p>
-                  A Lumiere Clinic foi posicionada para mulheres que valorizam cuidado serio, esteticamente elegante e uma jornada que parece tao premium quanto o proprio atendimento.
-                </p>
-                <p>
-                  O desenho visual prioriza espaco, calma e alta percepcao de valor. Nada aqui parece improvisado: tipografia nobre, contrastes bem controlados, glassmorphism leve e transicoes que sustentam a sensacao de produto caro.
-                </p>
-                <p>
-                  Mais do que mostrar servicos, o site foi construido para converter com discricao. Ele orienta, acolhe e convida a agendar sem depender de ruido ou excesso de elementos.
-                </p>
-              </div>
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {[
-                  ['Experiencia', 'Fluxo organizado e atmosfera premium em cada secao.'],
-                  ['Cuidado', 'Informacao clara e sensacao de atendimento personalizado.'],
-                  ['Confianca', 'Design que comunica nivel, criterio e consistencia.'],
-                ].map(([title, copy]) => (
-                  <div key={title} className="rounded-[1.35rem] border border-slate-200/70 bg-white p-5 shadow-[0_18px_38px_rgba(12,24,38,0.08)]">
-                    <p className="font-['Playfair_Display'] text-2xl text-[var(--color-ink)]">{title}</p>
-                    <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">{copy}</p>
-                  </div>
+            <div className="px-2 pt-16 text-center sm:px-4 lg:px-8">
+              <p className="text-[1.1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.3rem]">
+                O que fazemos!
+              </p>
+              <h3 className="mx-auto mt-2 max-w-6xl text-[2.2rem] font-medium leading-[1.14] tracking-[-0.035em] text-[var(--color-ink)] sm:text-[3rem] lg:text-[3.65rem]">
+                Proporcionamos cuidados esteticos personalizados com tecnologia de ponta
+              </h3>
+            </div>
+
+            <div className="mt-10 border-t border-[rgba(212,175,55,0.16)] px-2 pt-7 sm:px-4 lg:px-8">
+              <div className="grid gap-10 lg:grid-cols-3 lg:gap-12">
+                {aboutTestimonials.map((item, index) => (
+                  <article key={item.author} className="text-center">
+                    <div className="mb-7 flex justify-center gap-3">
+                      {Array.from({ length: 5 }, (_, dotIndex) => (
+                        <span
+                          key={`${index}-${dotIndex}`}
+                          className="h-[3px] w-[3px] rounded-full bg-[rgba(212,175,55,0.68)]"
+                        />
+                      ))}
+                    </div>
+                    <p className="mx-auto max-w-[23rem] text-[1.02rem] leading-10 text-[rgba(44,44,44,0.78)]">
+                      “{item.quote}”
+                    </p>
+                    <p className="mt-8 font-serif text-[1.8rem] italic text-[var(--color-ink)]">
+                      {item.author}
+                    </p>
+                  </article>
                 ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-[linear-gradient(180deg,#0B1C2C_0%,#10253A_100%)] px-4 py-24 sm:px-6 lg:px-10">
+        <section className="px-4 py-24 sm:px-6 lg:px-10">
           <div className="mx-auto max-w-7xl" data-reveal>
-            <SectionTag dark>Diferenciais</SectionTag>
-            <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:items-end">
-              <h2 className="section-title max-w-3xl text-white">
-                O contraste escuro precisa carregar a sensacao de clinica premium e dar peso real ao posicionamento.
+            <div className="text-center">
+              <p className="text-[1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.15rem]">
+                Nosso diferencial
+              </p>
+              <h2 className="mx-auto mt-3 max-w-5xl text-[2.35rem] font-medium leading-[1.08] tracking-[-0.04em] text-[var(--color-ink)] sm:text-[3.25rem]">
+                Seu guia para beleza, bem-estar e autoestima
               </h2>
-              <div className="rounded-[1.55rem] border border-white/10 bg-[rgba(255,255,255,0.05)] p-5 backdrop-blur-xl">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-[rgba(212,175,55,0.84)]">Bloco assinatura</p>
-                <p className="mt-3 text-sm leading-7 text-[rgba(255,255,255,0.68)]">
-                  Transparencia controlada, icones dourados e leitura clara para quebrar a monotonia do layout claro.
-                </p>
-              </div>
+              <p className="mx-auto mt-5 max-w-4xl text-base leading-8 text-[var(--color-muted)] sm:text-[1.12rem]">
+                Mudamos a vida das pessoas para melhor com atendimento de ponta, acolhimento real e uma experiencia 5 estrelas no Google que fortalece confianca, bem-estar e autoestima.
+              </p>
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-[1.1fr_0.9fr_0.95fr_1.05fr]">
+            <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
               {differentials.map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04))] p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[rgba(212,175,55,0.34)] hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05))]"
-                >
-                  <div className="mb-5 inline-flex rounded-2xl border border-[rgba(212,175,55,0.28)] bg-[rgba(212,175,55,0.1)] p-3 text-[var(--color-gold)]">
-                    <item.icon className="h-6 w-6" />
+                <article key={item.title}>
+                  <div className="aspect-[0.96] w-full border border-[rgba(11,28,44,0.08)] bg-[linear-gradient(180deg,#F6F2EB_0%,#ECE5D9_100%)] shadow-[0_14px_30px_rgba(12,24,38,0.06)]">
+                    <div className="flex h-full items-center justify-center px-6 text-center">
+                      <span className="text-sm uppercase tracking-[0.22em] text-[rgba(11,28,44,0.36)]">
+                        Imagem do diferencial
+                      </span>
+                    </div>
                   </div>
-                  <h3 className="font-['Playfair_Display'] text-2xl text-white">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/70">{item.description}</p>
+                  <div className="mt-5">
+                    <p className="text-[0.96rem] uppercase tracking-[0.08em] text-[rgba(11,28,44,0.58)]">
+                      {item.category}
+                    </p>
+                    <h3 className="mt-3 max-w-[14ch] text-[1.95rem] font-medium leading-[1.08] tracking-[-0.03em] text-[var(--color-ink)]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-[1rem] text-[rgba(107,114,128,0.92)]">
+                      {item.date}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>
+            <div className="mt-10 flex justify-center">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-14 items-center rounded-full bg-[var(--color-gold)] px-8 py-3 text-[1.12rem] font-medium text-white transition duration-300 hover:bg-[var(--color-gold-deep)]"
+              >
+                Explore
+              </a>
+            </div>
           </div>
         </section>
 
-        <section id="agendamento" className="px-4 py-24 sm:px-6 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:items-start" data-reveal>
-            <div>
-              <SectionTag>Agendamento</SectionTag>
-              <h2 className="section-title mt-4 text-[var(--color-ink)]">
-                O bloco de conversao precisa parecer um produto premium em uso, nao apenas um formulario montado.
-              </h2>
-              <p className="mt-6 max-w-xl text-base leading-8 text-[var(--color-muted)]">
-                A hierarquia agora foi dividida em painel principal, trilha lateral de status e acoes guiadas para reforcar confianca.
-              </p>
-              <div className="mt-8 space-y-4">
-                {[
-                  ['1', 'Escolha o procedimento que melhor representa seu objetivo atual.'],
-                  ['2', 'Defina data e periodo desejado com poucos cliques.'],
-                  ['3', 'Receba confirmacao personalizada da equipe pelo WhatsApp.'],
-                ].map(([step, copy]) => (
-                  <div key={step} className="flex items-start gap-4 rounded-[1.4rem] border border-slate-200/70 bg-white p-5 shadow-[0_18px_38px_rgba(12,24,38,0.08)]">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[rgba(212,175,55,0.12)] font-semibold text-[var(--color-gold-deep)]">{step}</div>
-                    <p className="text-sm leading-7 text-[var(--color-muted)]">{copy}</p>
-                  </div>
-                ))}
+        <section id="agendamento" className="pb-24 pt-0">
+          <div className="w-full" data-reveal>
+            <div className="relative overflow-hidden bg-[linear-gradient(180deg,#C8964D_0%,#CA9951_100%)] px-7 py-10 shadow-[0_24px_60px_rgba(163,111,33,0.18)] sm:px-10 sm:py-12 lg:min-h-[38rem] lg:px-16 lg:py-0">
+              <div className="grid gap-8 lg:min-h-[38rem] lg:grid-cols-[minmax(0,1fr)_minmax(18rem,1fr)] lg:items-center">
+                <div className="relative z-10 max-w-[40rem]">
+                  <p className="text-[1.12rem] leading-relaxed text-[rgba(255,249,240,0.96)] sm:text-[1.38rem]">
+                    O primeiro passo e se conhecer
+                  </p>
+                  <h2 className="mt-2 max-w-[12.5ch] text-[2.4rem] font-medium leading-[1.02] tracking-[-0.045em] text-white sm:text-[3.55rem] lg:text-[4.25rem]">
+                    Quais sao suas preocupacoes com o rosto e o corpo?
+                  </h2>
+                  <p className="mt-4 max-w-[35rem] text-base leading-8 text-[rgba(255,245,234,0.94)] sm:text-[1.12rem] sm:leading-9">
+                    Nao ha um unico procedimento ou tecnologia ideal para todos. Ao entender suas necessidades e objetivos, podemos personalizar um protocolo de tratamento que atenda as suas expectativas.
+                  </p>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-8 inline-flex min-h-0 items-center rounded-full border border-[rgba(255,255,255,0.86)] px-7 py-3 text-[1.1rem] font-medium text-white transition duration-300 hover:bg-[rgba(255,255,255,0.1)]"
+                  >
+                    Agende sua consulta!
+                  </a>
+                </div>
+
+                <div className="relative flex justify-center self-end lg:h-full lg:justify-end">
+                  <div className="pointer-events-none absolute inset-x-[12%] bottom-[6%] h-[68%] rounded-full bg-[radial-gradient(circle,rgba(245,207,173,0.34)_0%,rgba(232,179,124,0.18)_42%,transparent_76%)] blur-2xl lg:inset-x-[8%] lg:bottom-[2%] lg:h-[72%]" />
+                  <img
+                    src={bookingWomanImage}
+                    alt="Mulher em destaque na secao de agendamento"
+                    className="relative z-10 h-[23rem] w-auto max-w-none object-contain [filter:drop-shadow(0_22px_28px_rgba(132,83,30,0.12))] sm:h-[29rem] lg:absolute lg:bottom-0 lg:right-[-0.5rem] lg:h-[39rem]"
+                  />
+                </div>
               </div>
             </div>
-
-            <form
-              onSubmit={handleSubmit}
-              className={`relative overflow-hidden rounded-[2.1rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(180deg,#091826_0%,#102A41_58%,#0C2031_100%)] p-5 shadow-[0_36px_90px_rgba(5,16,27,0.28)] sm:p-6 ${submitted ? 'ring-2 ring-[rgba(212,175,55,0.45)]' : ''}`}
-            >
-              <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.2),_transparent_68%)]" />
-              <div className="relative grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_15rem]">
-                <div className="rounded-[1.7rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.03))] p-5 sm:p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-[rgba(255,255,255,0.5)]">Solicitacao premium</p>
-                      <h3 className="mt-3 font-['Playfair_Display'] text-4xl text-white sm:text-[2.6rem]">Solicitar agendamento</h3>
-                    </div>
-                    <span className="rounded-full border border-[rgba(212,175,55,0.28)] bg-[rgba(212,175,55,0.1)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-gold)]">Status ativo</span>
-                  </div>
-                  <div className="mt-8 grid gap-4 md:grid-cols-2">
-                    <Field label="Servico">
-                      <select value={selectedService} onChange={(event) => setSelectedService(event.target.value)} className="field-base">
-                        {services.map((service) => (
-                          <option key={service.title} value={service.title}>{service.title}</option>
-                        ))}
-                      </select>
-                    </Field>
-                    <Field label="Data">
-                      <input type="date" className="field-base" defaultValue="2026-04-24" />
-                    </Field>
-                    <Field label="Horario">
-                      <div className="grid grid-cols-3 gap-2">
-                        {periods.map((period) => {
-                          const active = selectedPeriod === period;
-                          return (
-                            <button
-                              key={period}
-                              type="button"
-                              onClick={() => setSelectedPeriod(period)}
-                              className={`rounded-full border px-3 py-3 text-sm font-medium transition duration-300 ${
-                                active
-                                  ? 'border-[rgba(212,175,55,0.45)] bg-[rgba(212,175,55,0.15)] text-[var(--color-gold)]'
-                                  : 'border-white/10 bg-white/5 text-[rgba(255,255,255,0.72)] hover:border-white/20 hover:bg-[rgba(255,255,255,0.08)]'
-                              }`}
-                            >
-                              {period}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </Field>
-                    <Field label="Nome">
-                      <input type="text" className="field-base" placeholder="Seu nome completo" />
-                    </Field>
-                    <Field label="WhatsApp">
-                      <input type="tel" className="field-base" placeholder="(11) 99999-9999" />
-                    </Field>
-                    <Field label="Observacoes" className="md:col-span-2">
-                      <textarea rows="5" className="field-base resize-none" placeholder="Conte brevemente qual tratamento deseja, objetivo ou preferencia de atendimento." />
-                    </Field>
-                  </div>
-                  <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <p className="max-w-md text-sm leading-7 text-[rgba(255,255,255,0.6)]">
-                      Ao enviar a solicitacao, a equipe retorna para confirmar disponibilidade e orientar o atendimento.
-                    </p>
-                    <button type="submit" className={`btn-primary min-w-[15rem] justify-center ${submitted ? 'scale-[0.98]' : ''}`}>
-                      {submitted ? 'Solicitacao enviada' : 'Solicitar agendamento'}
-                    </button>
-                  </div>
-                </div>
-                <div className="grid gap-4 xl:grid-rows-[auto_auto_1fr]">
-                  <div className="rounded-[1.45rem] border border-white/8 bg-[rgba(255,255,255,0.05)] p-4">
-                    <p className="text-[10px] uppercase tracking-[0.28em] text-[rgba(255,255,255,0.44)]">Servico escolhido</p>
-                    <p className="mt-3 font-['Playfair_Display'] text-[1.9rem] leading-tight text-white">{selectedService}</p>
-                  </div>
-                  <div className="rounded-[1.45rem] border border-[rgba(212,175,55,0.18)] bg-[rgba(212,175,55,0.08)] p-4">
-                    <p className="text-[10px] uppercase tracking-[0.28em] text-[rgba(212,175,55,0.84)]">Preferencia</p>
-                    <p className="mt-3 text-sm leading-7 text-[rgba(255,248,230,0.88)]">Periodo selecionado: {selectedPeriod}. O sistema guia a escolha sem sobrecarregar a paciente.</p>
-                  </div>
-                  <div
-                    className={`rounded-[1.45rem] border p-4 text-sm leading-7 transition duration-300 ${
-                      submitted
-                        ? 'border-[rgba(212,175,55,0.3)] bg-[rgba(212,175,55,0.12)] text-[rgba(255,247,226,0.92)]'
-                        : 'border-white/8 bg-[rgba(255,255,255,0.05)] text-[rgba(255,255,255,0.58)]'
-                    }`}
-                  >
-                    {submitted
-                      ? 'Pedido registrado com sucesso. A equipe da Lumiere Clinic vai confirmar seu horario via WhatsApp.'
-                      : 'Feedback visual ativo: o painel lateral muda de estado para reforcar que a solicitacao foi recebida em um fluxo premium.'}
-                  </div>
-                </div>
-              </div>
-            </form>
           </div>
         </section>
         <section id="contato" className="px-4 py-20 sm:px-6 lg:px-10">
@@ -603,15 +696,23 @@ function App() {
                 Presenca fisica clara, informacao objetiva e uma secao de contato que parece parte da experiencia.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-8 text-[var(--color-muted)]">
-                A Lumiere Clinic fica na Av. Atlantica, 2113, Jardim Tres Marias, Sao Paulo. A secao abaixo usa um mapa estilizado para manter coerencia visual sem quebrar o acabamento premium da interface.
+                A Lumiere Clinic fica na Av. Atlantica, 2113, Jardim Tres Marias, Sao Paulo. A secao abaixo mostra o Google Maps dentro do mesmo acabamento visual da interface.
               </p>
               <div className="mt-8 rounded-[1.7rem] border border-slate-200/70 bg-white p-6 shadow-[0_18px_42px_rgba(12,24,38,0.08)]">
                 <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">Endereco</p>
-                <p className="mt-4 font-['Playfair_Display'] text-3xl text-[var(--color-ink)]">Av. Atlantica, 2113</p>
+                <p className="mt-4 font-['Inter'] text-3xl font-semibold text-[var(--color-ink)]">Av. Atlantica, 2113</p>
                 <p className="mt-2 text-base text-[var(--color-muted)]">Jardim Tres Marias, Sao Paulo - SP</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a href={mapsLink} target="_blank" rel="noreferrer" className="btn-primary">Abrir no Google Maps</a>
-                  <a href="#agendamento" className="btn-secondary text-[var(--color-ink)]">Solicitar atendimento</a>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-12 items-center gap-3 rounded-full border border-[#1FA855]/20 bg-[#25D366] px-6 py-3 text-sm font-semibold tracking-[0.04em] text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#20BD5C] hover:shadow-[0_18px_40px_rgba(37,211,102,0.28)] focus:outline-none focus:ring-2 focus:ring-[#25D366]/40"
+                  >
+                    <WhatsAppIcon className="h-5 w-5" />
+                    Solicitar atendimento
+                  </a>
                 </div>
               </div>
             </div>
@@ -620,19 +721,18 @@ function App() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.22),_transparent_28%)]" />
               <div className="relative rounded-[1.6rem] border border-[rgba(11,28,44,0.08)] bg-[linear-gradient(180deg,#18344F_0%,#0B1C2C_100%)] p-6">
                 <div className="flex items-center justify-between text-[rgba(255,255,255,0.72)]">
-                  <span className="text-xs uppercase tracking-[0.28em]">Mapa estilizado</span>
+                  <span className="text-xs uppercase tracking-[0.28em]">Google Maps</span>
                   <span className="rounded-full border border-white/12 px-3 py-1 text-[10px] uppercase tracking-[0.22em]">Sao Paulo</span>
                 </div>
                 <div className="relative mt-6 h-[23rem] overflow-hidden rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))]">
-                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:46px_46px]" />
-                  <div className="absolute left-12 top-10 h-32 w-32 rounded-full border border-[rgba(212,175,55,0.32)] bg-[rgba(212,175,55,0.08)] blur-sm" />
-                  <div className="absolute bottom-14 right-10 h-28 w-28 rounded-full border border-white/12 bg-[rgba(255,255,255,0.06)] blur-sm" />
-                  <div className="absolute left-[22%] top-[28%] h-40 w-[56%] rounded-[999px] border border-white/8" />
-                  <div className="absolute left-[20%] top-[55%] h-[2px] w-[56%] bg-[rgba(212,175,55,0.45)]" />
-                  <div className="absolute left-[46%] top-[46%] flex h-14 w-14 items-center justify-center rounded-full border border-[rgba(212,175,55,0.5)] bg-[rgba(212,175,55,0.18)] shadow-[0_0_0_12px_rgba(212,175,55,0.08)]">
-                    <LocationPinIcon className="h-6 w-6 text-[var(--color-gold)]" />
-                  </div>
-                  <div className="absolute bottom-5 left-5 rounded-2xl border border-white/10 bg-[rgba(8,18,29,0.86)] px-4 py-3 text-sm text-[rgba(255,255,255,0.75)] backdrop-blur">Lumiere Clinic</div>
+                  <iframe
+                    title="Google Maps Lumiere Clinic"
+                    src={mapsEmbedLink}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="absolute inset-0 h-full w-full border-0"
+                  />
+                  <div className="pointer-events-none absolute bottom-5 left-5 rounded-2xl border border-white/10 bg-[rgba(8,18,29,0.86)] px-4 py-3 text-sm text-[rgba(255,255,255,0.75)] backdrop-blur">Lumiere Clinic</div>
                 </div>
               </div>
             </div>
@@ -643,7 +743,7 @@ function App() {
           <div className="mx-auto max-w-5xl" data-reveal>
             <SectionTag>FAQ</SectionTag>
             <h2 className="section-title mt-4 text-[var(--color-ink)]">
-              Perguntas frequentes com leitura fluida, contraste consistente e 45 respostas para reduzir objecoes antes do contato.
+              Perguntas frequentes sobre atendimento, procedimentos e agendamento.
             </h2>
             <div className="mt-10 space-y-3">
               {faqItems.map((item, index) => {
@@ -732,6 +832,11 @@ function App() {
             ]}
           />
         </div>
+        <div className="relative mx-auto mt-12 max-w-7xl border-t border-[rgba(255,255,255,0.1)] pt-6 text-center">
+          <p className="text-sm leading-7 text-[rgba(255,255,255,0.54)]">
+            Copyright 2026. Todos os direitos reservados a Lumiere Clinic. Desenvolvido pela FluxOn.
+          </p>
+        </div>
       </footer>
     </div>
   );
@@ -748,15 +853,6 @@ function SectionTag({ children, dark = false }) {
     >
       {children}
     </p>
-  );
-}
-
-function BookingPreviewRow({ label, value }) {
-  return (
-    <div className="flex items-center justify-between rounded-[1.15rem] border border-white/8 bg-[rgba(255,255,255,0.04)] px-4 py-3">
-      <span className="text-sm text-[rgba(255,255,255,0.48)]">{label}</span>
-      <span className="text-sm font-medium text-white">{value}</span>
-    </div>
   );
 }
 
@@ -780,7 +876,7 @@ function ServiceCard({ service, index }) {
         <Icon className="h-6 w-6" />
       </div>
       <div className={`relative ${featured ? 'mt-8 max-w-[20rem]' : 'mt-5 max-w-[16rem]'}`}>
-        <h3 className={`font-['Playfair_Display'] leading-tight text-[var(--color-ink)] ${featured ? 'text-[2rem]' : 'text-[1.55rem]'}`}>
+        <h3 className={`font-['Inter'] font-semibold leading-tight text-[var(--color-ink)] ${featured ? 'text-[2rem]' : 'text-[1.55rem]'}`}>
           {service.title}
         </h3>
         <p className={`mt-3 text-[var(--color-muted)] ${featured ? 'max-w-[17rem] text-[15px] leading-7' : 'text-sm leading-7'}`}>
@@ -801,19 +897,10 @@ function ServiceCard({ service, index }) {
   );
 }
 
-function Field({ label, className = '', children }) {
-  return (
-    <label className={`block ${className}`}>
-      <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.28em] text-[rgba(255,255,255,0.52)]">{label}</span>
-      {children}
-    </label>
-  );
-}
-
 function FooterColumn({ title, items }) {
   return (
     <div>
-      <p className="font-['Playfair_Display'] text-2xl text-white">{title}</p>
+      <p className="font-['Inter'] text-2xl font-semibold text-white">{title}</p>
       <div className="mt-4 space-y-3 text-sm text-[rgba(255,255,255,0.62)]">
         {items.map(([label, href]) => (
           <a key={label} href={href} className="block transition duration-300 hover:text-[var(--color-gold)]">
@@ -1000,11 +1087,56 @@ function ArrowRightIcon(props) {
   );
 }
 
-function LocationPinIcon(props) {
+function InstagramIcon(props) {
   return (
     <IconBase {...props}>
-      <path d="M12 21s-5-5.2-5-9a5 5 0 1 1 10 0c0 3.8-5 9-5 9Z" />
-      <circle cx="12" cy="12" r="1.7" />
+      <rect x="4.5" y="4.5" width="15" height="15" rx="4.2" />
+      <circle cx="12" cy="12" r="3.4" />
+      <path d="M16.6 7.6h.01" />
+    </IconBase>
+  );
+}
+
+function FacebookIcon(props) {
+  return (
+    <IconBase {...props}>
+      <path d="M13.4 20v-7h2.4l.4-3h-2.8V8.1c0-.9.3-1.6 1.6-1.6H16V4a14 14 0 0 0-1.8-.1c-2.4 0-4 1.4-4 4.1V10H8v3h2.2v7" />
+    </IconBase>
+  );
+}
+
+function LinkedInIcon(props) {
+  return (
+    <IconBase {...props}>
+      <path d="M7.3 9.4V18" />
+      <path d="M7.3 6.7h.01" />
+      <path d="M11.3 18v-4.8c0-1.8 1-3 2.6-3 1.5 0 2.3 1 2.3 2.9V18" />
+      <path d="M11.3 11.1V9.4" />
+    </IconBase>
+  );
+}
+
+function ChevronLeftIcon(props) {
+  return (
+    <IconBase {...props}>
+      <path d="m14.5 6-5 6 5 6" />
+    </IconBase>
+  );
+}
+
+function ChevronRightIcon(props) {
+  return (
+    <IconBase {...props}>
+      <path d="m9.5 6 5 6-5 6" />
+    </IconBase>
+  );
+}
+
+function WhatsAppIcon(props) {
+  return (
+    <IconBase {...props}>
+      <path d="M20 11.6A8 8 0 0 1 8.3 18.7L4 20l1.4-4.1A8 8 0 1 1 20 11.6Z" />
+      <path d="M9.2 8.8c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.4l.8 1.9c.1.2.1.4 0 .6l-.4.5c-.1.1-.2.3-.1.5.3.6.8 1.2 1.3 1.7.7.6 1.4 1 2.2 1.3.2.1.4 0 .5-.1l.5-.6c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.5v.5c0 .4-.2.7-.5.9-.4.3-.9.4-1.5.3-1-.2-2-.6-2.9-1.2a10.3 10.3 0 0 1-3.5-3.5c-.6-.9-1-1.9-1.2-2.9-.1-.5 0-1 .2-1.4Z" />
     </IconBase>
   );
 }
