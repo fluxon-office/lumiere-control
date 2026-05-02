@@ -27,7 +27,7 @@ function HeroSection({ heroCardRef }) {
               </p>
               <h1
                 data-hero-text
-                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-[1180px]:max-w-[11.5ch] max-[1180px]:text-[clamp(3rem,10vw,5rem)] max-md:mt-0 max-md:leading-[0.98] md:max-[1180px]:mt-8 md:max-[1180px]:text-white/88 max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] min-[1181px]:text-[5.4rem]"
+                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-[1180px]:max-w-[11.5ch] max-[1180px]:text-[clamp(3rem,10vw,5rem)] max-md:mt-0 max-md:leading-[0.98] md:max-[1180px]:mt-8 md:max-[1180px]:text-white/72 max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] min-[1181px]:text-[5.4rem]"
               >
                 Estética facial
                 <br />
