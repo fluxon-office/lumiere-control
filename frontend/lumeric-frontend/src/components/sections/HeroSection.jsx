@@ -20,16 +20,16 @@ function HeroSection({ heroCardRef }) {
             <div className="flex max-w-[37rem] flex-col px-4 max-lg:min-h-[calc(100svh-var(--hero-navbar-offset)-5rem)] max-lg:max-w-[42rem] max-lg:text-left sm:px-6 lg:ml-[clamp(2rem,6vw,5.5rem)] lg:px-0">
               <p
                 data-hero-text
-                className="mb-7 inline-flex items-center gap-3 border-b border-[rgba(255,255,255,0.22)] pb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[rgba(255,255,255,0.74)] max-lg:mb-5 max-[480px]:tracking-[0.2em]"
+                className="mb-7 inline-flex items-center gap-3 border-b border-[rgba(255,255,255,0.22)] pb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-[rgba(255,255,255,0.74)] max-lg:mb-2 max-[480px]:tracking-[0.2em]"
               >
                 <span className="h-px w-10 bg-[rgba(212,175,55,0.76)]" />
                 Lumiere Clinic
               </p>
               <h1
                 data-hero-text
-                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-lg:mt-10 max-lg:max-w-[11.5ch] max-lg:text-[clamp(3rem,10vw,5rem)] max-md:leading-[0.98] max-[480px]:mt-8 max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] lg:text-[5.4rem]"
+                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-lg:mt-0 max-lg:max-w-[11.5ch] max-lg:text-[clamp(3rem,10vw,5rem)] max-md:leading-[0.98] max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] lg:text-[5.4rem]"
               >
-                Estética facial,
+                Estética facial
                 <br />
                 corporal e
                 <br />

@@ -158,7 +158,7 @@ function BookingSection({ whatsappLink }) {
               <div className="pointer-events-none absolute inset-x-[10%] bottom-[8%] h-[72%] rounded-full bg-[radial-gradient(circle,rgba(245,207,173,0.34)_0%,rgba(232,179,124,0.18)_42%,transparent_76%)] blur-2xl lg:inset-x-[8%] lg:bottom-[4%] lg:h-[78%]" />
 
               <div
-                className={`absolute inset-x-0 bottom-[-2.5rem] top-auto flex items-end justify-center transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-lg:relative max-lg:inset-auto max-lg:min-h-[24rem] lg:bottom-[-3.5rem] lg:justify-end ${
+                className={`absolute inset-x-0 bottom-[-2.5rem] top-auto flex items-end justify-center transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-md:hidden max-lg:relative max-lg:inset-auto max-lg:min-h-[24rem] lg:bottom-[-3.5rem] lg:justify-end ${
                   panelOpen ? 'translate-x-[120%] rotate-[8deg] opacity-0 max-lg:hidden' : 'translate-x-0 rotate-0 opacity-100'
                 }`}
               >
