@@ -8,7 +8,7 @@ function AboutSection({ aboutTestimonials }) {
         <div className="relative overflow-hidden bg-[#5D4A3B]">
           <img
             src={womanLumiereImage}
-            alt="Mulher em destaque na secao sobre Lumiere"
+            alt="Mulher em destaque na seção sobre Lumiere"
             loading="lazy"
             className="h-[17rem] w-full object-cover object-[center_28%] opacity-56 sm:h-[21rem] lg:h-[23rem]"
           />
@@ -18,7 +18,7 @@ function AboutSection({ aboutTestimonials }) {
               Me acompanhe nas redes sociais.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-8 text-[rgba(255,255,255,0.84)] sm:text-[1.1rem]">
-              Acompanhe-nos nas redes sociais para ficar por dentro das novidades, dicas de cuidados com a pele e tendencias em beleza.
+              Acompanhe-nos nas redes sociais para ficar por dentro das novidades, dicas de cuidados com a pele e tendências em beleza.
             </p>
             <div className="mt-8 flex items-center gap-4">
               <a
@@ -48,10 +48,10 @@ function AboutSection({ aboutTestimonials }) {
 
         <div className="px-2 pt-16 text-center sm:px-4 lg:px-8">
           <p className="text-[1.1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.3rem]">
-            O que fazemos!
+            O que fazemos
           </p>
           <h3 className="mx-auto mt-2 max-w-6xl text-[2.2rem] font-medium leading-[1.14] tracking-[-0.035em] text-[var(--color-ink)] max-lg:text-[clamp(2.05rem,6.5vw,3.1rem)] sm:text-[3rem] lg:text-[3.65rem]">
-            Proporcionamos cuidados esteticos personalizados com tecnologia de ponta
+            Proporcionamos cuidados estéticos personalizados com tecnologia de ponta.
           </h3>
         </div>
 
@@ -68,7 +68,7 @@ function AboutSection({ aboutTestimonials }) {
                   ))}
                 </div>
                 <p className="mx-auto max-w-[23rem] text-[1.02rem] leading-10 text-[rgba(44,44,44,0.78)]">
-                  â€œ{item.quote}â€
+                  “{item.quote}”
                 </p>
                 <p className="mt-8 font-serif text-[1.8rem] italic text-[var(--color-ink)]">
                   {item.author}

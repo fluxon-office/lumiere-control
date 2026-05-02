@@ -102,17 +102,17 @@ const differentials = [
 const aboutTestimonials = [
   {
     quote:
-      'A Dra. Claudia e a medica mais sensata, honesta e competente, alem de ser extremamente sincera. Excelente atendimento por ela e sua equipe, resultados incriveis! Recomendo demais, nota mil!',
+      'A Dra. Claudia é a médica mais sensata, honesta e competente, além de ser extremamente sincera. Excelente atendimento por ela e sua equipe, resultados incríveis! Recomendo demais, nota mil!',
     author: 'Giulia Dias',
   },
   {
     quote:
-      'Equipe nota 10! Acolhimento e receptividade nota 10! Dra Claudia e uma medica que me deixou muito a vontade, entendeu todas as minhas aflicoes, expectativas e queixas e explicou com detalhes todos os procedimentos possiveis. Adorei! Super recomendo a experiencia!',
+      'Equipe nota 10! Acolhimento e receptividade nota 10! Dra. Claudia é uma médica que me deixou muito à vontade, entendeu todas as minhas aflições, expectativas e queixas e explicou com detalhes todos os procedimentos possíveis. Adorei! Super recomendo a experiência!',
     author: 'Ana Moreno',
   },
   {
     quote:
-      'Cheguei no consultorio com a auto estima muito baixa, meu rosto estava tomado de espinhas, ja tinha ido em diversos profissionais. A Dra. Claudia foi sucinta, me receitou em 1 mes meu rosto estava PERFEITO. Sou muito grata pelo atendimento, pelo resultado.',
+      'Cheguei no consultório com a autoestima muito baixa, meu rosto estava tomado de espinhas, já tinha ido em diversos profissionais. A Dra. Claudia foi sucinta, me receitou e em 1 mês meu rosto estava PERFEITO. Sou muito grata pelo atendimento e pelo resultado.',
     author: 'Evelyn Silva',
   },
 ];
