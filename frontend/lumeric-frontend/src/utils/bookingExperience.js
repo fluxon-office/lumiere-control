@@ -75,7 +75,7 @@ const procedureConfigurations = {
     },
     stepMinutes: 30,
   },
-  'secagem-de-vazinhos': {
+  'secagem-de-vasinhos': {
     duration: 50,
     label: 'Atendimento técnico com janelas mais concentradas',
     windows: {

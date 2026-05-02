@@ -10,7 +10,7 @@ function DifferentialsSection({ differentials, whatsappLink }) {
             Seu guia para beleza, bem-estar e autoestima
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-base leading-8 text-[var(--color-muted)] sm:text-[1.12rem]">
-            Mudamos a vida das pessoas para melhor com atendimento de ponta, acolhimento real e uma experiencia 5 estrelas no Google que fortalece confianca, bem-estar e autoestima.
+            Mudamos a vida das pessoas para melhor com atendimento de ponta, acolhimento real e uma experiência 5 estrelas no Google que fortalece confiança, bem-estar e autoestima.
           </p>
         </div>
         <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4">

@@ -16,18 +16,18 @@ function SiteFooter({ logoImage, mapsLink }) {
             <img src={logoImage} alt="Logo Lumiere Clinic" loading="lazy" className="h-12 w-12 border border-[rgba(255,255,255,0.12)] object-cover" />
             <div>
               <p className="font-['Inter'] text-[1.45rem] font-semibold tracking-[-0.03em] text-white">Lumiere Clinic</p>
-              <p className="text-[11px] uppercase tracking-[0.3em] text-[rgba(255,255,255,0.42)]">Estetica premium</p>
+              <p className="text-[11px] uppercase tracking-[0.3em] text-[rgba(255,255,255,0.42)]">Estética premium</p>
             </div>
           </div>
           <p className="mt-6 max-w-md text-sm leading-7 text-[rgba(255,255,255,0.6)]">
-            Cuidado estetico com presenca visual refinada, atendimento organizado e uma jornada feita para converter com naturalidade.
+            Cuidado estético com presença visual refinada, atendimento organizado e uma jornada feita para converter com naturalidade.
           </p>
         </div>
         <FooterColumn
-          title="Navegacao"
+          title="Navegação"
           items={[
             ['Home', '#home'],
-            ['Servicos', '#servicos'],
+            ['Serviços', '#servicos'],
             ['Sobre', '#sobre'],
             ['Contato', '#contato'],
           ]}
@@ -35,9 +35,9 @@ function SiteFooter({ logoImage, mapsLink }) {
         <FooterColumn
           title="Contato"
           items={[
-            ['Av. Atlantica, 2113', '#contato'],
-            ['Jardim Tres Marias', '#contato'],
-            ['Sao Paulo - SP', '#contato'],
+            ['Av. Atlântica, 2113', '#contato'],
+            ['Jardim Três Marias', '#contato'],
+            ['São Paulo - SP', '#contato'],
           ]}
         />
         <FooterColumn

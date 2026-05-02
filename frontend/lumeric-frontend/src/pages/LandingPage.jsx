@@ -20,7 +20,7 @@ function LandingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(0);
   const [serviceCarouselStart, setServiceCarouselStart] = useState(0);
-  const locationAddress = 'Av. Atlantica, 2113, Jardim Tres Marias, Sao Paulo - SP';
+  const locationAddress = 'Av. Atlântica, 2113, Jardim Três Marias, São Paulo - SP';
 
   const mapsLink = useMemo(
     () => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationAddress)}`,
@@ -33,15 +33,15 @@ function LandingPage() {
   );
 
   const whatsappLink = useMemo(
-    () => 'https://wa.me/?text=Ola%2C%20quero%20solicitar%20atendimento%20na%20Lumiere%20Clinic.',
+    () => 'https://wa.me/?text=Ol%C3%A1%2C%20quero%20solicitar%20atendimento%20na%20Lumiere%20Clinic.',
     [],
   );
 
   const servicePages = useMemo(
     () => [
       ['Limpeza de pele', 'Peeling', 'Microagulhamento', 'Botox', 'Bioestimulador'],
-      ['Massagem relaxante', 'Secagem de vazinhos', 'Tratamento para gordura localizada', 'Enzimas para gordura localizada'],
-      ['Drenagem linfatica'],
+      ['Massagem relaxante', 'Secagem de vasinhos', 'Tratamento para gordura localizada', 'Enzimas para gordura localizada'],
+      ['Drenagem linfática'],
       ['Preenchimento labial', 'Micro labial'],
     ].map((titles) => titles.map((title) => services.find((service) => service.title === title)).filter(Boolean)),
     [],
