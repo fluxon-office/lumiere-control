@@ -40,11 +40,11 @@ function HeroSection({ heroCardRef }) {
               <div className="max-lg:mt-auto">
                 <p
                   data-hero-text
-                  className="mt-7 max-w-lg text-[15px] leading-7 text-[rgba(255,255,255,0.74)] max-lg:mx-auto max-lg:text-center max-lg:text-[clamp(0.96rem,2.6vw,1.08rem)] max-lg:leading-8 sm:text-[17px] sm:leading-8"
+                  className="mt-7 max-w-lg text-[15px] leading-7 text-[rgba(255,255,255,0.74)] max-lg:text-left max-lg:text-[clamp(0.96rem,2.6vw,1.08rem)] max-lg:leading-8 sm:text-[17px] sm:leading-8"
                 >
                   Uma experiência pensada para transmitir confiança, refinamento e clareza desde o primeiro contato.
                 </p>
-                <div data-hero-text className="mt-9 flex flex-col gap-4 max-lg:items-center sm:flex-row sm:max-lg:justify-center">
+                <div data-hero-text className="mt-9 flex flex-col gap-4 max-lg:items-start sm:flex-row sm:max-lg:justify-start">
                   <a
                     href="#servicos"
                     className="inline-flex min-h-12 items-center justify-center rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.05)] px-6 py-3 text-sm font-medium text-white transition duration-300 hover:border-[rgba(255,255,255,0.32)] hover:bg-[rgba(255,255,255,0.09)] max-[480px]:w-full"
