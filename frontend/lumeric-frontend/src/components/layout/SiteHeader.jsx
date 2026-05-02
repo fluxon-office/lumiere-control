@@ -8,17 +8,18 @@ function SiteHeader({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-[linear-gradient(90deg,rgba(221,186,90,0.82)_0%,rgba(212,175,55,0.92)_50%,rgba(184,135,27,0.84)_100%)]" />
           <div className="pointer-events-none absolute inset-x-0 bottom-[-1.1rem] h-5 bg-[linear-gradient(180deg,rgba(162,124,22,0.12)_0%,rgba(162,124,22,0.04)_55%,transparent_100%)]" />
 
-          <a href="#home" className="flex min-w-[16rem] items-center gap-3 lg:min-w-[19rem]">
+          <a href="#home" className="flex min-w-[16rem] items-center gap-3 max-lg:min-w-0 max-lg:flex-1 max-[480px]:gap-2 lg:min-w-[19rem]">
             <img
               src={logoImage}
               alt="Logo Lumiere Clinic"
-              className="h-12 w-12 rounded-full object-cover shadow-[0_10px_18px_rgba(34,64,68,0.1)]"
+              loading="eager"
+              className="h-12 w-12 rounded-full object-cover shadow-[0_10px_18px_rgba(34,64,68,0.1)] max-[480px]:h-10 max-[480px]:w-10"
             />
             <div className="min-w-0">
-              <p className="truncate font-['Georgia'] text-[1.25rem] italic leading-none text-[#5C4A34]">
+              <p className="truncate font-['Georgia'] text-[1.25rem] italic leading-none text-[#5C4A34] max-[480px]:text-[1.05rem]">
                 Lumiere Clinic
               </p>
-              <p className="mt-1 truncate text-[11px] font-medium leading-none text-[rgba(92,74,52,0.62)]">
+              <p className="mt-1 truncate text-[11px] font-medium leading-none text-[rgba(92,74,52,0.62)] max-[480px]:max-w-[10.5rem] max-[480px]:text-[10px]">
                 Estética facial, corporal e pele
               </p>
             </div>
@@ -48,8 +49,8 @@ function SiteHeader({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }
             <button
               type="button"
               onClick={onMenuToggle}
-              className="inline-flex h-12 w-12 items-center justify-center border border-[rgba(212,175,55,0.18)] bg-[rgba(255,251,245,0.9)] text-[rgba(92,74,52,0.82)] transition duration-300 hover:border-[rgba(162,124,22,0.34)] hover:text-[var(--color-gold-deep)] lg:hidden"
-              aria-label="Abrir menu"
+              className="inline-flex h-12 w-12 shrink-0 items-center justify-center border border-[rgba(212,175,55,0.18)] bg-[rgba(255,251,245,0.9)] text-[rgba(92,74,52,0.82)] transition duration-300 hover:border-[rgba(162,124,22,0.34)] hover:text-[var(--color-gold-deep)] max-[480px]:h-11 max-[480px]:w-11 lg:hidden"
+              aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={menuOpen}
             >
               <div className="space-y-1.5">
@@ -62,14 +63,14 @@ function SiteHeader({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }
         </div>
       </div>
 
-      <div className={`px-4 transition-all duration-300 sm:px-6 lg:hidden ${menuOpen ? 'max-h-[24rem] opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="border border-t-0 border-[rgba(212,175,55,0.16)] bg-[linear-gradient(180deg,rgba(248,244,238,0.98)_0%,rgba(244,238,230,0.95)_100%)] p-4 shadow-[0_14px_24px_rgba(43,30,18,0.08)]">
+      <div className={`px-4 transition-all duration-300 sm:px-6 lg:hidden ${menuOpen ? 'max-h-[30rem] translate-y-0 opacity-100' : 'pointer-events-none max-h-0 -translate-y-2 opacity-0'}`}>
+        <div className="border border-t-0 border-[rgba(212,175,55,0.16)] bg-[linear-gradient(180deg,rgba(248,244,238,0.99)_0%,rgba(244,238,230,0.97)_100%)] p-4 shadow-[0_18px_38px_rgba(43,30,18,0.12)] backdrop-blur-xl">
           <nav className="flex flex-col gap-2">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="px-2 py-3 text-[15px] font-medium text-[rgba(92,74,52,0.82)] transition duration-300 hover:text-[var(--color-gold-deep)]"
+                className="min-h-12 px-2 py-3 text-[15px] font-medium text-[rgba(92,74,52,0.82)] transition duration-300 hover:text-[var(--color-gold-deep)]"
                 onClick={onMenuClose}
               >
                 {item.label}

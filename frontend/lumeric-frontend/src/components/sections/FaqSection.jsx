@@ -2,7 +2,7 @@ import SectionTag from '../common/SectionTag';
 
 function FaqSection({ activeFaq, faqItems, onToggleFaq }) {
   return (
-    <section className="px-4 py-20 sm:px-6 lg:px-10">
+    <section className="px-4 py-20 max-md:py-16 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-5xl" data-reveal>
         <SectionTag>FAQ</SectionTag>
         <h2 className="section-title mt-4 text-[var(--color-ink)]">

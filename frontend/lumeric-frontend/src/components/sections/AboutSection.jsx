@@ -3,17 +3,18 @@ import { FacebookIcon, InstagramIcon, LinkedInIcon } from '../icons/LandingIcons
 
 function AboutSection({ aboutTestimonials }) {
   return (
-    <section id="sobre" className="px-4 py-20 sm:px-6 lg:px-10">
+    <section id="sobre" className="px-4 py-20 max-md:py-16 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-[84rem]" data-reveal>
         <div className="relative overflow-hidden bg-[#5D4A3B]">
           <img
             src={womanLumiereImage}
             alt="Mulher em destaque na secao sobre Lumiere"
-            className="h-[17rem] w-full object-cover opacity-56 sm:h-[21rem] lg:h-[23rem]"
+            loading="lazy"
+            className="h-[17rem] w-full object-cover object-[center_28%] opacity-56 sm:h-[21rem] lg:h-[23rem]"
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(72,53,42,0.64)_0%,rgba(77,56,43,0.58)_35%,rgba(62,43,34,0.44)_100%)]" />
           <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-            <h2 className="max-w-4xl font-serif text-[2.4rem] italic leading-none text-white sm:text-[3.1rem] lg:text-[3.6rem]">
+            <h2 className="max-w-4xl font-serif text-[2.4rem] italic leading-none text-white max-[480px]:text-[2rem] sm:text-[3.1rem] lg:text-[3.6rem]">
               Me acompanhe nas redes sociais.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-8 text-[rgba(255,255,255,0.84)] sm:text-[1.1rem]">
@@ -49,13 +50,13 @@ function AboutSection({ aboutTestimonials }) {
           <p className="text-[1.1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.3rem]">
             O que fazemos!
           </p>
-          <h3 className="mx-auto mt-2 max-w-6xl text-[2.2rem] font-medium leading-[1.14] tracking-[-0.035em] text-[var(--color-ink)] sm:text-[3rem] lg:text-[3.65rem]">
+          <h3 className="mx-auto mt-2 max-w-6xl text-[2.2rem] font-medium leading-[1.14] tracking-[-0.035em] text-[var(--color-ink)] max-lg:text-[clamp(2.05rem,6.5vw,3.1rem)] sm:text-[3rem] lg:text-[3.65rem]">
             Proporcionamos cuidados esteticos personalizados com tecnologia de ponta
           </h3>
         </div>
 
         <div className="mt-10 border-t border-[rgba(212,175,55,0.16)] px-2 pt-7 sm:px-4 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-3 lg:gap-12">
+          <div className="grid gap-10 md:grid-cols-3 md:gap-8 lg:grid-cols-3 lg:gap-12">
             {aboutTestimonials.map((item, index) => (
               <article key={item.author} className="text-center">
                 <div className="mb-7 flex justify-center gap-3">

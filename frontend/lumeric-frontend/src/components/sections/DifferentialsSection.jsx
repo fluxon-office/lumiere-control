@@ -1,12 +1,12 @@
 function DifferentialsSection({ differentials, whatsappLink }) {
   return (
-    <section className="px-4 py-24 sm:px-6 lg:px-10">
+    <section className="px-4 py-24 max-md:py-16 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl" data-reveal>
         <div className="text-center">
           <p className="text-[1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.15rem]">
             Nosso diferencial
           </p>
-          <h2 className="mx-auto mt-3 max-w-5xl text-[2.35rem] font-medium leading-[1.08] tracking-[-0.04em] text-[var(--color-ink)] sm:text-[3.25rem]">
+          <h2 className="mx-auto mt-3 max-w-5xl text-[2.35rem] font-medium leading-[1.08] tracking-[-0.04em] text-[var(--color-ink)] max-lg:text-[clamp(2.15rem,7vw,3.15rem)] sm:text-[3.25rem]">
             Seu guia para beleza, bem-estar e autoestima
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-base leading-8 text-[var(--color-muted)] sm:text-[1.12rem]">
@@ -27,7 +27,7 @@ function DifferentialsSection({ differentials, whatsappLink }) {
                 <p className="text-[0.96rem] uppercase tracking-[0.08em] text-[rgba(11,28,44,0.58)]">
                   {item.category}
                 </p>
-                <h3 className="mt-3 max-w-[14ch] text-[1.95rem] font-medium leading-[1.08] tracking-[-0.03em] text-[var(--color-ink)]">
+                <h3 className="mt-3 max-w-[14ch] text-[1.95rem] font-medium leading-[1.08] tracking-[-0.03em] text-[var(--color-ink)] max-lg:max-w-none max-lg:text-[clamp(1.65rem,4.8vw,1.95rem)]">
                   {item.title}
                 </h3>
                 <p className="mt-4 text-[1rem] text-[rgba(107,114,128,0.92)]">
@@ -42,7 +42,7 @@ function DifferentialsSection({ differentials, whatsappLink }) {
             href={whatsappLink}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-14 items-center rounded-full bg-[var(--color-gold)] px-8 py-3 text-[1.12rem] font-medium text-white transition duration-300 hover:bg-[var(--color-gold-deep)]"
+            className="inline-flex min-h-14 items-center justify-center rounded-full bg-[var(--color-gold)] px-8 py-3 text-[1.12rem] font-medium text-white transition duration-300 hover:bg-[var(--color-gold-deep)] max-[480px]:w-full"
           >
             Explore
           </a>
