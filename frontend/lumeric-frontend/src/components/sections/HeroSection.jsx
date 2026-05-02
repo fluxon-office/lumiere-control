@@ -27,7 +27,7 @@ function HeroSection({ heroCardRef }) {
               </p>
               <h1
                 data-hero-text
-                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-lg:mt-0 max-lg:max-w-[11.5ch] max-lg:text-[clamp(3rem,10vw,5rem)] max-md:leading-[0.98] max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] lg:text-[5.4rem]"
+                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-lg:max-w-[11.5ch] max-lg:text-[clamp(3rem,10vw,5rem)] max-md:mt-0 max-md:leading-[0.98] md:max-lg:mt-8 max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] lg:text-[5.4rem]"
               >
                 Estética facial
                 <br />
@@ -40,11 +40,11 @@ function HeroSection({ heroCardRef }) {
               <div className="max-lg:mt-auto">
                 <p
                   data-hero-text
-                  className="mt-7 max-w-lg text-[15px] leading-7 text-[rgba(255,255,255,0.74)] max-lg:text-left max-lg:text-[clamp(0.96rem,2.6vw,1.08rem)] max-lg:leading-8 sm:text-[17px] sm:leading-8"
+                  className="mt-7 max-w-lg text-[15px] leading-7 text-[rgba(255,255,255,0.74)] max-md:mx-auto max-md:text-center max-lg:text-[clamp(0.96rem,2.6vw,1.08rem)] max-lg:leading-8 md:max-lg:text-left sm:text-[17px] sm:leading-8"
                 >
                   Uma experiência pensada para transmitir confiança, refinamento e clareza desde o primeiro contato.
                 </p>
-                <div data-hero-text className="mt-9 flex flex-col gap-4 max-lg:items-start sm:flex-row sm:max-lg:justify-start">
+                <div data-hero-text className="mt-9 flex flex-col gap-4 max-md:items-center md:max-lg:items-start sm:flex-row sm:max-md:justify-center md:max-lg:justify-start">
                   <a
                     href="#servicos"
                     className="inline-flex min-h-12 items-center justify-center rounded-full border border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.05)] px-6 py-3 text-sm font-medium text-white transition duration-300 hover:border-[rgba(255,255,255,0.32)] hover:bg-[rgba(255,255,255,0.09)] max-[480px]:w-full"
@@ -54,7 +54,7 @@ function HeroSection({ heroCardRef }) {
                 </div>
                 <div
                   data-hero-text
-                  className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em] text-[rgba(255,255,255,0.62)] max-lg:justify-center max-[480px]:mt-8 max-[480px]:gap-x-4 max-[480px]:text-[10px] sm:text-[13px]"
+                  className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 text-[12px] uppercase tracking-[0.2em] text-[rgba(255,255,255,0.62)] max-md:justify-center md:max-lg:flex-nowrap md:max-lg:justify-start md:max-lg:gap-x-5 max-[480px]:mt-8 max-[480px]:gap-x-4 max-[480px]:text-[10px] sm:text-[13px]"
                 >
                   <span>Atendimento humanizado</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-[rgba(212,175,55,0.8)]" />
