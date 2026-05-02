@@ -10,7 +10,7 @@ function HeroSection({ heroCardRef }) {
               src={heroImage}
               alt="Lumiere Clinic hero"
               loading="eager"
-              className="block h-full w-full object-cover object-[64%_16%] max-lg:object-[58%_18%] max-md:object-[56%_14%]"
+              className="block h-full w-full object-cover object-[64%_16%] max-lg:object-[72%_18%] max-md:object-[76%_14%]"
             />
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(120,88,29,0.22)_0%,rgba(125,91,30,0.32)_14%,rgba(96,69,24,0.44)_30%,rgba(65,46,18,0.54)_46%,rgba(49,35,16,0.36)_62%,rgba(32,24,12,0.14)_80%,rgba(11,28,44,0)_100%)] max-lg:bg-[linear-gradient(180deg,rgba(11,28,44,0.12)_0%,rgba(52,38,19,0.22)_34%,rgba(35,25,13,0.78)_100%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(212,175,55,0.14),transparent_24%)]" />
@@ -27,7 +27,7 @@ function HeroSection({ heroCardRef }) {
               </p>
               <h1
                 data-hero-text
-                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-lg:max-w-[11.5ch] max-lg:text-[clamp(3rem,10vw,5rem)] max-md:leading-[0.98] max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] lg:text-[5.4rem]"
+                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-lg:mt-10 max-lg:max-w-[11.5ch] max-lg:text-[clamp(3rem,10vw,5rem)] max-md:leading-[0.98] max-[480px]:mt-8 max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] lg:text-[5.4rem]"
               >
                 Estética facial,
                 <br />
