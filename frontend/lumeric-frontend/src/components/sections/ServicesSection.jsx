@@ -24,19 +24,19 @@ function ServicesSection({
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-[auto_1fr_auto] items-center gap-8 max-lg:grid-cols-[auto_auto] max-lg:justify-center max-lg:gap-x-5 max-lg:gap-y-8 lg:gap-14">
+        <div className="mt-14 grid grid-cols-[auto_1fr_auto] items-center gap-8 max-lg:grid-cols-[1fr_auto_auto_1fr] max-lg:gap-x-5 max-lg:gap-y-8 lg:gap-14">
           <button
             type="button"
             onClick={onPrevious}
             aria-label="Ver servicos anteriores"
-            className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] max-lg:col-start-1 max-lg:row-start-2 lg:mr-6"
+            className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] max-lg:col-start-2 max-lg:row-start-2 lg:mr-6"
           >
             <ChevronLeftIcon className="h-5 w-5" />
           </button>
 
           <div
             ref={serviceCarouselTrackRef}
-            className={`services-carousel-grid grid gap-x-8 gap-y-10 max-lg:col-span-2 max-lg:row-start-1 max-lg:w-full max-lg:max-w-3xl ${
+            className={`services-carousel-grid grid gap-x-8 gap-y-10 max-lg:col-span-4 max-lg:row-start-1 max-lg:w-full max-lg:max-w-3xl max-lg:justify-self-center ${
               highlightedServices.length >= 4 ? 'justify-center md:justify-stretch' : 'justify-center'
             }`}
             style={{
@@ -80,7 +80,7 @@ function ServicesSection({
             type="button"
             onClick={onNext}
             aria-label="Ver proximos servicos"
-            className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] max-lg:col-start-2 max-lg:row-start-2 lg:ml-6"
+            className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] max-lg:col-start-3 max-lg:row-start-2 lg:ml-6"
           >
             <ChevronRightIcon className="h-5 w-5" />
           </button>
