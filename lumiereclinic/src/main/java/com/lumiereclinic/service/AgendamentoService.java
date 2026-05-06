@@ -32,8 +32,10 @@ public class AgendamentoService {
             throw new ResourceBadRequestException("Não é possível agendar no passado");
         }
 
-        if (agendamentoRepository.existsByDataHora(request.getDataHora())) {
-            throw new ResourceBadRequestException("Horário já ocupado");
+
+
+        if (agendamentoRepository.existsByDataHoraAndServicoId(request.getDataHora(), request.getServicoId())) {
+            throw new ResourceBadRequestException("Horário já ocupado para o serviço selecionado");
         }
 
         Cliente cliente = clienteRepository.findByEmail(request.getEmail())
