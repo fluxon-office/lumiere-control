@@ -9,7 +9,10 @@ import com.lumiereclinic.enums.StatusAgendamento;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "agendamentos")
+@Table(
+        name = "agendamentos",
+        uniqueConstraints = @UniqueConstraint(name = "uk_agendamento_servico_horario", columnNames = {"servico_id", "data_hora"})
+)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,7 +30,7 @@ public class Agendamento {
     @JoinColumn(name = "servico_id", nullable = false)
     private Servico servico;
 
-    @Column(nullable = false)
+    @Column(name = "data_hora", nullable = false)
     private LocalDateTime dataHora;
 
     @Enumerated(EnumType.STRING)
