@@ -1,34 +1,163 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { bookingWomanImage } from '../../assets/lumiereImages';
+import { buildApiUrl, readJsonResponse } from '../../utils/api';
+import { services as landingServices } from '../../utils/landingContent';
 import {
-  bookingProcedureOptions,
   buildAvailableDays,
+  buildProcedureOptions,
   buildSpecificDayAvailability,
   formatAppointmentSummary,
 } from '../../utils/bookingExperience';
 
 function BookingSection({ whatsappLink }) {
   const [panelOpen, setPanelOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [calendarDate, setCalendarDate] = useState('');
+  const [services, setServices] = useState([]);
+  const [servicesLoading, setServicesLoading] = useState(true);
+  const [servicesError, setServicesError] = useState('');
+  const [availabilityLoading, setAvailabilityLoading] = useState(false);
+  const [availabilityError, setAvailabilityError] = useState('');
+  const [occupiedTimes, setOccupiedTimes] = useState([]);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
   const [formData, setFormData] = useState({
     nome: '',
     telefone: '',
     email: '',
-    procedimentoId: '',
+    servicoId: '',
     data: '',
     horario: '',
   });
 
-  const quickAvailableDays = formData.procedimentoId ? buildAvailableDays(formData.procedimentoId) : [];
-  const customCalendarDay = formData.procedimentoId && calendarDate
-    ? buildSpecificDayAvailability(formData.procedimentoId, calendarDate)
-    : null;
-  const availableDays = customCalendarDay && !quickAvailableDays.some((day) => day.value === customCalendarDay.value)
-    ? [...quickAvailableDays, customCalendarDay]
-    : quickAvailableDays;
-  const selectedProcedure = bookingProcedureOptions.find((item) => item.id === formData.procedimentoId);
-  const selectedDay = availableDays.find((day) => day.value === formData.data);
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadServices() {
+      setServicesLoading(true);
+      setServicesError('');
+
+      try {
+        const response = await fetch(buildApiUrl('/servicos'), { signal: controller.signal });
+        const payload = await readJsonResponse(response);
+
+        if (!response.ok) {
+          throw new Error(payload?.mensagem || 'Nao foi possivel carregar os servicos agora.');
+        }
+
+        const normalizedServices = Array.isArray(payload) && payload.length
+          ? payload
+          : landingServices.map((service, index) => ({
+            id: index + 1,
+            nome: service.title,
+            descricao: service.description,
+            duracaoMinutos: 60,
+          }));
+
+        setServices(normalizedServices);
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          setServices(landingServices.map((service, index) => ({
+            id: index + 1,
+            nome: service.title,
+            descricao: service.description,
+            duracaoMinutos: 60,
+          })));
+          setServicesError(error.message || 'Nao foi possivel carregar os servicos agora.');
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setServicesLoading(false);
+        }
+      }
+    }
+
+    loadServices();
+
+    return () => controller.abort();
+  }, []);
+
+  const procedureOptions = useMemo(() => buildProcedureOptions(services), [services]);
+  const selectedProcedure = useMemo(
+    () => procedureOptions.find((item) => item.id === formData.servicoId),
+    [formData.servicoId, procedureOptions],
+  );
+
+  const quickAvailableDays = useMemo(
+    () => (selectedProcedure ? buildAvailableDays(selectedProcedure) : []),
+    [selectedProcedure],
+  );
+
+  useEffect(() => {
+    if (!selectedProcedure || !formData.data) {
+      setOccupiedTimes([]);
+      setAvailabilityError('');
+      setAvailabilityLoading(false);
+      return undefined;
+    }
+
+    const controller = new AbortController();
+
+    async function loadAvailability() {
+      setAvailabilityLoading(true);
+      setAvailabilityError('');
+
+      try {
+        const query = new URLSearchParams({
+          servicoId: String(selectedProcedure.backendId),
+          data: formData.data,
+        });
+
+        const response = await fetch(buildApiUrl(`/agendamentos/disponibilidade?${query.toString()}`), {
+          signal: controller.signal,
+        });
+        const payload = await readJsonResponse(response);
+
+        if (!response.ok) {
+          throw new Error(payload?.mensagem || 'Nao foi possivel consultar os horarios deste dia.');
+        }
+
+        setOccupiedTimes(Array.isArray(payload?.horariosOcupados) ? payload.horariosOcupados : []);
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          setAvailabilityError(error.message || 'Nao foi possivel consultar os horarios deste dia.');
+          setOccupiedTimes([]);
+        }
+      } finally {
+        if (!controller.signal.aborted) {
+          setAvailabilityLoading(false);
+        }
+      }
+    }
+
+    loadAvailability();
+
+    return () => controller.abort();
+  }, [formData.data, selectedProcedure]);
+
+  const customCalendarDay = useMemo(
+    () => (selectedProcedure && calendarDate
+      ? buildSpecificDayAvailability(selectedProcedure, calendarDate, calendarDate === formData.data ? occupiedTimes : [])
+      : null),
+    [calendarDate, formData.data, occupiedTimes, selectedProcedure],
+  );
+
+  const selectedDay = useMemo(() => {
+    if (!selectedProcedure || !formData.data) {
+      return null;
+    }
+
+    return buildSpecificDayAvailability(selectedProcedure, formData.data, occupiedTimes);
+  }, [formData.data, occupiedTimes, selectedProcedure]);
+
+  const availableDays = useMemo(() => {
+    if (!customCalendarDay) {
+      return quickAvailableDays;
+    }
+
+    return quickAvailableDays.some((day) => day.value === customCalendarDay.value)
+      ? quickAvailableDays
+      : [...quickAvailableDays, customCalendarDay];
+  }, [customCalendarDay, quickAvailableDays]);
+
   const selectedSlot = selectedDay?.slots.find((slot) => slot.value === formData.horario);
   const summaryText = formatAppointmentSummary({
     date: formData.data,
@@ -54,24 +183,30 @@ function BookingSection({ whatsappLink }) {
     return `(${numbersOnly.slice(0, 2)}) ${numbersOnly.slice(2, 7)}-${numbersOnly.slice(7)}`;
   }
 
+  function resetFeedback() {
+    setSubmitStatus({ type: '', message: '' });
+  }
+
   function handleFieldChange(field, value) {
-    setSubmitted(false);
+    resetFeedback();
     setFormData((current) => ({ ...current, [field]: value }));
   }
 
   function handleProcedureChange(value) {
-    setSubmitted(false);
+    resetFeedback();
     setCalendarDate('');
+    setOccupiedTimes([]);
+    setAvailabilityError('');
     setFormData((current) => ({
       ...current,
-      procedimentoId: value,
+      servicoId: value,
       data: '',
       horario: '',
     }));
   }
 
   function handleDaySelection(value) {
-    setSubmitted(false);
+    resetFeedback();
     setCalendarDate(value);
     setFormData((current) => ({
       ...current,
@@ -81,7 +216,7 @@ function BookingSection({ whatsappLink }) {
   }
 
   function handleCalendarChange(value) {
-    setSubmitted(false);
+    resetFeedback();
     setCalendarDate(value);
     setFormData((current) => ({
       ...current,
@@ -90,14 +225,61 @@ function BookingSection({ whatsappLink }) {
     }));
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    if (!formData.nome || !formData.telefone || !formData.email || !formData.procedimentoId || !formData.data || !formData.horario) {
+    if (!formData.nome || !formData.telefone || !formData.email || !formData.servicoId || !formData.data || !formData.horario) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Preencha nome, contato, email, procedimento, data e horario antes de continuar.',
+      });
       return;
     }
 
-    setSubmitted(true);
+    setSubmitStatus({ type: 'loading', message: 'Enviando sua solicitacao para a clinica...' });
+
+    try {
+      const response = await fetch(buildApiUrl('/agendamentos/publico'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nome: formData.nome,
+          telefone: formData.telefone,
+          email: formData.email,
+          servicoId: Number(formData.servicoId),
+          dataHora: `${formData.data}T${formData.horario}:00`,
+          observacao: '',
+        }),
+      });
+
+      const payload = await readJsonResponse(response);
+
+      if (!response.ok) {
+        throw new Error(payload?.mensagem || 'Nao foi possivel concluir o agendamento agora.');
+      }
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Solicitacao enviada com sucesso. A equipe da clinica pode seguir com a confirmacao.',
+      });
+      setOccupiedTimes((current) => [...new Set([...current, formData.horario])]);
+      setFormData({
+        nome: '',
+        telefone: '',
+        email: '',
+        servicoId: '',
+        data: '',
+        horario: '',
+      });
+      setCalendarDate('');
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: error.message || 'Nao foi possivel concluir o agendamento agora.',
+      });
+    }
   }
 
   return (
@@ -111,20 +293,20 @@ function BookingSection({ whatsappLink }) {
                 Agendamento inteligente
               </div>
               <p className="mt-6 text-[1.02rem] leading-relaxed text-[rgba(255,249,240,0.96)] sm:text-[1.18rem]">
-                O primeiro passo é se conhecer
+                O primeiro passo e se conhecer
               </p>
               <h2 className="mt-2 max-w-[12ch] text-[2.55rem] font-medium leading-[0.98] tracking-[-0.045em] text-white max-lg:mx-auto max-lg:text-[clamp(2.35rem,8vw,4rem)] sm:text-[3.7rem] lg:text-[4.45rem]">
                 Escolha o seu cuidado com mais clareza.
               </h2>
               <p className="mt-5 max-w-[38rem] text-base leading-8 text-[rgba(255,245,234,0.94)] max-lg:mx-auto sm:text-[1.08rem] sm:leading-9">
-                Esta área foi pensada para tornar a solicitação de consulta mais objetiva: você informa seus dados, escolhe o procedimento, visualiza as datas com disponibilidade e define o horário que faz mais sentido para a sua rotina.
+                Esta area agora consulta os servicos reais da clinica, verifica a disponibilidade do dia escolhido e envia a sua solicitacao direto para o sistema.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3 max-lg:justify-center">
                 {[
-                  'Seleção por procedimento',
-                  'Datas visíveis por disponibilidade',
-                  'Horário escolhido pelo cliente',
+                  'Servicos carregados da API',
+                  'Consulta de horarios por data',
+                  'Agendamento enviado ao sistema',
                 ].map((item) => (
                   <span
                     key={item}
@@ -141,7 +323,7 @@ function BookingSection({ whatsappLink }) {
                   onClick={() => setPanelOpen((current) => !current)}
                   className="inline-flex min-h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#FFF2D7_0%,#F5D091_44%,#E7B663_100%)] px-8 py-3 text-[1rem] font-semibold text-[#4F2F12] shadow-[0_22px_40px_rgba(97,58,13,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_48px_rgba(97,58,13,0.24)] max-[480px]:w-full"
                 >
-                  {panelOpen ? 'Fechar agenda visual' : 'Abrir agenda da clínica'}
+                  {panelOpen ? 'Fechar agenda visual' : 'Abrir agenda da clinica'}
                 </button>
                 <a
                   href={whatsappLink}
@@ -164,7 +346,7 @@ function BookingSection({ whatsappLink }) {
               >
                 <img
                   src={bookingWomanImage}
-                  alt="Mulher em destaque na seção de agendamento"
+                  alt="Mulher em destaque na secao de agendamento"
                   loading="lazy"
                   className="relative z-10 h-[24rem] w-auto max-w-full object-contain [filter:drop-shadow(0_22px_28px_rgba(132,83,30,0.12))] sm:h-[31rem] lg:translate-x-1 lg:h-[41rem] lg:max-w-none xl:translate-x-3"
                 />
@@ -176,20 +358,25 @@ function BookingSection({ whatsappLink }) {
                 }`}
               >
                 <BookingForm
+                  availabilityError={availabilityError}
+                  availabilityLoading={availabilityLoading}
                   availableDays={availableDays}
                   calendarDate={calendarDate}
                   formData={formData}
+                  formatPhoneInput={formatPhoneInput}
                   onCalendarChange={handleCalendarChange}
+                  onDaySelection={handleDaySelection}
                   onFieldChange={handleFieldChange}
                   onProcedureChange={handleProcedureChange}
-                  onDaySelection={handleDaySelection}
                   onSubmit={handleSubmit}
                   selectedDay={selectedDay}
                   selectedProcedure={selectedProcedure}
                   selectedSlot={selectedSlot}
-                  submitted={submitted}
+                  servicesError={servicesError}
+                  servicesLoading={servicesLoading}
+                  submitStatus={submitStatus}
                   summaryText={summaryText}
-                  formatPhoneInput={formatPhoneInput}
+                  procedureOptions={procedureOptions}
                 />
               </div>
             </div>
@@ -201,20 +388,25 @@ function BookingSection({ whatsappLink }) {
 }
 
 function BookingForm({
+  availabilityError,
+  availabilityLoading,
   availableDays,
   calendarDate,
   formData,
+  formatPhoneInput,
   onCalendarChange,
+  onDaySelection,
   onFieldChange,
   onProcedureChange,
-  onDaySelection,
   onSubmit,
+  procedureOptions,
   selectedDay,
   selectedProcedure,
   selectedSlot,
-  submitted,
+  servicesError,
+  servicesLoading,
+  submitStatus,
   summaryText,
-  formatPhoneInput,
 }) {
   return (
     <form
@@ -225,14 +417,14 @@ function BookingForm({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">
-              Solicitar horário
+              Solicitar horario
             </p>
             <h3 className="mt-2 text-[1.75rem] font-semibold leading-tight tracking-[-0.035em] text-[var(--color-ink)]">
               Monte sua consulta em poucos passos
             </h3>
           </div>
           <div className="rounded-2xl border border-[rgba(162,124,22,0.16)] bg-white/72 px-4 py-3 text-sm leading-6 text-[rgba(11,28,44,0.68)]">
-            A equipe recebe os dados e ajusta a confirmação com você.
+            A equipe recebe os dados e ajusta a confirmacao com voce.
           </div>
         </div>
 
@@ -241,11 +433,11 @@ function BookingForm({
             <input
               value={formData.nome}
               onChange={(event) => onFieldChange('nome', event.target.value)}
-              placeholder="Como devemos chamar você"
+              placeholder="Como devemos chamar voce"
               className="w-full rounded-[1.1rem] border border-[rgba(11,28,44,0.1)] bg-white px-4 py-3.5 text-sm text-[var(--color-ink)] outline-none transition duration-300 placeholder:text-[rgba(11,28,44,0.34)] focus:border-[rgba(162,124,22,0.34)] focus:ring-2 focus:ring-[rgba(212,175,55,0.16)]"
             />
           </FieldShell>
-          <FieldShell label="Número de contato">
+          <FieldShell label="Numero de contato">
             <input
               value={formData.telefone}
               onChange={(event) => onFieldChange('telefone', formatPhoneInput(event.target.value))}
@@ -268,12 +460,15 @@ function BookingForm({
           <FieldShell label="Procedimento desejado">
             <div className="relative">
               <select
-                value={formData.procedimentoId}
+                value={formData.servicoId}
                 onChange={(event) => onProcedureChange(event.target.value)}
-                className="w-full appearance-none rounded-[1.1rem] border border-[rgba(11,28,44,0.1)] bg-white px-4 py-3.5 pr-12 text-sm text-[var(--color-ink)] outline-none transition duration-300 focus:border-[rgba(162,124,22,0.34)] focus:ring-2 focus:ring-[rgba(212,175,55,0.16)]"
+                disabled={servicesLoading}
+                className="w-full appearance-none rounded-[1.1rem] border border-[rgba(11,28,44,0.1)] bg-white px-4 py-3.5 pr-12 text-sm text-[var(--color-ink)] outline-none transition duration-300 focus:border-[rgba(162,124,22,0.34)] focus:ring-2 focus:ring-[rgba(212,175,55,0.16)] disabled:cursor-not-allowed disabled:bg-[rgba(245,239,230,0.86)]"
               >
-                <option value="">Selecione o procedimento</option>
-                {bookingProcedureOptions.map((procedure) => (
+                <option value="">
+                  {servicesLoading ? 'Carregando servicos...' : 'Selecione o procedimento'}
+                </option>
+                {procedureOptions.map((procedure) => (
                   <option key={procedure.id} value={procedure.id}>
                     {procedure.title}
                   </option>
@@ -283,6 +478,11 @@ function BookingForm({
                 ▾
               </span>
             </div>
+            {servicesError ? (
+              <p className="mt-2 text-xs leading-5 text-[#8B3A1A]">
+                {servicesError}
+              </p>
+            ) : null}
           </FieldShell>
         </div>
 
@@ -290,17 +490,17 @@ function BookingForm({
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">
-                Datas disponíveis
+                Datas disponiveis
               </p>
               <p className="mt-2 text-sm leading-7 text-[rgba(11,28,44,0.68)]">
                 {selectedProcedure
-                  ? `Para ${selectedProcedure.title}, mostramos os próximos dias livres e você também pode abrir uma data mais adiante no calendário.`
-                  : 'Escolha um procedimento para revelar os dias com agenda disponível.'}
+                  ? `Para ${selectedProcedure.title}, mostramos os proximos dias e consultamos os horarios reais quando voce escolhe a data.`
+                  : 'Escolha um procedimento para revelar os dias com agenda disponivel.'}
               </p>
             </div>
             {selectedProcedure ? (
               <div className="rounded-full border border-[rgba(162,124,22,0.16)] bg-white/82 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-gold-deep)]">
-                Duração média de {selectedProcedure.duration} min
+                Duracao media de {selectedProcedure.duration} min
               </div>
             ) : null}
           </div>
@@ -336,14 +536,14 @@ function BookingForm({
                 ))
               ) : (
                 <div className="rounded-[1.25rem] border border-dashed border-[rgba(11,28,44,0.14)] bg-white/65 px-4 py-5 text-sm leading-7 text-[rgba(11,28,44,0.56)]">
-                  A lista de datas aparece assim que um procedimento é selecionado.
+                  A lista de datas aparece assim que um procedimento e selecionado.
                 </div>
               )}
             </div>
 
             <div className="rounded-[1.25rem] border border-[rgba(11,28,44,0.08)] bg-white/78 p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[rgba(11,28,44,0.48)]">
-                Calendário
+                Calendario
               </p>
               <p className="mt-2 text-sm leading-6 text-[rgba(11,28,44,0.64)]">
                 Quer agendar mais adiante? Escolha uma data manualmente.
@@ -358,8 +558,8 @@ function BookingForm({
               {calendarDate && selectedDay && selectedDay.value === calendarDate ? (
                 <p className="mt-3 text-xs leading-6 text-[rgba(11,28,44,0.56)]">
                   {selectedDay.slots.length
-                    ? `A data ${selectedDay.fullLabel} tem horários disponíveis.`
-                    : `A data ${selectedDay.fullLabel} não possui horários livres para este procedimento.`}
+                    ? `A data ${selectedDay.fullLabel} tem horarios disponiveis.`
+                    : `A data ${selectedDay.fullLabel} nao possui horarios livres para este procedimento.`}
                 </p>
               ) : null}
             </div>
@@ -370,20 +570,32 @@ function BookingForm({
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">
-                Horários do dia
+                Horarios do dia
               </p>
               <p className="mt-2 text-sm leading-7 text-[rgba(11,28,44,0.68)]">
                 {selectedDay
-                  ? `Horários disponíveis para ${selectedDay.fullLabel}.`
-                  : 'Escolha uma data para liberar os horários desse dia.'}
+                  ? `Horarios disponiveis para ${selectedDay.fullLabel}.`
+                  : 'Escolha uma data para liberar os horarios desse dia.'}
               </p>
             </div>
             {selectedSlot ? (
               <div className="rounded-full border border-[rgba(24,52,79,0.14)] bg-[rgba(24,52,79,0.06)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink)]">
-                {selectedSlot.label} até {selectedSlot.endLabel}
+                {selectedSlot.label} ate {selectedSlot.endLabel}
               </div>
             ) : null}
           </div>
+
+          {availabilityLoading ? (
+            <div className="mt-5 rounded-[1.1rem] border border-[rgba(24,52,79,0.08)] bg-[rgba(24,52,79,0.04)] px-4 py-4 text-sm text-[rgba(11,28,44,0.68)]">
+              Consultando disponibilidade real deste dia...
+            </div>
+          ) : null}
+
+          {availabilityError ? (
+            <div className="mt-5 rounded-[1.1rem] border border-[rgba(168,74,39,0.16)] bg-[rgba(168,74,39,0.06)] px-4 py-4 text-sm text-[#8B3A1A]">
+              {availabilityError}
+            </div>
+          ) : null}
 
           <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {selectedDay?.slots?.length ? (
@@ -400,13 +612,13 @@ function BookingForm({
                 >
                   <p className="text-sm font-semibold">{slot.label}</p>
                   <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[rgba(11,28,44,0.44)]">
-                    até {slot.endLabel}
+                    ate {slot.endLabel}
                   </p>
                 </button>
               ))
             ) : (
               <div className="rounded-[1.25rem] border border-dashed border-[rgba(11,28,44,0.14)] bg-[rgba(255,255,255,0.72)] px-4 py-5 text-sm leading-7 text-[rgba(11,28,44,0.56)] sm:col-span-2 xl:col-span-3">
-                Selecione uma data acima para exibir os horários livres.
+                Selecione uma data acima para exibir os horarios livres.
               </div>
             )}
           </div>
@@ -418,15 +630,24 @@ function BookingForm({
           </div>
           <button
             type="submit"
-            className="inline-flex min-h-14 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#18344F_0%,#0D2132_100%)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_36px_rgba(12,24,38,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_44px_rgba(12,24,38,0.24)] max-[480px]:w-full max-[480px]:tracking-[0.12em]"
+            disabled={submitStatus.type === 'loading'}
+            className="inline-flex min-h-14 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#18344F_0%,#0D2132_100%)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_36px_rgba(12,24,38,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_44px_rgba(12,24,38,0.24)] disabled:cursor-not-allowed disabled:opacity-75 max-[480px]:w-full max-[480px]:tracking-[0.12em]"
           >
-            Solicitar agendamento
+            {submitStatus.type === 'loading' ? 'Enviando...' : 'Solicitar agendamento'}
           </button>
         </div>
 
-        {submitted ? (
-          <div className="mt-5 rounded-[1.35rem] border border-[rgba(47,128,78,0.18)] bg-[linear-gradient(180deg,rgba(231,247,236,0.95)_0%,rgba(242,251,245,0.96)_100%)] px-4 py-4 text-sm leading-7 text-[#24543A]">
-            Solicitação montada com sucesso no front-end. A experiência visual já está pronta para entregar esses dados ao sistema interno quando fizermos a integração.
+        {submitStatus.message ? (
+          <div
+            className={`mt-5 rounded-[1.35rem] px-4 py-4 text-sm leading-7 ${
+              submitStatus.type === 'success'
+                ? 'border border-[rgba(47,128,78,0.18)] bg-[linear-gradient(180deg,rgba(231,247,236,0.95)_0%,rgba(242,251,245,0.96)_100%)] text-[#24543A]'
+                : submitStatus.type === 'error'
+                  ? 'border border-[rgba(168,74,39,0.18)] bg-[linear-gradient(180deg,rgba(253,241,236,0.95)_0%,rgba(255,247,244,0.96)_100%)] text-[#8B3A1A]'
+                  : 'border border-[rgba(24,52,79,0.12)] bg-[rgba(24,52,79,0.05)] text-[var(--color-ink)]'
+            }`}
+          >
+            {submitStatus.message}
           </div>
         ) : null}
       </div>

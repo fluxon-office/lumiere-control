@@ -1,11 +1,13 @@
-import { services } from './landingContent';
-
 const PT_BR = 'pt-BR';
+
+const defaultWindows = {
+  weekdays: [['09:00', '12:00'], ['14:00', '18:00']],
+  saturday: [['09:00', '12:00']],
+};
 
 const procedureConfigurations = {
   'limpeza-de-pele': {
-    duration: 70,
-    label: 'Higienização profunda e renovação de textura',
+    label: 'Higienizacao profunda e renovacao de textura',
     windows: {
       weekdays: [['09:00', '11:30'], ['14:00', '18:00']],
       saturday: [['09:00', '12:00']],
@@ -13,7 +15,6 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   peeling: {
-    duration: 50,
     label: 'Refinamento de pele com foco em brilho e clareza',
     windows: {
       weekdays: [['10:00', '12:00'], ['14:30', '18:30']],
@@ -22,8 +23,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   microagulhamento: {
-    duration: 80,
-    label: 'Sessão orientada para regeneração e textura cutânea',
+    label: 'Sessao orientada para regeneracao e textura cutanea',
     windows: {
       weekdays: [['09:30', '11:30'], ['14:00', '17:30']],
       saturday: [['09:00', '11:30']],
@@ -31,7 +31,6 @@ const procedureConfigurations = {
     stepMinutes: 60,
   },
   'massagem-relaxante': {
-    duration: 60,
     label: 'Janela de bem-estar com ritmo mais desacelerado',
     windows: {
       weekdays: [['09:00', '12:00'], ['15:00', '18:30']],
@@ -40,7 +39,6 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'drenagem-linfatica': {
-    duration: 60,
     label: 'Protocolo corporal com agenda mais recorrente',
     windows: {
       weekdays: [['08:30', '11:30'], ['13:30', '17:30']],
@@ -49,8 +47,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'preenchimento-labial': {
-    duration: 75,
-    label: 'Atendimento com pausa técnica e leitura estética',
+    label: 'Atendimento com pausa tecnica e leitura estetica',
     windows: {
       weekdays: [['10:00', '12:00'], ['15:00', '18:00']],
       saturday: [['09:30', '11:30']],
@@ -58,8 +55,7 @@ const procedureConfigurations = {
     stepMinutes: 60,
   },
   bioestimulador: {
-    duration: 90,
-    label: 'Sessão com maior tempo de preparação e orientação',
+    label: 'Sessao com maior tempo de preparacao e orientacao',
     windows: {
       weekdays: [['09:00', '11:00'], ['14:30', '17:30']],
       saturday: [['09:00', '11:00']],
@@ -67,8 +63,7 @@ const procedureConfigurations = {
     stepMinutes: 60,
   },
   botox: {
-    duration: 45,
-    label: 'Aplicação objetiva com retorno visual refinado',
+    label: 'Aplicacao objetiva com retorno visual refinado',
     windows: {
       weekdays: [['09:00', '12:00'], ['14:00', '18:30']],
       saturday: [['09:00', '12:00']],
@@ -76,8 +71,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'secagem-de-vasinhos': {
-    duration: 50,
-    label: 'Atendimento técnico com janelas mais concentradas',
+    label: 'Atendimento tecnico com janelas mais concentradas',
     windows: {
       weekdays: [['10:00', '12:00'], ['15:00', '18:00']],
       saturday: [['09:30', '11:30']],
@@ -85,8 +79,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'micro-labial': {
-    duration: 90,
-    label: 'Sessão detalhada para definição e uniformidade',
+    label: 'Sessao detalhada para definicao e uniformidade',
     windows: {
       weekdays: [['09:30', '11:30'], ['14:30', '17:30']],
       saturday: [['09:00', '11:00']],
@@ -94,7 +87,6 @@ const procedureConfigurations = {
     stepMinutes: 60,
   },
   'tratamento-para-gordura-localizada': {
-    duration: 75,
     label: 'Planejamento corporal com leitura personalizada',
     windows: {
       weekdays: [['09:00', '11:30'], ['14:00', '17:30']],
@@ -103,8 +95,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'enzimas-para-gordura-localizada': {
-    duration: 45,
-    label: 'Abordagem pontual com encaixes mais dinâmicos',
+    label: 'Abordagem complementar para areas especificas',
     windows: {
       weekdays: [['10:00', '12:00'], ['15:00', '18:30']],
       saturday: [['09:30', '12:00']],
@@ -134,19 +125,27 @@ function formatMinutesAsTime(totalMinutes) {
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 }
 
-function createProcedureOption(service) {
-  const id = slugify(service.title);
-  const configuration = procedureConfigurations[id];
+function normalizeProcedure(service) {
+  const slug = slugify(service.nome);
+  const configuration = procedureConfigurations[slug] || {};
 
   return {
-    id,
-    title: service.title,
-    description: configuration.label,
-    duration: configuration.duration,
+    id: String(service.id),
+    backendId: service.id,
+    title: service.nome,
+    description: configuration.label || service.descricao,
+    duration: service.duracaoMinutos || 60,
+    windows: configuration.windows || defaultWindows,
+    stepMinutes: configuration.stepMinutes || 30,
   };
 }
 
-function buildSlotsForDay(procedure, date) {
+function buildProcedureOptions(services) {
+  return services.map(normalizeProcedure);
+}
+
+function buildSlotsForDay(procedure, date, occupiedTimes = []) {
+  const occupiedTimeSet = new Set(occupiedTimes);
   const isSaturday = date.getDay() === 6;
   const isSunday = date.getDay() === 0;
 
@@ -154,8 +153,7 @@ function buildSlotsForDay(procedure, date) {
     return [];
   }
 
-  const config = procedureConfigurations[procedure.id];
-  const windows = isSaturday ? config.windows.saturday : config.windows.weekdays;
+  const windows = isSaturday ? procedure.windows.saturday : procedure.windows.weekdays;
   const slots = [];
 
   windows.forEach(([start, end]) => {
@@ -165,18 +163,19 @@ function buildSlotsForDay(procedure, date) {
     for (
       let currentMinutes = startMinutes;
       currentMinutes + procedure.duration <= endMinutes;
-      currentMinutes += config.stepMinutes
+      currentMinutes += procedure.stepMinutes
     ) {
       const currentDate = new Date(date);
+      const currentTime = formatMinutesAsTime(currentMinutes);
       currentDate.setHours(Math.floor(currentMinutes / 60), currentMinutes % 60, 0, 0);
 
-      if (currentDate <= new Date()) {
+      if (currentDate <= new Date() || occupiedTimeSet.has(currentTime)) {
         continue;
       }
 
       slots.push({
-        value: formatMinutesAsTime(currentMinutes),
-        label: formatMinutesAsTime(currentMinutes),
+        value: currentTime,
+        label: currentTime,
         endLabel: formatMinutesAsTime(currentMinutes + procedure.duration),
       });
     }
@@ -185,9 +184,24 @@ function buildSlotsForDay(procedure, date) {
   return slots;
 }
 
-function buildAvailableDays(procedureId, limit = 8) {
-  const procedure = bookingProcedureOptions.find((item) => item.id === procedureId);
+function buildDayDetails(dateValue, date, procedure, occupiedTimes = []) {
+  const slots = buildSlotsForDay(procedure, date, occupiedTimes);
 
+  return {
+    value: dateValue,
+    dayLabel: date.toLocaleDateString(PT_BR, { weekday: 'short' }).replace('.', ''),
+    dayNumber: date.toLocaleDateString(PT_BR, { day: '2-digit' }),
+    monthLabel: date.toLocaleDateString(PT_BR, { month: 'short' }).replace('.', ''),
+    fullLabel: date.toLocaleDateString(PT_BR, {
+      day: '2-digit',
+      month: 'long',
+      weekday: 'long',
+    }),
+    slots,
+  };
+}
+
+function buildAvailableDays(procedure, limit = 8) {
   if (!procedure) {
     return [];
   }
@@ -199,34 +213,20 @@ function buildAvailableDays(procedureId, limit = 8) {
   while (availableDays.length < limit) {
     cursor.setDate(cursor.getDate() + 1);
 
-    const daySlots = buildSlotsForDay(procedure, cursor);
+    const dateValue = cursor.toISOString().split('T')[0];
+    const dayDetails = buildDayDetails(dateValue, cursor, procedure);
 
-    if (!daySlots.length) {
+    if (!dayDetails.slots.length) {
       continue;
     }
 
-    const dateValue = cursor.toISOString().split('T')[0];
-
-    availableDays.push({
-      value: dateValue,
-      dayLabel: cursor.toLocaleDateString(PT_BR, { weekday: 'short' }).replace('.', ''),
-      dayNumber: cursor.toLocaleDateString(PT_BR, { day: '2-digit' }),
-      monthLabel: cursor.toLocaleDateString(PT_BR, { month: 'short' }).replace('.', ''),
-      fullLabel: cursor.toLocaleDateString(PT_BR, {
-        day: '2-digit',
-        month: 'long',
-        weekday: 'long',
-      }),
-      slots: daySlots,
-    });
+    availableDays.push(dayDetails);
   }
 
   return availableDays;
 }
 
-function buildSpecificDayAvailability(procedureId, dateValue) {
-  const procedure = bookingProcedureOptions.find((item) => item.id === procedureId);
-
+function buildSpecificDayAvailability(procedure, dateValue, occupiedTimes = []) {
   if (!procedure || !dateValue) {
     return null;
   }
@@ -237,25 +237,12 @@ function buildSpecificDayAvailability(procedureId, dateValue) {
     return null;
   }
 
-  const slots = buildSlotsForDay(procedure, targetDate);
-
-  return {
-    value: dateValue,
-    dayLabel: targetDate.toLocaleDateString(PT_BR, { weekday: 'short' }).replace('.', ''),
-    dayNumber: targetDate.toLocaleDateString(PT_BR, { day: '2-digit' }),
-    monthLabel: targetDate.toLocaleDateString(PT_BR, { month: 'short' }).replace('.', ''),
-    fullLabel: targetDate.toLocaleDateString(PT_BR, {
-      day: '2-digit',
-      month: 'long',
-      weekday: 'long',
-    }),
-    slots,
-  };
+  return buildDayDetails(dateValue, targetDate, procedure, occupiedTimes);
 }
 
 function formatAppointmentSummary({ date, procedureTitle, time }) {
   if (!procedureTitle || !date || !time) {
-    return 'Selecione um procedimento, escolha uma data disponível e finalize com o melhor horário para você.';
+    return 'Selecione um procedimento, escolha uma data disponivel e finalize com o melhor horario para voce.';
   }
 
   const formattedDate = new Date(`${date}T12:00:00`).toLocaleDateString(PT_BR, {
@@ -264,14 +251,12 @@ function formatAppointmentSummary({ date, procedureTitle, time }) {
     weekday: 'long',
   });
 
-  return `${procedureTitle} em ${formattedDate} às ${time}. A equipe recebe essa solicitação e faz o ajuste fino da confirmação.`;
+  return `${procedureTitle} em ${formattedDate} as ${time}. A equipe recebe essa solicitacao e faz o ajuste fino da confirmacao.`;
 }
 
-const bookingProcedureOptions = services.map(createProcedureOption);
-
 export {
-  bookingProcedureOptions,
   buildAvailableDays,
+  buildProcedureOptions,
   buildSpecificDayAvailability,
   formatAppointmentSummary,
 };
