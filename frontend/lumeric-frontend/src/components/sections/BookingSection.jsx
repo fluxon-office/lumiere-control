@@ -40,7 +40,7 @@ function BookingSection({ whatsappLink }) {
         const payload = await readJsonResponse(response);
 
         if (!response.ok) {
-          throw new Error(payload?.mensagem || 'Nao foi possivel carregar os servicos agora.');
+          throw new Error(payload?.mensagem || 'Não foi possível carregar os serviços agora.');
         }
 
         const normalizedServices = Array.isArray(payload) && payload.length
@@ -61,7 +61,7 @@ function BookingSection({ whatsappLink }) {
             descricao: service.description,
             duracaoMinutos: 60,
           })));
-          setServicesError(error.message || 'Nao foi possivel carregar os servicos agora.');
+          setServicesError(error.message || 'Não foi possível carregar os serviços agora.');
         }
       } finally {
         if (!controller.signal.aborted) {
@@ -112,13 +112,13 @@ function BookingSection({ whatsappLink }) {
         const payload = await readJsonResponse(response);
 
         if (!response.ok) {
-          throw new Error(payload?.mensagem || 'Nao foi possivel consultar os horarios deste dia.');
+          throw new Error(payload?.mensagem || 'Não foi possível consultar os horários deste dia.');
         }
 
         setOccupiedTimes(Array.isArray(payload?.horariosOcupados) ? payload.horariosOcupados : []);
       } catch (error) {
         if (error.name !== 'AbortError') {
-          setAvailabilityError(error.message || 'Nao foi possivel consultar os horarios deste dia.');
+          setAvailabilityError(error.message || 'Não foi possível consultar os horários deste dia.');
           setOccupiedTimes([]);
         }
       } finally {
@@ -231,12 +231,12 @@ function BookingSection({ whatsappLink }) {
     if (!formData.nome || !formData.telefone || !formData.email || !formData.servicoId || !formData.data || !formData.horario) {
       setSubmitStatus({
         type: 'error',
-        message: 'Preencha nome, contato, email, procedimento, data e horario antes de continuar.',
+        message: 'Preencha nome, contato, e-mail, procedimento, data e horário antes de continuar.',
       });
       return;
     }
 
-    setSubmitStatus({ type: 'loading', message: 'Enviando sua solicitacao para a clinica...' });
+    setSubmitStatus({ type: 'loading', message: 'Enviando sua solicitação para a clínica...' });
 
     try {
       const response = await fetch(buildApiUrl('/agendamentos/publico'), {
@@ -257,12 +257,12 @@ function BookingSection({ whatsappLink }) {
       const payload = await readJsonResponse(response);
 
       if (!response.ok) {
-        throw new Error(payload?.mensagem || 'Nao foi possivel concluir o agendamento agora.');
+        throw new Error(payload?.mensagem || 'Não foi possível concluir o agendamento agora.');
       }
 
       setSubmitStatus({
         type: 'success',
-        message: 'Solicitacao enviada com sucesso. A equipe da clinica pode seguir com a confirmacao.',
+        message: 'Solicitação enviada com sucesso. A equipe da clínica pode seguir com a confirmação.',
       });
       setOccupiedTimes((current) => [...new Set([...current, formData.horario])]);
       setFormData({
@@ -277,7 +277,7 @@ function BookingSection({ whatsappLink }) {
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: error.message || 'Nao foi possivel concluir o agendamento agora.',
+        message: error.message || 'Não foi possível concluir o agendamento agora.',
       });
     }
   }
@@ -293,19 +293,19 @@ function BookingSection({ whatsappLink }) {
                 Agendamento inteligente
               </div>
               <p className="mt-6 text-[1.02rem] leading-relaxed text-[rgba(255,249,240,0.96)] sm:text-[1.18rem]">
-                O primeiro passo e se conhecer
+                O primeiro passo é se conhecer
               </p>
               <h2 className="mt-2 max-w-[12ch] text-[2.55rem] font-medium leading-[0.98] tracking-[-0.045em] text-white max-lg:mx-auto max-lg:text-[clamp(2.35rem,8vw,4rem)] sm:text-[3.7rem] lg:text-[4.45rem]">
                 Escolha o seu cuidado com mais clareza.
               </h2>
               <p className="mt-5 max-w-[38rem] text-base leading-8 text-[rgba(255,245,234,0.94)] max-lg:mx-auto sm:text-[1.08rem] sm:leading-9">
-                Esta area agora consulta os servicos reais da clinica, verifica a disponibilidade do dia escolhido e envia a sua solicitacao direto para o sistema.
+                Esta área agora consulta os serviços reais da clínica, verifica a disponibilidade do dia escolhido e envia a sua solicitação direto para o sistema.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3 max-lg:justify-center">
                 {[
-                  'Servicos carregados da API',
-                  'Consulta de horarios por data',
+                  'Serviços carregados da API',
+                  'Consulta de horários por data',
                   'Agendamento enviado ao sistema',
                 ].map((item) => (
                   <span
@@ -323,7 +323,7 @@ function BookingSection({ whatsappLink }) {
                   onClick={() => setPanelOpen((current) => !current)}
                   className="inline-flex min-h-14 items-center justify-center rounded-full bg-[linear-gradient(135deg,#FFF2D7_0%,#F5D091_44%,#E7B663_100%)] px-8 py-3 text-[1rem] font-semibold text-[#4F2F12] shadow-[0_22px_40px_rgba(97,58,13,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_48px_rgba(97,58,13,0.24)] max-[480px]:w-full"
                 >
-                  {panelOpen ? 'Fechar agenda visual' : 'Abrir agenda da clinica'}
+                  {panelOpen ? 'Fechar agenda visual' : 'Abrir agenda da clínica'}
                 </button>
                 <a
                   href={whatsappLink}
@@ -346,7 +346,7 @@ function BookingSection({ whatsappLink }) {
               >
                 <img
                   src={bookingWomanImage}
-                  alt="Mulher em destaque na secao de agendamento"
+                  alt="Mulher em destaque na seção de agendamento"
                   loading="lazy"
                   className="relative z-10 h-[24rem] w-auto max-w-full object-contain [filter:drop-shadow(0_22px_28px_rgba(132,83,30,0.12))] sm:h-[31rem] lg:translate-x-1 lg:h-[41rem] lg:max-w-none xl:translate-x-3"
                 />
@@ -417,14 +417,14 @@ function BookingForm({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">
-              Solicitar horario
+              Solicitar horário
             </p>
             <h3 className="mt-2 text-[1.75rem] font-semibold leading-tight tracking-[-0.035em] text-[var(--color-ink)]">
               Monte sua consulta em poucos passos
             </h3>
           </div>
           <div className="rounded-2xl border border-[rgba(162,124,22,0.16)] bg-white/72 px-4 py-3 text-sm leading-6 text-[rgba(11,28,44,0.68)]">
-            A equipe recebe os dados e ajusta a confirmacao com voce.
+            A equipe recebe os dados e ajusta a confirmação com você.
           </div>
         </div>
 
@@ -433,7 +433,7 @@ function BookingForm({
             <input
               value={formData.nome}
               onChange={(event) => onFieldChange('nome', event.target.value)}
-              placeholder="Como devemos chamar voce"
+              placeholder="Como devemos chamar você"
               className="w-full rounded-[1.1rem] border border-[rgba(11,28,44,0.1)] bg-white px-4 py-3.5 text-sm text-[var(--color-ink)] outline-none transition duration-300 placeholder:text-[rgba(11,28,44,0.34)] focus:border-[rgba(162,124,22,0.34)] focus:ring-2 focus:ring-[rgba(212,175,55,0.16)]"
             />
           </FieldShell>
@@ -466,7 +466,7 @@ function BookingForm({
                 className="w-full appearance-none rounded-[1.1rem] border border-[rgba(11,28,44,0.1)] bg-white px-4 py-3.5 pr-12 text-sm text-[var(--color-ink)] outline-none transition duration-300 focus:border-[rgba(162,124,22,0.34)] focus:ring-2 focus:ring-[rgba(212,175,55,0.16)] disabled:cursor-not-allowed disabled:bg-[rgba(245,239,230,0.86)]"
               >
                 <option value="">
-                  {servicesLoading ? 'Carregando servicos...' : 'Selecione o procedimento'}
+                  {servicesLoading ? 'Carregando serviços...' : 'Selecione o procedimento'}
                 </option>
                 {procedureOptions.map((procedure) => (
                   <option key={procedure.id} value={procedure.id}>
@@ -490,17 +490,17 @@ function BookingForm({
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">
-                Datas disponiveis
+                Datas disponíveis
               </p>
               <p className="mt-2 text-sm leading-7 text-[rgba(11,28,44,0.68)]">
                 {selectedProcedure
-                  ? `Para ${selectedProcedure.title}, mostramos os proximos dias e consultamos os horarios reais quando voce escolhe a data.`
-                  : 'Escolha um procedimento para revelar os dias com agenda disponivel.'}
+                  ? `Para ${selectedProcedure.title}, mostramos os próximos dias e consultamos os horários reais quando você escolhe a data.`
+                  : 'Escolha um procedimento para revelar os dias com agenda disponível.'}
               </p>
             </div>
             {selectedProcedure ? (
               <div className="rounded-full border border-[rgba(162,124,22,0.16)] bg-white/82 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-gold-deep)]">
-                Duracao media de {selectedProcedure.duration} min
+                Duração média de {selectedProcedure.duration} min
               </div>
             ) : null}
           </div>
@@ -536,14 +536,14 @@ function BookingForm({
                 ))
               ) : (
                 <div className="rounded-[1.25rem] border border-dashed border-[rgba(11,28,44,0.14)] bg-white/65 px-4 py-5 text-sm leading-7 text-[rgba(11,28,44,0.56)]">
-                  A lista de datas aparece assim que um procedimento e selecionado.
+                  A lista de datas aparece assim que um procedimento é selecionado.
                 </div>
               )}
             </div>
 
             <div className="rounded-[1.25rem] border border-[rgba(11,28,44,0.08)] bg-white/78 p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[rgba(11,28,44,0.48)]">
-                Calendario
+                Calendário
               </p>
               <p className="mt-2 text-sm leading-6 text-[rgba(11,28,44,0.64)]">
                 Quer agendar mais adiante? Escolha uma data manualmente.
@@ -558,8 +558,8 @@ function BookingForm({
               {calendarDate && selectedDay && selectedDay.value === calendarDate ? (
                 <p className="mt-3 text-xs leading-6 text-[rgba(11,28,44,0.56)]">
                   {selectedDay.slots.length
-                    ? `A data ${selectedDay.fullLabel} tem horarios disponiveis.`
-                    : `A data ${selectedDay.fullLabel} nao possui horarios livres para este procedimento.`}
+                    ? `A data ${selectedDay.fullLabel} tem horários disponíveis.`
+                    : `A data ${selectedDay.fullLabel} não possui horários livres para este procedimento.`}
                 </p>
               ) : null}
             </div>
@@ -570,17 +570,17 @@ function BookingForm({
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">
-                Horarios do dia
+                Horários do dia
               </p>
               <p className="mt-2 text-sm leading-7 text-[rgba(11,28,44,0.68)]">
                 {selectedDay
-                  ? `Horarios disponiveis para ${selectedDay.fullLabel}.`
-                  : 'Escolha uma data para liberar os horarios desse dia.'}
+                  ? `Horários disponíveis para ${selectedDay.fullLabel}.`
+                  : 'Escolha uma data para liberar os horários desse dia.'}
               </p>
             </div>
             {selectedSlot ? (
               <div className="rounded-full border border-[rgba(24,52,79,0.14)] bg-[rgba(24,52,79,0.06)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-ink)]">
-                {selectedSlot.label} ate {selectedSlot.endLabel}
+                {selectedSlot.label} até {selectedSlot.endLabel}
               </div>
             ) : null}
           </div>
@@ -612,13 +612,13 @@ function BookingForm({
                 >
                   <p className="text-sm font-semibold">{slot.label}</p>
                   <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[rgba(11,28,44,0.44)]">
-                    ate {slot.endLabel}
+                    até {slot.endLabel}
                   </p>
                 </button>
               ))
             ) : (
               <div className="rounded-[1.25rem] border border-dashed border-[rgba(11,28,44,0.14)] bg-[rgba(255,255,255,0.72)] px-4 py-5 text-sm leading-7 text-[rgba(11,28,44,0.56)] sm:col-span-2 xl:col-span-3">
-                Selecione uma data acima para exibir os horarios livres.
+                Selecione uma data acima para exibir os horários livres.
               </div>
             )}
           </div>

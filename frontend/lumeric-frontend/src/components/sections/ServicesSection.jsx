@@ -14,13 +14,13 @@ function ServicesSection({
       <div className="mx-auto max-w-7xl" data-reveal>
         <div className="text-center">
           <p className="text-[1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.15rem]">
-            Beleza, inovaÃ§Ã£o e sofisticaÃ§Ã£o
+            Beleza, inovação e sofisticação
           </p>
           <h2 className="mx-auto mt-3 max-w-4xl text-[2.35rem] font-medium leading-[1.08] tracking-[-0.04em] text-[var(--color-ink)] max-lg:text-[clamp(2.15rem,7vw,3.25rem)] sm:text-[3.4rem]">
-            Tecnologias para todas as soluÃ§Ãµes
+            Tecnologias para todas as soluções
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-base leading-8 text-[var(--color-muted)] sm:text-[1.12rem]">
-            ConheÃ§a nossa abordagem em estÃ©tica com tecnologia avanÃ§ada, proporcionando cuidados personalizados para atender Ã s suas necessidades.
+            Conheça nossa abordagem em estética com tecnologia avançada, proporcionando cuidados personalizados para atender às suas necessidades.
           </p>
         </div>
 
@@ -28,7 +28,7 @@ function ServicesSection({
           <button
             type="button"
             onClick={onPrevious}
-            aria-label="Ver serviÃ§os anteriores"
+            aria-label="Ver serviços anteriores"
             className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] max-lg:col-start-2 max-lg:row-start-2 lg:mr-6"
           >
             <ChevronLeftIcon className="h-5 w-5" />
@@ -80,7 +80,7 @@ function ServicesSection({
           <button
             type="button"
             onClick={onNext}
-            aria-label="Ver prÃ³ximos serviÃ§os"
+            aria-label="Ver próximos serviços"
             className="flex h-12 w-12 items-center justify-center self-center rounded-full border border-[rgba(181,137,47,0.22)] bg-[linear-gradient(180deg,#D4AF37_0%,#C89A33_100%)] text-white shadow-[0_14px_30px_rgba(181,137,47,0.18)] transition duration-300 hover:translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[0_20px_38px_rgba(181,137,47,0.24)] active:scale-[0.96] max-lg:col-start-3 max-lg:row-start-2 lg:ml-6"
           >
             <ChevronRightIcon className="h-5 w-5" />

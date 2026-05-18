@@ -7,7 +7,7 @@ const defaultWindows = {
 
 const procedureConfigurations = {
   'limpeza-de-pele': {
-    label: 'Higienizacao profunda e renovacao de textura',
+    label: 'Higienização profunda e renovação de textura',
     windows: {
       weekdays: [['09:00', '11:30'], ['14:00', '18:00']],
       saturday: [['09:00', '12:00']],
@@ -23,7 +23,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   microagulhamento: {
-    label: 'Sessao orientada para regeneracao e textura cutanea',
+    label: 'Sessão orientada para regeneração e textura cutânea',
     windows: {
       weekdays: [['09:30', '11:30'], ['14:00', '17:30']],
       saturday: [['09:00', '11:30']],
@@ -47,7 +47,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'preenchimento-labial': {
-    label: 'Atendimento com pausa tecnica e leitura estetica',
+    label: 'Atendimento com pausa técnica e leitura estética',
     windows: {
       weekdays: [['10:00', '12:00'], ['15:00', '18:00']],
       saturday: [['09:30', '11:30']],
@@ -55,7 +55,7 @@ const procedureConfigurations = {
     stepMinutes: 60,
   },
   bioestimulador: {
-    label: 'Sessao com maior tempo de preparacao e orientacao',
+    label: 'Sessão com maior tempo de preparação e orientação',
     windows: {
       weekdays: [['09:00', '11:00'], ['14:30', '17:30']],
       saturday: [['09:00', '11:00']],
@@ -63,7 +63,7 @@ const procedureConfigurations = {
     stepMinutes: 60,
   },
   botox: {
-    label: 'Aplicacao objetiva com retorno visual refinado',
+    label: 'Aplicação objetiva com retorno visual refinado',
     windows: {
       weekdays: [['09:00', '12:00'], ['14:00', '18:30']],
       saturday: [['09:00', '12:00']],
@@ -71,7 +71,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'secagem-de-vasinhos': {
-    label: 'Atendimento tecnico com janelas mais concentradas',
+    label: 'Atendimento técnico com janelas mais concentradas',
     windows: {
       weekdays: [['10:00', '12:00'], ['15:00', '18:00']],
       saturday: [['09:30', '11:30']],
@@ -79,7 +79,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'micro-labial': {
-    label: 'Sessao detalhada para definicao e uniformidade',
+    label: 'Sessão detalhada para definição e uniformidade',
     windows: {
       weekdays: [['09:30', '11:30'], ['14:30', '17:30']],
       saturday: [['09:00', '11:00']],
@@ -95,7 +95,7 @@ const procedureConfigurations = {
     stepMinutes: 30,
   },
   'enzimas-para-gordura-localizada': {
-    label: 'Abordagem complementar para areas especificas',
+    label: 'Abordagem complementar para áreas específicas',
     windows: {
       weekdays: [['10:00', '12:00'], ['15:00', '18:30']],
       saturday: [['09:30', '12:00']],
@@ -242,7 +242,7 @@ function buildSpecificDayAvailability(procedure, dateValue, occupiedTimes = []) 
 
 function formatAppointmentSummary({ date, procedureTitle, time }) {
   if (!procedureTitle || !date || !time) {
-    return 'Selecione um procedimento, escolha uma data disponivel e finalize com o melhor horario para voce.';
+    return 'Selecione um procedimento, escolha uma data disponível e finalize com o melhor horário para você.';
   }
 
   const formattedDate = new Date(`${date}T12:00:00`).toLocaleDateString(PT_BR, {
@@ -251,7 +251,7 @@ function formatAppointmentSummary({ date, procedureTitle, time }) {
     weekday: 'long',
   });
 
-  return `${procedureTitle} em ${formattedDate} as ${time}. A equipe recebe essa solicitacao e faz o ajuste fino da confirmacao.`;
+  return `${procedureTitle} em ${formattedDate} às ${time}. A equipe recebe essa solicitação e faz o ajuste fino da confirmação.`;
 }
 
 export {
