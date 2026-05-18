@@ -15,6 +15,10 @@ import {
 
 import bioestimuladorImage from '../../foto/bioestimulador.jpg';
 import botoxImage from '../../foto/Botox.jpg';
+import diferencialAtendimentoImage from '../../foto/Datendimento.jpg';
+import diferencialExperienciaImage from '../../foto/Dexperencia.jpg';
+import diferencialProcedimentosImage from '../../foto/DProcedimentos.jpg';
+import diferencialResultadoImage from '../../foto/DResultado.jpg';
 import drenagemImage from '../../foto/drenagem linfática.jpg';
 import enzimasGorduraImage from '../../foto/enzimasgordura.jpg';
 import gorduraLocalizadaImage from '../../foto/gorduralocalizada.jpg';
@@ -118,21 +122,29 @@ const differentials = [
     category: 'ATENDIMENTO',
     title: 'Cuidado acolhedor que faz cada paciente se sentir segura',
     date: 'escuta atenta em cada etapa',
+    image: diferencialAtendimentoImage,
+    imageAlt: 'Atendimento acolhedor e personalizado na Lumiere Clinic',
   },
   {
     category: 'PROCEDIMENTOS',
     title: 'Tecnologia de ponta para resultados personalizados e seguros',
     date: 'protocolos faciais e corporais',
+    image: diferencialProcedimentosImage,
+    imageAlt: 'Procedimentos estéticos com tecnologia de ponta',
   },
   {
     category: 'EXPERIÊNCIA',
     title: 'Cuidado humanizado que transforma a rotina e a percepção pessoal',
     date: 'acompanhamento individual',
+    image: diferencialExperienciaImage,
+    imageAlt: 'Experiência humanizada de cuidado estético',
   },
   {
     category: 'RESULTADOS',
     title: 'Mais bem-estar, presença e autoestima em cada etapa do tratamento',
     date: 'evolução visível e consistente',
+    image: diferencialResultadoImage,
+    imageAlt: 'Resultados de bem-estar e autoestima em tratamento estético',
   },
 ];
 
