@@ -67,10 +67,7 @@ function ServicesSection({
                     service.title
                   )}
                 </h3>
-                <p
-                  className="mt-4 flex min-h-[8.75rem] items-start justify-center text-justify text-sm leading-7 text-[var(--color-muted)]"
-                  style={{ textJustify: 'inter-word' }}
-                >
+                <p className="mx-auto mt-4 flex min-h-[8.75rem] max-w-[15.5rem] items-start justify-center text-center text-sm leading-7 text-[var(--color-muted)]">
                   {service.description}
                 </p>
               </article>
