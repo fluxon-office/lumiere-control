@@ -13,102 +13,102 @@ import {
   VeinIcon,
 } from '../components/icons/LandingIcons';
 
-const facialTreatmentImage =
-  'https://images.unsplash.com/photo-1731355771317-b2ab72c79124?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000';
-const facialBrushImage =
-  'https://images.unsplash.com/photo-1761718209793-cb6d348831e0?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000';
-const lipImage =
-  'https://images.unsplash.com/photo-1770251910545-e10b18267043?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000';
-const massageImage =
-  'https://images.unsplash.com/photo-1639162906614-0603b0ae95fd?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000';
-const serumImage =
-  'https://images.unsplash.com/photo-1768161680637-630f069f243a?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000';
-const tonerImage =
-  'https://images.unsplash.com/photo-1770717984664-1c266191d8e4?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000';
+import bioestimuladorImage from '../../foto/bioestimulador.jpg';
+import botoxImage from '../../foto/Botox.jpg';
+import drenagemImage from '../../foto/drenagem linfática.jpg';
+import enzimasGorduraImage from '../../foto/enzimasgordura.jpg';
+import gorduraLocalizadaImage from '../../foto/gorduralocalizada.jpg';
+import limpezaPeleImage from '../../foto/limpezapele.jpg';
+import massagemImage from '../../foto/massagem.jpg';
+import microLabialImage from '../../foto/Micro labial.jpg';
+import microagulhamentoImage from '../../foto/microagulhamento.jpg';
+import peelingImage from '../../foto/peeling.jpg';
+import preenchimentoLabialImage from '../../foto/preenchimentolabial.jpg';
+import secagemVasinhoImage from '../../foto/secagemvasinho.jpg';
 
 const services = [
   {
     title: 'Limpeza de pele',
     description: 'Higienização profunda e renovação da textura para uma pele mais luminosa e uniforme.',
     icon: SparkIcon,
-    image: facialTreatmentImage,
+    image: limpezaPeleImage,
     imageAlt: 'Tratamento facial de limpeza de pele em ambiente de clínica estética',
   },
   {
     title: 'Peeling',
     description: 'Protocolo para refinamento da superfície da pele com foco em brilho, clareza e renovação.',
     icon: PeelIcon,
-    image: tonerImage,
+    image: peelingImage,
     imageAlt: 'Produto e protocolo facial para peeling estético',
   },
   {
     title: 'Microagulhamento',
     description: 'Estímulo controlado para favorecer regeneração, textura e qualidade cutânea.',
     icon: PulseIcon,
-    image: facialBrushImage,
+    image: microagulhamentoImage,
     imageAlt: 'Procedimento facial com foco em microagulhamento e renovação da pele',
   },
   {
     title: 'Massagem relaxante',
     description: 'Experiência de bem-estar com ritmo acolhedor e sensação imediata de alívio corporal.',
     icon: FlowIcon,
-    image: massageImage,
+    image: massagemImage,
     imageAlt: 'Massagem relaxante em atendimento estético e corporal',
   },
   {
     title: 'Drenagem linfática',
     description: 'Manobras especializadas para desinchar, aliviar retenção e favorecer leveza corporal.',
     icon: DropIcon,
-    image: massageImage,
+    image: drenagemImage,
     imageAlt: 'Sessão de drenagem linfática com toque corporal suave',
   },
   {
     title: 'Preenchimento labial',
     description: 'Definição sutil de contorno, hidratação e harmonia labial com acabamento refinado.',
     icon: LipsIcon,
-    image: lipImage,
+    image: preenchimentoLabialImage,
     imageAlt: 'Tratamento estético labial com foco em preenchimento e definição',
   },
   {
     title: 'Bioestimulador',
     description: 'Tratamento voltado ao estímulo de colágeno para firmeza progressiva e aspecto sofisticado.',
     icon: OrbIcon,
-    image: serumImage,
+    image: bioestimuladorImage,
     imageAlt: 'Aplicação de bioestimulador para estímulo de colágeno',
   },
   {
     title: 'Botox',
     description: 'Suavização de linhas de expressão com planejamento estético e naturalidade.',
     icon: SmoothIcon,
-    image: facialTreatmentImage,
+    image: botoxImage,
     imageAlt: 'Procedimento estético com foco em suavização de linhas de expressão',
   },
   {
     title: 'Secagem de vasinhos',
     description: 'Cuidado direcionado para melhorar o aspecto visual dos vasinhos com atenção técnica.',
     icon: VeinIcon,
-    image: tonerImage,
+    image: secagemVasinhoImage,
     imageAlt: 'Tratamento estético para secagem de vasinhos e cuidado vascular',
   },
   {
     title: 'Micro labial',
     description: 'Realce delicado de cor e definição para lábios com aparência mais uniforme.',
     icon: OutlineIcon,
-    image: lipImage,
+    image: microLabialImage,
     imageAlt: 'Procedimento de micro labial com acabamento delicado nos lábios',
   },
   {
     title: 'Tratamento para gordura localizada',
     description: 'Protocolos focados em contorno corporal com leitura estética e acompanhamento sério.',
     icon: ShapeIcon,
-    image: massageImage,
+    image: gorduraLocalizadaImage,
     imageAlt: 'Tratamento corporal para gordura localizada e contorno estético',
   },
   {
     title: 'Enzimas para gordura localizada',
     description: 'Abordagem complementar para áreas específicas com estratégia de tratamento mais precisa.',
     icon: MoleculeIcon,
-    image: serumImage,
+    image: enzimasGorduraImage,
     imageAlt: 'Aplicação de enzimas para gordura localizada em tratamento corporal',
   },
 ];
