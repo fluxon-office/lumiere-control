@@ -58,8 +58,8 @@ function AboutSection({ aboutTestimonials }) {
         <div className="mt-10 border-t border-[rgba(212,175,55,0.16)] px-2 pt-7 sm:px-4 lg:px-8">
           <div className="grid gap-10 md:grid-cols-3 md:gap-8 lg:grid-cols-3 lg:gap-12">
             {aboutTestimonials.map((item, index) => (
-              <article key={item.author} className="text-center">
-                <div className="mb-7 flex justify-center gap-3">
+              <article key={item.author} className="flex h-full min-h-[24rem] flex-col text-center">
+                <div className="mb-6 flex justify-center gap-3">
                   {Array.from({ length: 5 }, (_, dotIndex) => (
                     <span
                       key={`${index}-${dotIndex}`}
@@ -67,10 +67,12 @@ function AboutSection({ aboutTestimonials }) {
                     />
                   ))}
                 </div>
-                <p className="mx-auto max-w-[23rem] text-[1.02rem] leading-10 text-[rgba(44,44,44,0.78)]">
-                  “{item.quote}”
-                </p>
-                <p className="mt-8 font-serif text-[1.8rem] italic text-[var(--color-ink)]">
+                <blockquote className="mx-auto flex flex-1 max-w-[23rem] items-start justify-center">
+                  <p className="text-[1rem] leading-8 text-[rgba(44,44,44,0.78)] sm:text-[1.03rem] sm:leading-9">
+                    “{item.quote}”
+                  </p>
+                </blockquote>
+                <p className="mt-8 border-t border-[rgba(212,175,55,0.16)] pt-6 font-serif text-[1.8rem] italic leading-none text-[var(--color-ink)]">
                   {item.author}
                 </p>
               </article>
