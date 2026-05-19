@@ -73,11 +73,24 @@ public class AgendamentoService {
         return agendamentoRepository.findAllByOrderByDataHoraAsc();
     }
 
+    @Transactional
+    public Agendamento criarAgendamentoAdmin(AgendamentoRequest request) {
+        return criarAgendamentoPublico(request);
+    }
+
     public Agendamento confirmarAgendamento(Long id) {
         Agendamento agendamento = agendamentoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Agendamento nao encontrado"));
 
         agendamento.setStatus(StatusAgendamento.CONFIRMADO);
+        return agendamentoRepository.save(agendamento);
+    }
+
+    public Agendamento remarcarAgendamento(Long id) {
+        Agendamento agendamento = agendamentoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Agendamento nao encontrado"));
+
+        agendamento.setStatus(StatusAgendamento.REMARCAR);
         return agendamentoRepository.save(agendamento);
     }
 

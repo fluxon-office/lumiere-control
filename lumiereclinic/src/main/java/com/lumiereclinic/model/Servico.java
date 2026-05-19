@@ -22,6 +22,9 @@ public class Servico {
     @Column(nullable = false)
     private String descricao;
 
+    @Column
+    private String categoria;
+
     @Column(nullable = false)
     private Double preco;
 
@@ -30,4 +33,22 @@ public class Servico {
 
     @Column(nullable = false)
     private Boolean ativo;
+
+    @Column
+    private Boolean publicado;
+
+    @PrePersist
+    public void prePersist() {
+        if (this.categoria == null || this.categoria.isBlank()) {
+            this.categoria = "Facial";
+        }
+
+        if (this.ativo == null) {
+            this.ativo = true;
+        }
+
+        if (this.publicado == null) {
+            this.publicado = true;
+        }
+    }
 }

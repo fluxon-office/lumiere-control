@@ -23,6 +23,11 @@ public class AgendamentoController {
         return agendamentoService.criarAgendamentoPublico(request);
     }
 
+    @PostMapping
+    public Agendamento criarAgendamentoAdmin(@Valid @RequestBody AgendamentoRequest request) {
+        return agendamentoService.criarAgendamentoAdmin(request);
+    }
+
     @GetMapping("/disponibilidade")
     public DisponibilidadeResponse listarDisponibilidade(
             @RequestParam Long servicoId,
@@ -45,6 +50,11 @@ public class AgendamentoController {
     @PutMapping("/{id}/cancelar")
     public Agendamento cancelar(@PathVariable Long id) {
         return agendamentoService.cancelarAgendamento(id);
+    }
+
+    @PutMapping("/{id}/remarcar")
+    public Agendamento remarcar(@PathVariable Long id) {
+        return agendamentoService.remarcarAgendamento(id);
     }
 
     @GetMapping("/data")

@@ -15,12 +15,27 @@ public class ServicoService {
     private ServicoRepository servicoRepository;
 
     public Servico criarServico(Servico servico) {
-        servico.setAtivo(true);
+        if (servico.getAtivo() == null) {
+            servico.setAtivo(true);
+        }
+
+        if (servico.getPublicado() == null) {
+            servico.setPublicado(true);
+        }
+
+        if (servico.getCategoria() == null || servico.getCategoria().isBlank()) {
+            servico.setCategoria("Facial");
+        }
+
         return servicoRepository.save(servico);
     }
 
-    public List<Servico> listarServicosAtivos() {
-        return servicoRepository.findByAtivoTrue();
+    public List<Servico> listarServicosPublicos() {
+        return servicoRepository.findServicosPublicos();
+    }
+
+    public List<Servico> listarTodosServicos() {
+        return servicoRepository.findAll();
     }
 
     public Servico atualizarServico(Long id, Servico servicoAtualizado) {
@@ -29,8 +44,19 @@ public class ServicoService {
 
         servico.setNome(servicoAtualizado.getNome());
         servico.setDescricao(servicoAtualizado.getDescricao());
+        if (servicoAtualizado.getCategoria() != null && !servicoAtualizado.getCategoria().isBlank()) {
+            servico.setCategoria(servicoAtualizado.getCategoria());
+        }
         servico.setPreco(servicoAtualizado.getPreco());
         servico.setDuracaoMinutos(servicoAtualizado.getDuracaoMinutos());
+
+        if (servicoAtualizado.getAtivo() != null) {
+            servico.setAtivo(servicoAtualizado.getAtivo());
+        }
+
+        if (servicoAtualizado.getPublicado() != null) {
+            servico.setPublicado(servicoAtualizado.getPublicado());
+        }
 
         return servicoRepository.save(servico);
     }

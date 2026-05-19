@@ -23,7 +23,12 @@ public class ServicoController {
 
     @GetMapping
     public List<Servico> listarServicos() {
-        return servicoService.listarServicosAtivos();
+        return servicoService.listarServicosPublicos();
+    }
+
+    @GetMapping("/admin")
+    public List<Servico> listarTodosServicos() {
+        return servicoService.listarTodosServicos();
     }
 
     @PutMapping("/{id}")
