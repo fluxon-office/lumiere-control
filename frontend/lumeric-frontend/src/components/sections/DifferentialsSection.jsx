@@ -16,7 +16,7 @@ function DifferentialsSection({ differentials, whatsappLink }) {
         <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
           {differentials.map((item) => (
             <article key={item.title}>
-              <div className="aspect-[0.96] w-full overflow-hidden border border-[rgba(11,28,44,0.08)] bg-[linear-gradient(180deg,#F6F2EB_0%,#ECE5D9_100%)] shadow-[0_14px_30px_rgba(12,24,38,0.06)]">
+              <div className="aspect-[0.96] w-full overflow-hidden rounded-[1.25rem] border border-[rgba(11,28,44,0.08)] bg-[linear-gradient(180deg,#F6F2EB_0%,#ECE5D9_100%)] shadow-[0_14px_30px_rgba(12,24,38,0.06)]">
                 <img
                   src={item.image}
                   alt={item.imageAlt ?? item.category}

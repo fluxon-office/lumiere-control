@@ -285,7 +285,7 @@ function BookingSection({ whatsappLink }) {
   return (
     <section id="agendamento" className="pb-24 pt-0 max-md:pb-16">
       <div className="w-full" data-reveal>
-        <div className="relative overflow-hidden bg-[linear-gradient(180deg,#C8964D_0%,#CA9951_100%)] px-7 py-10 shadow-[0_24px_60px_rgba(163,111,33,0.18)] max-[480px]:px-4 sm:px-10 sm:py-12 lg:px-16 lg:py-14">
+        <div className="relative overflow-hidden bg-[linear-gradient(180deg,#E4C65B_0%,#D4AF37_48%,#CFA63A_100%)] px-7 py-10 shadow-[0_24px_60px_rgba(163,111,33,0.18)] max-[480px]:px-4 sm:px-10 sm:py-12 lg:px-16 lg:py-14">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,247,233,0.28),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(119,67,14,0.14),transparent_26%)]" />
           <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.88fr)_minmax(34rem,1.12fr)] lg:items-start xl:grid-cols-[minmax(0,0.82fr)_minmax(38rem,1.18fr)]">
             <div className="relative z-10 flex max-w-[44rem] flex-col max-lg:mx-auto max-lg:text-center lg:min-h-[41rem]">

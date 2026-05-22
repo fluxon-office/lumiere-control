@@ -3,8 +3,8 @@ import { FacebookIcon, InstagramIcon, LinkedInIcon } from '../icons/LandingIcons
 
 function AboutSection({ aboutTestimonials }) {
   return (
-    <section id="sobre" className="px-4 py-20 max-md:py-16 sm:px-6 lg:px-10">
-      <div className="mx-auto max-w-[84rem]" data-reveal>
+    <section id="sobre" className="py-20 max-md:py-16">
+      <div data-reveal>
         <div className="relative overflow-hidden bg-[#5D4A3B]">
           <img
             src={womanLumiereImage}
@@ -46,7 +46,7 @@ function AboutSection({ aboutTestimonials }) {
           </div>
         </div>
 
-        <div className="px-2 pt-16 text-center sm:px-4 lg:px-8">
+        <div className="mx-auto max-w-[84rem] px-6 pt-16 text-center sm:px-10 lg:px-18">
           <p className="text-[1.1rem] font-medium text-[var(--color-gold-deep)] sm:text-[1.3rem]">
             O que fazemos
           </p>
@@ -55,7 +55,7 @@ function AboutSection({ aboutTestimonials }) {
           </h3>
         </div>
 
-        <div className="mt-10 border-t border-[rgba(212,175,55,0.16)] px-2 pt-7 sm:px-4 lg:px-8">
+        <div className="mx-auto mt-10 max-w-[84rem] border-t border-[rgba(212,175,55,0.16)] px-6 pt-7 sm:px-10 lg:px-18">
           <div className="grid gap-10 md:grid-cols-3 md:gap-8 lg:grid-cols-3 lg:gap-12">
             {aboutTestimonials.map((item, index) => (
               <article key={item.author} className="flex h-full min-h-[24rem] flex-col text-center">

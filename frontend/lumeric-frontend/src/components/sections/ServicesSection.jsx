@@ -48,11 +48,11 @@ function ServicesSection({
           >
             {highlightedServices.map((service) => (
               <article key={`${serviceCarouselStart}-${service.title}`} data-service-slide className="grid content-start justify-items-center text-center">
-                <div className="aspect-[0.84] w-full overflow-hidden border border-[rgba(11,28,44,0.08)] bg-[linear-gradient(180deg,#F6F2EB_0%,#ECE5D9_100%)] shadow-[0_14px_30px_rgba(12,24,38,0.06)]">
+                <div className="group aspect-[0.84] w-full cursor-zoom-in overflow-hidden rounded-[1.25rem] border border-[rgba(11,28,44,0.08)] bg-[linear-gradient(180deg,#F6F2EB_0%,#ECE5D9_100%)] shadow-[0_14px_30px_rgba(12,24,38,0.06)] transition duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_22px_46px_rgba(12,24,38,0.14)]">
                   <img
                     src={service.image}
                     alt={service.imageAlt ?? service.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-125 group-hover:brightness-105"
                     loading="lazy"
                   />
                 </div>

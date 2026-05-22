@@ -2,7 +2,7 @@ function SiteHeader({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[calc(var(--hero-navbar-offset)+0.64rem)] bg-[linear-gradient(180deg,rgba(245,241,235,0.94)_0%,rgba(242,236,228,0.88)_54%,rgba(242,236,228,0.16)_84%,transparent_100%)] backdrop-blur-xl" />
-      <div className="w-full px-4 py-[0.32rem] sm:px-6 lg:px-10">
+      <div className="w-full py-[0.32rem]">
         <div className="relative flex min-h-[var(--hero-navbar-offset)] items-center border border-[rgba(212,175,55,0.16)] bg-[linear-gradient(180deg,rgba(248,244,238,0.94)_0%,rgba(244,238,230,0.9)_100%)] px-4 py-2.5 shadow-[0_10px_22px_rgba(43,30,18,0.08)] backdrop-blur-xl sm:px-6 lg:px-8">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.9)_32%,rgba(255,255,255,0.18)_100%)]" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-[linear-gradient(90deg,rgba(221,186,90,0.82)_0%,rgba(212,175,55,0.92)_50%,rgba(184,135,27,0.84)_100%)]" />
@@ -63,7 +63,7 @@ function SiteHeader({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }
         </div>
       </div>
 
-      <div className={`px-4 transition-all duration-300 sm:px-6 lg:hidden ${menuOpen ? 'max-h-[30rem] translate-y-0 opacity-100' : 'pointer-events-none max-h-0 -translate-y-2 opacity-0'}`}>
+      <div className={`transition-all duration-300 lg:hidden ${menuOpen ? 'max-h-[30rem] translate-y-0 opacity-100' : 'pointer-events-none max-h-0 -translate-y-2 opacity-0'}`}>
         <div className="border border-t-0 border-[rgba(212,175,55,0.16)] bg-[linear-gradient(180deg,rgba(248,244,238,0.99)_0%,rgba(244,238,230,0.97)_100%)] p-4 shadow-[0_18px_38px_rgba(43,30,18,0.12)] backdrop-blur-xl">
           <nav className="flex flex-col gap-2">
             {navItems.map((item) => (
