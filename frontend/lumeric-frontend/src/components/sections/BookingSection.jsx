@@ -3,10 +3,9 @@ import { bookingWomanImage } from '../../assets/lumiereImages';
 import { buildApiUrl, readJsonResponse } from '../../utils/api';
 import { services as landingServices } from '../../utils/landingContent';
 import {
-  buildAvailableDays,
   buildProcedureOptions,
-  buildSpecificDayAvailability,
   formatAppointmentSummary,
+  mapAvailabilityDay,
 } from '../../utils/bookingExperience';
 
 function BookingSection({ whatsappLink }) {
@@ -18,6 +17,7 @@ function BookingSection({ whatsappLink }) {
   const [availabilityLoading, setAvailabilityLoading] = useState(false);
   const [availabilityError, setAvailabilityError] = useState('');
   const [occupiedTimes, setOccupiedTimes] = useState([]);
+  const [availableDays, setAvailableDays] = useState([]);
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
   const [formData, setFormData] = useState({
     nome: '',
@@ -81,10 +81,45 @@ function BookingSection({ whatsappLink }) {
     [formData.servicoId, procedureOptions],
   );
 
-  const quickAvailableDays = useMemo(
-    () => (selectedProcedure ? buildAvailableDays(selectedProcedure) : []),
-    [selectedProcedure],
-  );
+  useEffect(() => {
+    if (!selectedProcedure) {
+      setAvailableDays([]);
+      return undefined;
+    }
+
+    const controller = new AbortController();
+
+    async function loadAgendaPreview() {
+      setAvailabilityError('');
+
+      try {
+        const query = new URLSearchParams({
+          servicoId: String(selectedProcedure.backendId),
+          dias: '8',
+        });
+
+        const response = await fetch(buildApiUrl(`/agendamentos/disponibilidade/agenda?${query.toString()}`), {
+          signal: controller.signal,
+        });
+        const payload = await readJsonResponse(response);
+
+        if (!response.ok) {
+          throw new Error(payload?.mensagem || 'Nao foi possivel consultar a agenda deste procedimento.');
+        }
+
+        setAvailableDays(Array.isArray(payload) ? payload.map((day) => mapAvailabilityDay(day, selectedProcedure.duration)) : []);
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          setAvailableDays([]);
+          setAvailabilityError(error.message || 'Nao foi possivel consultar a agenda deste procedimento.');
+        }
+      }
+    }
+
+    loadAgendaPreview();
+
+    return () => controller.abort();
+  }, [selectedProcedure]);
 
   useEffect(() => {
     if (!selectedProcedure || !formData.data) {
@@ -116,6 +151,11 @@ function BookingSection({ whatsappLink }) {
         }
 
         setOccupiedTimes(Array.isArray(payload?.horariosOcupados) ? payload.horariosOcupados : []);
+        const selectedAvailabilityDay = mapAvailabilityDay(payload, selectedProcedure.duration);
+        setAvailableDays((current) => {
+          const remaining = current.filter((day) => day.value !== selectedAvailabilityDay.value);
+          return [...remaining, selectedAvailabilityDay].sort((left, right) => left.value.localeCompare(right.value));
+        });
       } catch (error) {
         if (error.name !== 'AbortError') {
           setAvailabilityError(error.message || 'Não foi possível consultar os horários deste dia.');
@@ -133,30 +173,13 @@ function BookingSection({ whatsappLink }) {
     return () => controller.abort();
   }, [formData.data, selectedProcedure]);
 
-  const customCalendarDay = useMemo(
-    () => (selectedProcedure && calendarDate
-      ? buildSpecificDayAvailability(selectedProcedure, calendarDate, calendarDate === formData.data ? occupiedTimes : [])
-      : null),
-    [calendarDate, formData.data, occupiedTimes, selectedProcedure],
-  );
-
   const selectedDay = useMemo(() => {
-    if (!selectedProcedure || !formData.data) {
+    if (!formData.data) {
       return null;
     }
 
-    return buildSpecificDayAvailability(selectedProcedure, formData.data, occupiedTimes);
-  }, [formData.data, occupiedTimes, selectedProcedure]);
-
-  const availableDays = useMemo(() => {
-    if (!customCalendarDay) {
-      return quickAvailableDays;
-    }
-
-    return quickAvailableDays.some((day) => day.value === customCalendarDay.value)
-      ? quickAvailableDays
-      : [...quickAvailableDays, customCalendarDay];
-  }, [customCalendarDay, quickAvailableDays]);
+    return availableDays.find((day) => day.value === formData.data) || null;
+  }, [availableDays, formData.data]);
 
   const selectedSlot = selectedDay?.slots.find((slot) => slot.value === formData.horario);
   const summaryText = formatAppointmentSummary({
@@ -197,6 +220,7 @@ function BookingSection({ whatsappLink }) {
     setCalendarDate('');
     setOccupiedTimes([]);
     setAvailabilityError('');
+    setAvailableDays([]);
     setFormData((current) => ({
       ...current,
       servicoId: value,
@@ -265,6 +289,11 @@ function BookingSection({ whatsappLink }) {
         message: 'Solicitação enviada com sucesso. A equipe da clínica pode seguir com a confirmação.',
       });
       setOccupiedTimes((current) => [...new Set([...current, formData.horario])]);
+      setAvailableDays((current) => current.map((day) => (
+        day.value === formData.data
+          ? { ...day, slots: day.slots.filter((slot) => slot.value !== formData.horario) }
+          : day
+      )));
       setFormData({
         nome: '',
         telefone: '',
