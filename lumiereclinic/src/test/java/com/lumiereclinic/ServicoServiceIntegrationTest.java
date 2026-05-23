@@ -2,6 +2,7 @@ package com.lumiereclinic;
 
 import com.lumiereclinic.dto.ServicoRequest;
 import com.lumiereclinic.dto.ServicoResponse;
+import com.lumiereclinic.dto.RemarcacaoRequest;
 import com.lumiereclinic.enums.StatusAgendamento;
 import com.lumiereclinic.exception.ResourceBadRequestException;
 import com.lumiereclinic.model.Agendamento;
@@ -12,6 +13,7 @@ import com.lumiereclinic.repository.AgendamentoRepository;
 import com.lumiereclinic.repository.ClienteRepository;
 import com.lumiereclinic.repository.ServicoRepository;
 import com.lumiereclinic.repository.UsuarioRepository;
+import com.lumiereclinic.service.AgendamentoService;
 import com.lumiereclinic.service.ServicoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @Transactional
@@ -32,6 +35,9 @@ class ServicoServiceIntegrationTest {
 
     @Autowired
     private ServicoService servicoService;
+
+    @Autowired
+    private AgendamentoService agendamentoService;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -124,6 +130,38 @@ class ServicoServiceIntegrationTest {
         );
 
         assertEquals("Nao e possivel excluir um servico vinculado a agendamentos", exception.getMessage());
+    }
+
+    @Test
+    void deveRemarcarAgendamentoEAtualizarTelefoneComMensagemWhatsapp() {
+        ServicoResponse criado = servicoService.criarServico(criarRequest("Botox", "Dra. Teste"), EMPRESA_A);
+        Servico servico = servicoRepository.findById(criado.getId()).orElseThrow();
+
+        Cliente cliente = new Cliente();
+        cliente.setNome("Cliente Remarcacao");
+        cliente.setEmail("remarcacao@teste.com");
+        cliente.setTelefone("11999999999");
+        cliente = clienteRepository.save(cliente);
+
+        Agendamento agendamento = new Agendamento();
+        agendamento.setCliente(cliente);
+        agendamento.setServico(servico);
+        agendamento.setDataHora(LocalDateTime.now().plusDays(2).withHour(10).withMinute(0).withSecond(0).withNano(0));
+        agendamento.setStatus(StatusAgendamento.PENDENTE);
+        agendamento = agendamentoRepository.save(agendamento);
+
+        RemarcacaoRequest request = new RemarcacaoRequest();
+        request.setDataHora(LocalDateTime.now().plusDays(3).withHour(14).withMinute(30).withSecond(0).withNano(0));
+        request.setTelefone("(11) 98888-7777");
+        request.setObservacao("Cliente pediu novo horario");
+
+        Agendamento remarcado = agendamentoService.remarcarAgendamento(agendamento.getId(), request);
+
+        assertEquals(StatusAgendamento.REMARCAR, remarcado.getStatus());
+        assertEquals("11988887777", remarcado.getCliente().getTelefone());
+        assertEquals(request.getDataHora(), remarcado.getDataHora());
+        assertEquals("Cliente pediu novo horario", remarcado.getObservacao());
+        assertTrue(remarcado.getWhatsappUrl() != null && remarcado.getWhatsappUrl().contains("wa.me"));
     }
 
     private Usuario criarUsuario(String email, String empresaId) {
