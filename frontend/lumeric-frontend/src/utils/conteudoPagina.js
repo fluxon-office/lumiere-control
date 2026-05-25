@@ -30,7 +30,7 @@ import peelingImage from '../../foto/peeling.jpg';
 import preenchimentoLabialImage from '../../foto/preenchimentolabial.jpg';
 import secagemVasinhoImage from '../../foto/secagemvasinho.jpg';
 
-const services = [
+const servicos = [
   {
     title: 'Limpeza de pele',
     description: 'Higienização profunda e renovação da textura para uma pele mais luminosa e uniforme.',
@@ -117,7 +117,7 @@ const services = [
   },
 ];
 
-const differentials = [
+const diferenciais = [
   {
     category: 'ATENDIMENTO',
     title: 'Cuidado acolhedor que faz cada paciente se sentir segura',
@@ -148,25 +148,25 @@ const differentials = [
   },
 ];
 
-const aboutTestimonials = [
+const depoimentosSobre = [
   {
     quote:
-      'A Dra. Claudia é a médica mais sensata, honesta e competente, além de ser extremamente sincera. Excelente atendimento por ela e sua equipe, resultados incríveis! Recomendo demais, nota mil!',
+      'A Dra. Cláudia é a médica mais sensata, honesta e competente, além de ser extremamente sincera. Excelente atendimento por ela e sua equipe, resultados incríveis! Recomendo demais, nota mil!',
     author: 'Giulia Dias',
   },
   {
     quote:
-      'Equipe nota 10! Acolhimento e receptividade nota 10! Dra. Claudia é uma médica que me deixou muito à vontade, entendeu todas as minhas aflições, expectativas e queixas e explicou com detalhes todos os procedimentos possíveis. Adorei! Super recomendo a experiência!',
+      'Equipe nota 10! Acolhimento e receptividade nota 10! Dra. Cláudia é uma médica que me deixou muito à vontade, entendeu todas as minhas aflições, expectativas e queixas e explicou com detalhes todos os procedimentos possíveis. Adorei! Super recomendo a experiência!',
     author: 'Ana Moreno',
   },
   {
     quote:
-      'Cheguei no consultório com a autoestima muito baixa, meu rosto estava tomado de espinhas, já tinha ido em diversos profissionais. A Dra. Claudia foi sucinta, me receitou e em 1 mês meu rosto estava PERFEITO. Sou muito grata pelo atendimento e pelo resultado.',
+      'Cheguei ao consultório com a autoestima muito baixa. Meu rosto estava tomado por espinhas e eu já tinha ido a diversos profissionais. A Dra. Cláudia foi sucinta, me orientou e, em 1 mês, meu rosto estava perfeito. Sou muito grata pelo atendimento e pelo resultado.',
     author: 'Evelyn Silva',
   },
 ];
 
-const faqItems = [
+const perguntasFrequentes = [
   ['Como funciona o primeiro atendimento na Lumiere Clinic?', 'A jornada começa com avaliação esteticamente orientada, entendimento da necessidade e indicação do protocolo mais adequado para o objetivo da paciente.'],
   ['Preciso agendar avaliação antes de realizar um procedimento?', 'Para a maior parte dos protocolos, a avaliação é recomendada para definir indicação, sequência, intervalo e expectativa de resultado.'],
   ['A confirmação do horário acontece automaticamente?', 'Não. O formulário registra a solicitação e a equipe confirma disponibilidade, orientações e detalhes finais pelo contato informado.'],
@@ -175,11 +175,17 @@ const faqItems = [
   ['Botox deixa a expressão artificial?', 'Quando o planejamento é cuidadoso, a intenção é suavizar linhas e manter naturalidade, sem aspecto rígido.'],
 ].map(([question, answer]) => ({ question, answer }));
 
-const navItems = [
+const itensNavegacao = [
   { label: 'Home', href: '#home' },
   { label: 'Serviços', href: '#servicos' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Contato', href: '#contato' },
 ];
 
-export { aboutTestimonials, differentials, faqItems, navItems, services };
+export {
+  depoimentosSobre,
+  diferenciais,
+  itensNavegacao,
+  perguntasFrequentes,
+  servicos,
+};

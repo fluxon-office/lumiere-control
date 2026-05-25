@@ -1,17 +1,20 @@
-import { heroImage } from '../../assets/lumiereImages';
+import { heroImage, heroMobileImage } from '../../assets/imagensLumiere';
 
-function HeroSection({ heroCardRef }) {
+function SecaoHero({ heroCardRef }) {
   return (
     <section id="home" className="relative px-0 pb-0 pt-[calc(var(--hero-navbar-offset)+0.32rem)]">
       <div className="mx-auto max-w-none">
         <div className="relative min-h-[calc(100vh-var(--hero-navbar-offset))] overflow-hidden bg-[var(--color-ink)]">
           <div ref={heroCardRef} className="absolute inset-0">
-            <img
-              src={heroImage}
-              alt="Lumiere Clinic hero"
-              loading="eager"
-              className="block h-full w-full object-cover object-[64%_16%] max-[1180px]:object-[72%_18%] max-md:object-[76%_14%]"
-            />
+            <picture>
+              <source media="(max-width: 767px)" srcSet={heroMobileImage} />
+              <img
+                src={heroImage}
+                alt="Lumiere Clinic hero"
+                loading="eager"
+                className="block h-full w-full object-cover object-[62%_center] max-[1180px]:object-[68%_center] max-md:object-center"
+              />
+            </picture>
                 <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(120,88,29,0.22)_0%,rgba(125,91,30,0.32)_14%,rgba(96,69,24,0.44)_30%,rgba(65,46,18,0.54)_46%,rgba(49,35,16,0.36)_62%,rgba(32,24,12,0.14)_80%,rgba(11,28,44,0)_100%)] max-[1180px]:bg-[linear-gradient(180deg,rgba(11,28,44,0.12)_0%,rgba(52,38,19,0.22)_34%,rgba(35,25,13,0.78)_100%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(212,175,55,0.14),transparent_24%)]" />
                 <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(94,68,23,0)_0%,rgba(104,75,26,0.08)_24%,rgba(116,84,28,0.18)_48%,rgba(126,92,31,0.26)_72%,rgba(136,99,33,0.34)_100%)]" />
@@ -71,4 +74,4 @@ function HeroSection({ heroCardRef }) {
   );
 }
 
-export default HeroSection;
+export default SecaoHero;

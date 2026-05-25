@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '../icons/LandingIcons';
 
-function ServicesSection({
+function SecaoServicos({
   highlightedServices,
   serviceCarouselStart,
   serviceCarouselTrackRef,
@@ -110,4 +110,4 @@ function ServicesSection({
   );
 }
 
-export default ServicesSection;
+export default SecaoServicos;

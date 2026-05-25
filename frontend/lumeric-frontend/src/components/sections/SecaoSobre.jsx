@@ -1,7 +1,7 @@
-import { womanLumiereImage } from '../../assets/lumiereImages';
+import { womanLumiereImage } from '../../assets/imagensLumiere';
 import { FacebookIcon, InstagramIcon, LinkedInIcon } from '../icons/LandingIcons';
 
-function AboutSection({ aboutTestimonials }) {
+function SecaoSobre({ aboutTestimonials }) {
   return (
     <section id="sobre" className="py-20 max-md:py-16">
       <div data-reveal>
@@ -22,21 +22,27 @@ function AboutSection({ aboutTestimonials }) {
             </p>
             <div className="mt-8 flex items-center gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Instagram Lumiere Clinic"
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(255,255,255,0.94)] text-[var(--color-ink)] transition duration-300 hover:scale-[1.04]"
               >
                 <InstagramIcon className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noreferrer"
                 aria-label="Facebook Lumiere Clinic"
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(255,255,255,0.94)] text-[var(--color-ink)] transition duration-300 hover:scale-[1.04]"
               >
                 <FacebookIcon className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noreferrer"
                 aria-label="LinkedIn Lumiere Clinic"
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-[rgba(255,255,255,0.94)] text-[var(--color-ink)] transition duration-300 hover:scale-[1.04]"
               >
@@ -84,4 +90,4 @@ function AboutSection({ aboutTestimonials }) {
   );
 }
 
-export default AboutSection;
+export default SecaoSobre;

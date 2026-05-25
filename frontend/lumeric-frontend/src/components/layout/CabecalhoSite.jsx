@@ -1,4 +1,4 @@
-function SiteHeader({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }) {
+function CabecalhoSite({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[calc(var(--hero-navbar-offset)+0.64rem)] bg-[linear-gradient(180deg,rgba(245,241,235,0.94)_0%,rgba(242,236,228,0.88)_54%,rgba(242,236,228,0.16)_84%,transparent_100%)] backdrop-blur-xl" />
@@ -90,4 +90,4 @@ function SiteHeader({ logoImage, menuOpen, navItems, onMenuToggle, onMenuClose }
   );
 }
 
-export default SiteHeader;
+export default CabecalhoSite;

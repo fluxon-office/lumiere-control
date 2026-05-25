@@ -1,10 +1,10 @@
-import SectionTag from '../common/SectionTag';
+import EtiquetaSecao from '../common/EtiquetaSecao';
 
-function FaqSection({ activeFaq, faqItems, onToggleFaq }) {
+function SecaoPerguntasFrequentes({ activeFaq, faqItems, onToggleFaq }) {
   return (
     <section className="px-4 py-20 max-md:py-16 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-5xl" data-reveal>
-        <SectionTag>FAQ</SectionTag>
+        <EtiquetaSecao>FAQ</EtiquetaSecao>
         <h2 className="section-title mt-4 text-[var(--color-ink)]">
           Perguntas frequentes sobre atendimento, procedimentos e agendamento.
         </h2>
@@ -51,4 +51,4 @@ function FaqSection({ activeFaq, faqItems, onToggleFaq }) {
   );
 }
 
-export default FaqSection;
+export default SecaoPerguntasFrequentes;

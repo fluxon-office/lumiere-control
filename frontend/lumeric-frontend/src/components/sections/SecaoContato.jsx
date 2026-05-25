@@ -1,17 +1,17 @@
-import SectionTag from '../common/SectionTag';
+import EtiquetaSecao from '../common/EtiquetaSecao';
 import { WhatsAppIcon } from '../icons/LandingIcons';
 
-function ContactSection({ locationAddress, mapsEmbedLink, mapsLink, whatsappLink }) {
+function SecaoContato({ locationAddress, mapsEmbedLink, mapsLink, whatsappLink }) {
   return (
     <section id="contato" className="px-4 py-20 max-md:py-16 sm:px-6 lg:px-10">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center" data-reveal>
         <div>
-          <SectionTag>Localização</SectionTag>
+          <EtiquetaSecao>Localização</EtiquetaSecao>
           <h2 className="section-title mt-4 text-[var(--color-ink)] max-lg:text-[clamp(2.1rem,6vw,3.3rem)] max-lg:leading-[1.08]">
-            Presença física clara, informação objetiva e uma seção de contato que parece parte da experiência.
+            Encontre a Lumiere Clinic com facilidade e fale com a nossa equipe pelo canal que preferir.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-8 text-[var(--color-muted)]">
-            A Lumiere Clinic fica na {locationAddress.replace(', São Paulo - SP', '')}. A seção abaixo mostra o Google Maps dentro do mesmo acabamento visual da interface.
+            Estamos na {locationAddress.replace(', São Paulo - SP', '')}. Use o mapa para traçar sua rota ou fale conosco pelo WhatsApp.
           </p>
           <div className="mt-8 rounded-[1.7rem] border border-slate-200/70 bg-white p-6 shadow-[0_18px_42px_rgba(12,24,38,0.08)]">
             <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-gold-deep)]">Endereço</p>
@@ -56,4 +56,4 @@ function ContactSection({ locationAddress, mapsEmbedLink, mapsLink, whatsappLink
   );
 }
 
-export default ContactSection;
+export default SecaoContato;

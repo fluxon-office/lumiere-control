@@ -1,6 +1,6 @@
-import { heroImage } from '../../assets/lumiereImages';
+import { heroImage } from '../../assets/imagensLumiere';
 
-function FloatingBackground() {
+function FundoFlutuante() {
   return (
     <>
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -17,4 +17,4 @@ function FloatingBackground() {
   );
 }
 
-export default FloatingBackground;
+export default FundoFlutuante;

@@ -1,7 +1,7 @@
-import { heroImage } from '../../assets/lumiereImages';
-import FooterColumn from '../common/FooterColumn';
+import { heroImage } from '../../assets/imagensLumiere';
+import ColunaRodape from '../common/ColunaRodape';
 
-function SiteFooter({ logoImage, mapsLink }) {
+function RodapeSite({ logoImage, mapsLink }) {
   return (
     <footer className="relative overflow-hidden bg-[#0E0B09] px-4 py-16 text-white sm:px-6 lg:px-10">
       <div className="absolute inset-0">
@@ -23,7 +23,7 @@ function SiteFooter({ logoImage, mapsLink }) {
             Cuidado estético com presença visual refinada, atendimento organizado e uma jornada feita para converter com naturalidade.
           </p>
         </div>
-        <FooterColumn
+        <ColunaRodape
           title="Navegação"
           items={[
             ['Home', '#home'],
@@ -32,7 +32,7 @@ function SiteFooter({ logoImage, mapsLink }) {
             ['Contato', '#contato'],
           ]}
         />
-        <FooterColumn
+        <ColunaRodape
           title="Contato"
           items={[
             ['Av. Atlântica, 2113', '#contato'],
@@ -40,10 +40,10 @@ function SiteFooter({ logoImage, mapsLink }) {
             ['São Paulo - SP', '#contato'],
           ]}
         />
-        <FooterColumn
+        <ColunaRodape
           title="Redes sociais"
           items={[
-            ['Instagram', '#'],
+            ['Instagram', 'https://www.instagram.com/'],
             ['WhatsApp', '#agendamento'],
             ['Google Maps', mapsLink],
           ]}
@@ -58,4 +58,4 @@ function SiteFooter({ logoImage, mapsLink }) {
   );
 }
 
-export default SiteFooter;
+export default RodapeSite;

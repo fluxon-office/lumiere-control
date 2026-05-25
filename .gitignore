@@ -1,9 +1,12 @@
-# Ignorar o diretório de build
+# Ignorar diretórios de build
 /target/
 /out/
+dist/
 
-# Ignorar dependências locais do Maven
+# Ignorar dependências locais
 /.m2/
+node_modules/
+frontend/*/node_modules/
 
 # Ignorar arquivos de configuração do IDE
 .idea/
@@ -31,3 +34,10 @@ Thumbs.db
 
 # Ignorar arquivos gerados pelo Spring Boot DevTools
 spring-boot-devtools/
+
+# Pastas de referência visual e inspiração
+inspira/
+frontend/lumeric-frontend/inspiracao/
+
+# Frontend administrativo será publicado em outro repositório
+/frontend/admin-frontend/

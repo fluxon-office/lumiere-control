@@ -1,4 +1,4 @@
-function FooterColumn({ title, items }) {
+function ColunaRodape({ title, items }) {
   return (
     <div>
       <p className="font-['Inter'] text-2xl font-semibold text-white">{title}</p>
@@ -13,4 +13,4 @@ function FooterColumn({ title, items }) {
   );
 }
 
-export default FooterColumn;
+export default ColunaRodape;

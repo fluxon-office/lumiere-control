@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function useLandingAnimations({ heroCardRef, rootRef, serviceCarouselStart, serviceCarouselTrackRef }) {
+function useAnimacoesPaginaInicial({ heroRef, paginaRef, inicioCarrosselServicos, carrosselServicosRef }) {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -14,7 +14,7 @@ function useLandingAnimations({ heroCardRef, rootRef, serviceCarouselStart, serv
       );
 
       gsap.fromTo(
-        heroCardRef.current,
+        heroRef.current,
         { y: 36, opacity: 0, rotateX: 10 },
         { y: 0, opacity: 1, rotateX: 0, duration: 1, ease: 'power3.out', delay: 0.15 },
       );
@@ -40,17 +40,17 @@ function useLandingAnimations({ heroCardRef, rootRef, serviceCarouselStart, serv
           },
         );
       });
-    }, rootRef);
+    }, paginaRef);
 
     return () => ctx.revert();
-  }, [heroCardRef, rootRef]);
+  }, [heroRef, paginaRef]);
 
   useEffect(() => {
-    if (!serviceCarouselTrackRef.current) {
+    if (!carrosselServicosRef.current) {
       return undefined;
     }
 
-    const cards = serviceCarouselTrackRef.current.querySelectorAll('[data-service-slide]');
+    const cards = carrosselServicosRef.current.querySelectorAll('[data-service-slide]');
     const animation = gsap.fromTo(
       cards,
       { y: 20, opacity: 0, scale: 0.985 },
@@ -66,7 +66,7 @@ function useLandingAnimations({ heroCardRef, rootRef, serviceCarouselStart, serv
     );
 
     return () => animation.kill();
-  }, [serviceCarouselStart, serviceCarouselTrackRef]);
+  }, [inicioCarrosselServicos, carrosselServicosRef]);
 }
 
-export default useLandingAnimations;
+export default useAnimacoesPaginaInicial;

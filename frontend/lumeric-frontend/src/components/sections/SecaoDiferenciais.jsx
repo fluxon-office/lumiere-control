@@ -1,4 +1,4 @@
-function DifferentialsSection({ differentials, whatsappLink }) {
+function SecaoDiferenciais({ differentials, whatsappLink }) {
   return (
     <section className="px-4 py-24 max-md:py-16 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl" data-reveal>
@@ -10,7 +10,7 @@ function DifferentialsSection({ differentials, whatsappLink }) {
             Seu guia para beleza, bem-estar e autoestima
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-base leading-8 text-[var(--color-muted)] sm:text-[1.12rem]">
-            Mudamos a vida das pessoas para melhor com atendimento de ponta, acolhimento real e uma experiência 5 estrelas no Google que fortalece confiança, bem-estar e autoestima.
+            Cuidamos de cada paciente com atendimento de ponta, acolhimento real e uma experiência cinco estrelas que fortalece confiança, bem-estar e autoestima.
           </p>
         </div>
         <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
@@ -45,7 +45,7 @@ function DifferentialsSection({ differentials, whatsappLink }) {
             rel="noreferrer"
             className="inline-flex min-h-14 items-center justify-center rounded-full bg-[var(--color-gold)] px-8 py-3 text-[1.12rem] font-medium text-white transition duration-300 hover:bg-[var(--color-gold-deep)] max-[480px]:w-full"
           >
-            Explore
+            Conhecer diferenciais
           </a>
         </div>
       </div>
@@ -53,4 +53,4 @@ function DifferentialsSection({ differentials, whatsappLink }) {
   );
 }
 
-export default DifferentialsSection;
+export default SecaoDiferenciais;

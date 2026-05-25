@@ -1,4 +1,4 @@
-function SectionTag({ children, dark = false }) {
+function EtiquetaSecao({ children, dark = false }) {
   return (
     <p
       className={`inline-flex rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] ${
@@ -12,4 +12,4 @@ function SectionTag({ children, dark = false }) {
   );
 }
 
-export default SectionTag;
+export default EtiquetaSecao;
