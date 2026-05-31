@@ -56,7 +56,7 @@ function SecaoServicos({
                     loading="lazy"
                   />
                 </div>
-                <h3 className="mt-6 flex min-h-[5rem] items-start justify-center text-center text-[1.58rem] font-medium leading-[1.14] tracking-[-0.03em] text-[var(--color-ink)]">
+                <h3 className="mt-6 flex items-start justify-center text-center text-[1.58rem] font-medium leading-[1.14] text-[var(--color-ink)]">
                   {service.title === 'Microagulhamento' ? (
                     <>
                       Micro
@@ -67,7 +67,7 @@ function SecaoServicos({
                     service.title
                   )}
                 </h3>
-                <p className="mx-auto mt-4 flex min-h-[8.75rem] max-w-[15.5rem] items-start justify-center text-center text-sm leading-7 text-[var(--color-muted)]">
+                <p className="mx-auto mt-4 flex max-w-[15.5rem] items-start justify-center text-center text-sm leading-7 text-[var(--color-muted)]">
                   {service.description}
                 </p>
               </article>

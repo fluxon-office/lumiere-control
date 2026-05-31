@@ -4,7 +4,7 @@ function SecaoHero({ heroCardRef }) {
   return (
     <section id="home" className="relative px-0 pb-0 pt-[calc(var(--hero-navbar-offset)+0.32rem)]">
       <div className="mx-auto max-w-none">
-        <div className="relative min-h-[calc(100vh-var(--hero-navbar-offset))] overflow-hidden bg-[var(--color-ink)]">
+        <div className="relative min-h-[calc(100svh-var(--hero-navbar-offset))] overflow-hidden bg-[var(--color-ink)]">
           <div ref={heroCardRef} className="absolute inset-0">
             <picture>
               <source media="(max-width: 767px)" srcSet={heroMobileImage} />
@@ -19,7 +19,7 @@ function SecaoHero({ heroCardRef }) {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(212,175,55,0.14),transparent_24%)]" />
                 <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(94,68,23,0)_0%,rgba(104,75,26,0.08)_24%,rgba(116,84,28,0.18)_48%,rgba(126,92,31,0.26)_72%,rgba(136,99,33,0.34)_100%)]" />
           </div>
-          <div className="relative z-10 flex min-h-[calc(100vh-var(--hero-navbar-offset))] items-center pt-12 max-[1180px]:min-h-[calc(100svh-var(--hero-navbar-offset))] max-[1180px]:items-stretch max-[1180px]:pb-10 max-[1180px]:pt-10 sm:pt-14 min-[1181px]:pt-16">
+          <div className="relative z-10 flex min-h-[calc(100svh-var(--hero-navbar-offset))] items-center py-12 max-[1180px]:items-stretch max-[1180px]:pb-10 max-[1180px]:pt-10 sm:py-14 min-[1181px]:py-14">
             <div className="flex max-w-[37rem] flex-col px-4 max-[1180px]:min-h-[calc(100svh-var(--hero-navbar-offset)-5rem)] max-[1180px]:max-w-[42rem] max-[1180px]:text-left sm:px-6 min-[1181px]:ml-[clamp(2rem,6vw,5.5rem)] min-[1181px]:px-0">
               <p
                 data-hero-text
@@ -30,7 +30,7 @@ function SecaoHero({ heroCardRef }) {
               </p>
               <h1
                 data-hero-text
-                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] tracking-[-0.05em] text-white max-[1180px]:max-w-[11.5ch] max-[1180px]:text-[clamp(3rem,10vw,5rem)] max-md:mt-0 max-md:leading-[0.98] md:max-[1180px]:mt-8 md:max-[1180px]:text-white/72 max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] min-[1181px]:text-[5.4rem]"
+                className="max-w-[10.5ch] font-['Inter'] text-[2.9rem] font-semibold leading-[0.92] text-white max-[1180px]:max-w-[11.5ch] max-[1180px]:text-[clamp(3rem,10vw,5rem)] max-md:mt-0 max-md:leading-[0.98] md:max-[1180px]:mt-8 md:max-[1180px]:text-white/72 max-[480px]:text-[clamp(2.45rem,13vw,3.35rem)] sm:text-[4.2rem] min-[1181px]:text-[clamp(4.4rem,6vw,5.1rem)]"
               >
                 Estética facial
                 <br />
