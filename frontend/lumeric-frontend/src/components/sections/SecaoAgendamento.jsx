@@ -11,12 +11,8 @@ function SecaoAgendamento({ whatsappLink }) {
       <div className="w-full" data-reveal>
         <div className={`relative bg-[linear-gradient(180deg,#B98B17_0%,#9F6F13_50%,#7A4C00_100%)] px-7 py-10 shadow-[0_24px_60px_rgba(101,64,10,0.24)] max-[480px]:px-4 sm:px-10 sm:py-12 lg:px-16 lg:py-12 ${agendaAberta ? 'overflow-visible' : 'overflow-hidden'}`}>
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,247,233,0.2),transparent_28%),linear-gradient(90deg,rgba(16,32,51,0.2),transparent_52%),radial-gradient(circle_at_bottom_right,rgba(42,24,5,0.24),transparent_30%)]" />
-          <div className={`relative grid gap-10 lg:items-start ${
-            agendaAberta
-              ? 'lg:grid-cols-[minmax(0,0.88fr)_minmax(34rem,1.12fr)] xl:grid-cols-[minmax(0,0.82fr)_minmax(38rem,1.18fr)]'
-              : 'lg:grid-cols-[minmax(0,44rem)] lg:justify-center'
-          }`}>
-            <div className={`relative z-10 flex max-w-[44rem] flex-col max-lg:mx-auto max-lg:text-center ${agendaAberta ? 'lg:min-h-[41rem]' : 'lg:min-h-0 lg:text-center'}`}>
+          <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.88fr)_minmax(34rem,1.12fr)] lg:items-start xl:grid-cols-[minmax(0,0.82fr)_minmax(38rem,1.18fr)]">
+            <div className="relative z-10 flex max-w-[44rem] flex-col max-lg:mx-auto max-lg:text-center lg:min-h-[41rem]">
               <div className="inline-flex rounded-full border border-[rgba(255,248,234,0.34)] bg-[rgba(255,248,234,0.12)] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-[rgba(255,248,234,0.9)] max-lg:self-center max-[480px]:tracking-[0.18em]">
                 Agendamento inteligente
               </div>
@@ -45,7 +41,7 @@ function SecaoAgendamento({ whatsappLink }) {
                 ))}
               </div>
 
-              <div className={`mt-9 flex flex-col gap-4 sm:flex-row sm:items-center ${agendaAberta ? 'lg:mt-auto lg:pt-16' : 'lg:justify-center'}`}>
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center lg:mt-auto lg:pt-16">
                 <button
                   type="button"
                   onClick={() => setAgendaAberta((atual) => !atual)}
@@ -64,7 +60,7 @@ function SecaoAgendamento({ whatsappLink }) {
               </div>
             </div>
 
-            <div className={`relative transition-[min-height] duration-500 ease-out max-lg:min-h-0 ${agendaAberta ? 'min-h-[31rem] lg:min-h-0' : 'min-h-0'}`}>
+            <div className={`relative transition-[min-height] duration-500 ease-out max-lg:min-h-0 ${agendaAberta ? 'min-h-[31rem] lg:min-h-0' : 'min-h-0 lg:min-h-[37rem]'}`}>
 
               <div
                 className={`${agendaAberta ? 'relative inset-auto' : 'absolute inset-0'} transition duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] max-lg:relative max-lg:inset-auto ${
